@@ -169,7 +169,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => '/home/akadir/repo/github/laravelrest/storage/framework/cache/data',
+        'path' => '/home/akadir/repo/bitbucket/apnardaktar/storage/framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -274,12 +274,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => '/home/akadir/repo/github/laravelrest/storage/app',
+        'root' => '/home/akadir/repo/bitbucket/apnardaktar/storage/app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => '/home/akadir/repo/github/laravelrest/storage/app/public',
+        'root' => '/home/akadir/repo/bitbucket/apnardaktar/storage/app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -312,7 +312,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => '/home/akadir/repo/github/laravelrest/resources/views/vendor/mail',
+        0 => '/home/akadir/repo/bitbucket/apnardaktar/resources/views/vendor/mail',
       ),
     ),
   ),
@@ -392,7 +392,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => '/home/akadir/repo/github/laravelrest/storage/framework/sessions',
+    'files' => '/home/akadir/repo/bitbucket/apnardaktar/storage/framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -412,9 +412,9 @@
   array (
     'paths' => 
     array (
-      0 => '/home/akadir/repo/github/laravelrest/resources/views',
+      0 => '/home/akadir/repo/bitbucket/apnardaktar/resources/views',
     ),
-    'compiled' => '/home/akadir/repo/github/laravelrest/storage/framework/views',
+    'compiled' => '/home/akadir/repo/bitbucket/apnardaktar/storage/framework/views',
   ),
   'trustedproxy' => 
   array (

@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-
-
+use App\Model\Article;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Model\Articlecategory;
-use App\Http\Resources\Articlecategory\ArticlecategoryCollection;
-use App\Http\Resources\Articlecategory\ArticlecategoryResource;
+use App\Http\Resources\Article\ArticleCollection;
+use App\Http\Resources\Article\ArticleResource;
 
 
-
-class ArticlecategoryController extends Controller
+class ArticleController extends Controller
 {
 
     public function __construct(){
@@ -26,7 +23,7 @@ class ArticlecategoryController extends Controller
      */
     public function index()
     {
-        return ArticlecategoryCollection::collection(Articlecategory::paginate(20));
+        return ArticleCollection::collection(Article::paginate(20));
     }
 
     /**
@@ -48,42 +45,44 @@ class ArticlecategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|string|min:4|unique:articlecategories',
-
+            'title' => 'required|string|min:10',
+            'article_content' => 'required|min:100',
+            'user_id' => 'required|integer',
+            'articlecategory_id' => 'required|integer',
         ]);
 
+        $article = new Article();
 
+        $article->title = $request->title;
+        $article->article_content = $request->article_content;
+        $article->user_id = $request->user_id;
+        $article->articlecategory_id = $request->articlecategory_id;
 
-        $articleCategory = new Articlecategory();
-
-        $articleCategory->name = $request->name;
-
-        $articleCategory->save();
+        $article->save();
 
         return response([
-            'data' => new ArticlecategoryResource($articleCategory)
+            'data' => new ArticleResource($article)
         ],Response::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Articlecategory  $articlecategory
+     * @param  \App\Model\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(Articlecategory $articlecategory)
+    public function show(Article $article)
     {
-        //
-        return new ArticlecategoryResource($articlecategory);
+        return new ArticleResource($article);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Articlecategory  $articlecategory
+     * @param  \App\Model\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(Articlecategory $articlecategory)
+    public function edit(Article $article)
     {
         //
     }
@@ -92,10 +91,10 @@ class ArticlecategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Articlecategory  $articlecategory
+     * @param  \App\Model\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Articlecategory $articlecategory)
+    public function update(Request $request, Article $article)
     {
         //
     }
@@ -103,13 +102,13 @@ class ArticlecategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Articlecategory  $articlecategory
+     * @param  \App\Model\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Articlecategory $articlecategory)
+    public function destroy(Article $article)
     {
-        //
-        $articlecategory->delete();
+        $article->delete();
         return response(null,Response::HTTP_NO_CONTENT);
+
     }
 }
