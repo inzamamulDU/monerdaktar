@@ -42,23 +42,3 @@
     </div>
 @endsection
 
-@section('javascript')
-    <script>
-        $("#doctor").change(function(){
-            $("#job_title").removeClass("hidden");
-            $("#orgnization").removeClass("hidden");
-
-
-        });
-        $("#patient").change(function(){
-            $("#job_title").addClass("hidden");
-            $("#orgnization").addClass("hidden");
-
-
-        });
-        /*$("#doctor").onclick(function(){
-
-            $("#patient").removeAttr("checked")
-        });*/
-    </script>
-@endsection

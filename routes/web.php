@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/article-create', 'Web\ArticlecategoryController@create')->name('article.create');
-Route::post('/article-create', 'Web\ArticlecategoryController@store')->name('article.store');
-Route::get('/article-show', 'Web\ArticlecategoryController@show')->name('article.show');
+Route::get('/articlecategory-create', 'Web\ArticlecategoryController@create')->name('articlecategory.create');
+Route::post('/articlecategory-create', 'Web\ArticlecategoryController@store')->name('articlecategory.store');
+Route::get('/articlecategory-show', 'Web\ArticlecategoryController@show')->name('article.show');
+
+Route::get('/user-show', 'Web\UserController@show')->name('user.show');
+Route::get('/user-create', 'Web\UserController@create')->name('user.create');
+Route::post('/user-create', 'Web\UserController@store')->name('user.store');

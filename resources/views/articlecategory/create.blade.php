@@ -8,7 +8,7 @@
                     <div class="panel-heading">Register</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('article.store') }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('articlecategory.store') }}">
                             {{ csrf_field() }}
 
                              <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -42,25 +42,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('javascript')
-    <script>
-        $("#doctor").change(function(){
-            $("#job_title").removeClass("hidden");
-            $("#orgnization").removeClass("hidden");
-
-
-        });
-        $("#patient").change(function(){
-            $("#job_title").addClass("hidden");
-            $("#orgnization").addClass("hidden");
-
-
-        });
-        /*$("#doctor").onclick(function(){
-
-            $("#patient").removeAttr("checked")
-        });*/
-    </script>
 @endsection

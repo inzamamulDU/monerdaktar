@@ -21,7 +21,7 @@ class UserCollection extends Resource
             'phone'          => $this->phone,
             'photo'          => $this->photo,
             'address'          => $this->address,
-            'address'          => $this->address,
+            'country'          => $this->country,
             'postcode'          => $this->postcode,
             'city'          => $this->country,
             'job_title'          => $this->job_title,
