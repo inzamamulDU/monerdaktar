@@ -20,8 +20,8 @@ class CreateArticlesTable extends Migration
             $table->integer('articlecategory_id');
             $table->integer('user_id');
             $table->boolean("publish")->default(false);
-            $table->integer("positive_vote");
-            $table->integer("negative_vote");
+            $table->integer("positive_vote")->default(0);
+            $table->integer("negative_vote")->default(0);
 
             $table->timestamps();
         });

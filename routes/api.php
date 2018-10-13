@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -22,10 +22,10 @@ Route::apiResource('/products','ProductController');
 Route::group(['prefix'=>'products'],function(){
 	Route::apiResource('/{product}/reviews','ReviewController');
 
-});
+});*/
 
 Route::apiResource('/article-category', 'Api\ArticlecategoryController');
-Route::apiResource('/article', 'ArticleController');
+Route::apiResource('/article', 'Api\ArticleController');
 
 Route::apiResource('/role', 'Api\RoleController');
 Route::apiResource('/user', 'Api\UserController');
