@@ -93,14 +93,7 @@ class ArticlecategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        /*$request['detail'] = $request->description;
-        unset($request['description']);
-        $product->update($request->all());
-        return response([
-            'data' => new ProductResource($product)
-        ],Response*/
 
-        //$articlecategory->name = $request->name;
 
         $articlecategory = Articlecategory::findOrFail($id);
 
@@ -119,11 +112,11 @@ class ArticlecategoryController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        //
+
         $articlecategory = Articlecategory::findOrFail($id);
 
         $articlecategory->delete();
-        
+
         return response(null,Response::HTTP_NO_CONTENT);
     }
 }
