@@ -8,11 +8,23 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    @if (session('status'))
+                    {{--@if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
-                    @endif
+                    @endif--}}
+
+                        @if (Session::has('fail'))
+                            <div class="alert alert-warning">
+                                {{ Session::get('message') }}
+                            </div>
+                        @endif
+
+                        @if (Session::has('success'))
+                            <div class="alert alert-success">
+                                {{ Session::get('message') }}
+                            </div>
+                        @endif
 
                     You are logged in!
                 </div>

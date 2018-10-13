@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/article-create', 'Web\ArticlecategoryController@create')->name('article.create');
+Route::post('/article-create', 'Web\ArticlecategoryController@store')->name('article.store');
+Route::get('/article-show', 'Web\ArticlecategoryController@show')->name('article.show');

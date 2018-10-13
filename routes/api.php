@@ -24,5 +24,8 @@ Route::group(['prefix'=>'products'],function(){
 
 });
 
-Route::apiResource('/article-category', 'ArticlecategoryController');
+Route::apiResource('/article-category', 'Api\ArticlecategoryController');
 Route::apiResource('/article', 'ArticleController');
+
+Route::apiResource('/role', 'Api\RoleController');
+Route::apiResource('/user', 'Api\UserController');
