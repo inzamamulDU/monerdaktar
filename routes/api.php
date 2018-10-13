@@ -29,3 +29,4 @@ Route::apiResource('/article', 'Api\ArticleController');
 
 Route::apiResource('/role', 'Api\RoleController');
 Route::apiResource('/user', 'Api\UserController');
+Route::apiResource('/comment', 'Api\CommentController');

@@ -83,7 +83,7 @@ class UserController extends Controller
 
         }
 
-        dd($results);
+
 
         if($results){
             return redirect(route('home'))->with('success','true')->with('message',"User Created");
