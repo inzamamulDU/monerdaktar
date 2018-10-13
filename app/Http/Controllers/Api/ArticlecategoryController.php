@@ -91,9 +91,24 @@ class ArticlecategoryController extends Controller
      * @param  \App\Articlecategory  $articlecategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Articlecategory $articlecategory)
+    public function update(Request $request, $id)
     {
-        //
+        /*$request['detail'] = $request->description;
+        unset($request['description']);
+        $product->update($request->all());
+        return response([
+            'data' => new ProductResource($product)
+        ],Response*/
+
+        //$articlecategory->name = $request->name;
+
+        $articlecategory = Articlecategory::findOrFail($id);
+
+        $articlecategory->update($request->all());
+
+       return response([
+        'data' => new ArticlecategoryResource($articlecategory)
+    ],Response::HTTP_ACCEPTED);
     }
 
     /**
@@ -102,10 +117,13 @@ class ArticlecategoryController extends Controller
      * @param  \App\Articlecategory  $articlecategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Articlecategory $articlecategory)
+    public function destroy(Request $request, $id)
     {
         //
+        $articlecategory = Articlecategory::findOrFail($id);
+
         $articlecategory->delete();
+        
         return response(null,Response::HTTP_NO_CONTENT);
     }
 }
