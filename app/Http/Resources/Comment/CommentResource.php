@@ -15,11 +15,12 @@ class CommentResource extends Resource
     public function toArray($request)
     {
         return [
-            'id'           =>$this->id,
-            'text'          => $this->text,
-            'article_id'          => $this->article_id,
-            'user_id'          => $this->user_id,
-            'publish'          => $this->publish,
+            'id' => $this->id,
+            'text' => $this->text,
+            'article_id' => $this->article_id,
+            'user_id' => $this->user_id,
+            'publish' => $this->publish,
+            'user' => $this->user
 
 
         ];

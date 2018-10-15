@@ -19,7 +19,10 @@ class ArticleCollection extends Resource
             'title'          => $this->title,
             'article_content'          => $this->article_content,
             'articlecategory_id'         => $this->articlecategory_id,
-            'user_id'          => $this->user_id
+            'user_id'          => $this->user_id,
+            'articlecategory'          => $this->articlecategory,
+            'user'          => $this->user,
+            'comments'          => $this->comment
 
 
         ];

@@ -14,6 +14,7 @@ class UserResource extends Resource
      */
     public function toArray($request)
     {
+
         return [
             'id'           =>$this->id,
             'name'          => $this->name,
@@ -27,6 +28,7 @@ class UserResource extends Resource
             'job_title'          => $this->job_title,
             'orgnization'          => $this->orgnization,
             'role_id'          => $this->role_id,
+            'role'          => $this->role,
             'active'          => $this->active
 
         ];

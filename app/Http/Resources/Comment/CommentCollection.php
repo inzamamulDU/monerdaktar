@@ -20,6 +20,7 @@ class CommentCollection extends Resource
             'article_id'          => $this->article_id,
             'user_id'          => $this->user_id,
             'publish'          => $this->publish,
+            'user'          => $this->user
 
 
         ];

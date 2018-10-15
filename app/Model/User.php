@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use App\Model\Role;
+use App\Model\Comment;
 
 class User extends Model
 {
@@ -34,7 +35,10 @@ class User extends Model
         return $this->belongsTo(Role::class);
     }
 
-    public function test(){
-        return "test";
+    public function comment(){
+        return $this->hasMany(Comment::class);
     }
+
+
+
 }

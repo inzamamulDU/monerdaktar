@@ -5,6 +5,7 @@ namespace App\Model;
 use Illuminate\Database\Eloquent\Model;
 use App\Model\Articlecategory;
 use App\Model\User;
+use App\Model\Commnet;
 
 class Article extends Model
 {
@@ -13,11 +14,15 @@ class Article extends Model
         'negative_vote'
     ];
 
-    public function category(){
-        return $this->belongsTo('App\Model\Articlecategory');
+    public function articlecategory(){
+        return $this->belongsTo(Articlecategory::class);
     }
 
     public function user(){
-        $this->belongsTo('App\Model\User');
+        return $this->belongsTo(User::Class);
+    }
+
+    public function comment(){
+        return $this->hasMany(Comment::class);
     }
 }
