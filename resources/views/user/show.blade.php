@@ -46,7 +46,7 @@
                                             <td>{{$result->country}}</td>
                                             <td>{{$result->job_title}}</td>
                                             <td>{{$result->orgnization}}</td>
-                                            <td>{{$result->role_id}}</td>
+                                            <td>{{$result->role->name}}</td>
 
                                             <td>{{$result->active}}</td>
                                             <td></td>

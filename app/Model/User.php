@@ -5,6 +5,7 @@ namespace App\Model;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+use App\Model\Role;
 
 class User extends Model
 {
@@ -28,4 +29,12 @@ class User extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
+
+    public function test(){
+        return "test";
+    }
 }

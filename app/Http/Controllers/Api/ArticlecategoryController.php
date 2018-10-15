@@ -114,9 +114,11 @@ class ArticlecategoryController extends Controller
     {
 
         $articlecategory = Articlecategory::findOrFail($id);
-
+        $tempName = $articlecategory->name;
         $articlecategory->delete();
 
-        return response(null,Response::HTTP_NO_CONTENT);
+        return response([
+            'message' => $tempName. " article category has been deleted!"
+        ],Response::HTTP_ACCEPTED);;
     }
 }

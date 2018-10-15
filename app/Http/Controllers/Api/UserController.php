@@ -12,7 +12,7 @@ use App\Http\Resources\User\UserResource;
 class UserController extends Controller
 {
     public function __construct(){
-       // $this->middleware('auth:api')->except('index','show');
+        $this->middleware('auth:api');
     }
 
     /**
@@ -129,6 +129,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
+        $request->
         $user->update($request->all());
 
         return response([
