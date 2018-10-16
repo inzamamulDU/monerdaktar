@@ -24,10 +24,11 @@ Route::group(['prefix'=>'products'],function(){
 
 });*/
 
-Route::apiResource('/article-category', 'Api\ArticlecategoryController');
+Route::apiResource('/article-category', 'Api\ArticleCategoryController');
 Route::apiResource('/article', 'Api\ArticleController');
 
 Route::apiResource('/role', 'Api\RoleController');
 Route::apiResource('/user', 'Api\UserController');
 Route::apiResource('/comment', 'Api\CommentController');
 Route::apiResource('/appoinment', 'Api\AppoinmentController');
+Route::apiResource('/article-category', 'Api\ArticleCategoryController');

@@ -4,11 +4,8 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-use App\Model\Article;
-
-class Articlecategory extends Model
+class ArticleCategory extends Model
 {
-    //
     protected $fillable = [
         'name'
     ];

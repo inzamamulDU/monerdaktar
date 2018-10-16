@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use App\Model\Articlecategory;
-use App\Http\Resources\Articlecategory\ArticlecategoryCollection;
-use App\Http\Resources\Articlecategory\ArticlecategoryResource;
+use App\Model\ArticleCategory;
+use App\Http\Resources\ArticleCategory\ArticleCategoryCollection;
+use App\Http\Resources\ArticleCategory\ArticleCategoryResource;
 
-class ArticlecategoryController extends Controller
+class ArticleCategoryController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth:api')->except('index','show');
+        $this->middleware('auth:api');
     }
 
     /**
@@ -22,7 +22,7 @@ class ArticlecategoryController extends Controller
      */
     public function index()
     {
-        return ArticlecategoryCollection::collection(Articlecategory::paginate(20));
+        return ArticleCategoryCollection::collection(ArticleCategory::paginate(20));
     }
 
     /**
@@ -44,33 +44,33 @@ class ArticlecategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|string|min:4|unique:articlecategories',
+            'name' => 'required|string|min:4|unique:article_categories',
 
         ]);
 
 
 
-        $articleCategory = new Articlecategory();
+        $articleCategory = new ArticleCategory();
 
         $articleCategory->name = $request->name;
 
         $articleCategory->save();
 
         return response([
-            'data' => new ArticlecategoryResource($articleCategory)
+            'data' => new ArticleCategoryResource($articleCategory)
         ],Response::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Articlecategory  $articlecategory
+     * @param  \App\Articlecategory  $articleCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(Articlecategory $articlecategory)
+    public function show(ArticleCategory $articleCategory)
     {
-        //
-        return new ArticlecategoryResource($articlecategory);
+        return $articleCategory;
+        //return new ArticleCategoryResource($articleCategory);
     }
 
     /**
@@ -79,7 +79,7 @@ class ArticlecategoryController extends Controller
      * @param  \App\Articlecategory  $articlecategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Articlecategory $articlecategory)
+  /*  public function edit(ArticleCategory $articlecategory)
     {
         //
     }
@@ -91,16 +91,16 @@ class ArticlecategoryController extends Controller
      * @param  \App\Articlecategory  $articlecategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,ArticleCategory $articleCategory)
     {
 
 
-        $articlecategory = Articlecategory::findOrFail($id);
+        //$articlecategory = ArticleCategory::findOrFail($id);
 
-        $articlecategory->update($request->all());
+        $articleCategory->update($request->all());
 
        return response([
-        'data' => new ArticlecategoryResource($articlecategory)
+        'data' => new ArticleCategoryResource($articleCategory)
     ],Response::HTTP_ACCEPTED);
     }
 
@@ -110,15 +110,15 @@ class ArticlecategoryController extends Controller
      * @param  \App\Articlecategory  $articlecategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request,ArticleCategory $articleCategory)
     {
 
-        $articlecategory = Articlecategory::findOrFail($id);
-        $tempName = $articlecategory->name;
-        $articlecategory->delete();
+        /*$articlecategory = ArticleCategory::findOrFail($id);
+        $tempName = $articlecategory->name;*/
+        $articleCategory->delete();
 
         return response([
-            'message' => $tempName. " article category has been deleted!"
+            'message' => $articleCategory->name. " article category has been deleted!"
         ],Response::HTTP_ACCEPTED);;
     }
 }

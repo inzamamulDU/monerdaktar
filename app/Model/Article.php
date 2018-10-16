@@ -3,7 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Articlecategory;
+use App\Model\ArticleCategory;
 use App\Model\User;
 use App\Model\Commnet;
 
@@ -15,7 +15,7 @@ class Article extends Model
     ];
 
     public function articlecategory(){
-        return $this->belongsTo(Articlecategory::class);
+        return $this->belongsTo(ArticleCategory::class);
     }
 
     public function user(){
