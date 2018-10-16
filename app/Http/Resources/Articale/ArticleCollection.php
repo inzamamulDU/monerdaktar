@@ -22,7 +22,7 @@ class ArticleCollection extends Resource
             'user_id'          => $this->user_id,
             'articlecategory'          => $this->articlecategory,
             'user'          => $this->user,
-            'comments'          => $this->comment
+            'comments'          => $this->comments
 
 
         ];

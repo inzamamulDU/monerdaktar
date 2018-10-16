@@ -8,7 +8,7 @@ use GuzzleHttp\Client;
 use Mockery\Exception;
 use App\Model\User;
 use Illuminate\Support\Facades\Auth;
-
+use App\Model\Article;
 class UserController extends Controller
 {
     public function __construct()
@@ -18,6 +18,15 @@ class UserController extends Controller
 
     public function create()
     {
+/*
+        $article = Article::get();
+        foreach ($article as $key=>$value){
+            foreach($value->comments as $key1=>$value1){
+                dd($value1->user);
+            }
+
+        }*/
+
         return view('user.create');
     }
 

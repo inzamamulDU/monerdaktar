@@ -7,6 +7,8 @@ use App\Model\ArticleCategory;
 use App\Model\User;
 use App\Model\Commnet;
 
+
+
 class Article extends Model
 {
     protected $fillable = [
@@ -22,7 +24,12 @@ class Article extends Model
         return $this->belongsTo(User::Class);
     }
 
-    public function comment(){
+    /*public function comment(){
         return $this->hasMany(Comment::class);
+    }*/
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class,'commentable');
     }
 }

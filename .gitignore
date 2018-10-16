@@ -6,6 +6,7 @@
 /storage
 storage/*
 vendor/*
+boostrap/*
 /.idea
 /.vagrant
 Homestead.json

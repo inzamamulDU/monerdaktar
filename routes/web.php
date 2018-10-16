@@ -11,12 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
-
+Route::get('/', 'HomeController@welcome')->name('home.welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/articlecategory-create', 'Web\ArticlecategoryController@create')->name('articlecategory.create');

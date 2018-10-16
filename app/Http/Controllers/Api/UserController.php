@@ -125,11 +125,10 @@ class UserController extends Controller
      * @param  \App\User  $articlecategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        $user = User::findOrFail($id);
 
-        $request->
+
         $user->update($request->all());
 
         return response([
@@ -143,13 +142,12 @@ class UserController extends Controller
      * @param  \App\User  $articlecategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, User $user)
     {
-        //
-        $user= User::findOrFail($id);
+
         $user->delete();
         return response([
             'message' => $user->name." has been deleted!"
-        ],Response::HTTP_NO_CONTENT);
+        ],Response::HTTP_ACCEPTED);
     }
 }

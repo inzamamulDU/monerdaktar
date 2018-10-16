@@ -19,6 +19,8 @@ class CreateCommentsTable extends Migration
             $table->integer('article_id');
             $table->string('text');
             $table->boolean("publish")->default(false);
+            $table->integer('commentable_id');
+            $table->string('commentable_type');
             $table->timestamps();
         });
     }
