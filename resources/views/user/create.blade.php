@@ -13,7 +13,7 @@
                         </div>
 
                         <div class="card-body">
-                            <form class="form-horizontal" method="POST" action="{{ route('user.store') }}">
+                            <form class="form-horizontal" method="POST" action="{{ route('user.store') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
 
                                 <div class="form-group">
@@ -145,7 +145,7 @@
                                 </div>
 
 
-                                <div  id="job_title" class="form-group hidden">
+                                <div  id="job_title" class="form-group d-none">
                                     <label for="job_title" class="col-md-4 control-label">Job Tile</label>
 
                                     <div class="col-md-6">
@@ -155,7 +155,7 @@
                                     </div>
                                 </div>
 
-                                <div id="orgnization" class="form-group hidden">
+                                <div id="orgnization" class="form-group d-none">
                                     <label for="orgnization" class="col-md-4 control-label">Orgnization</label>
 
                                     <div class="col-md-6">
@@ -186,14 +186,14 @@
 @section('javascript')
     <script>
         $("#doctor").change(function(){
-            $("#job_title").removeClass("hidden");
-            $("#orgnization").removeClass("hidden");
+            $("#job_title").removeClass("d-none");
+            $("#orgnization").removeClass("d-none");
 
 
         });
         $("#patient").change(function(){
-            $("#job_title").addClass("hidden");
-            $("#orgnization").addClass("hidden");
+            $("#job_title").addClass("d-none");
+            $("#orgnization").addClass("d-none");
 
 
         });

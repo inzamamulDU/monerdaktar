@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Model\User;
 use App\Http\Resources\User\UserCollection;
 use App\Http\Resources\User\UserResource;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -73,22 +74,15 @@ class UserController extends Controller
             $user->orgnization = $request->get("orgnization");
         }
 
+        if($request->has("photo")) {
+            $user->photo = $request->get("photo");
+        }
+
+
         $user->role_id= $request->get("role_id");
-        //$user->photo= $request->get("photo");
 
         $user->save();
-        /*$this->validate($request, [
-            'name' => 'required|string|min:4|unique:articlecategories',
 
-        ]);
-
-
-
-        $articleCategory = new Articlecategory();
-
-        $articleCategory->name = $request->name;
-
-        $articleCategory->save();*/
 
         return response([
             'data' => new UserResource($user)
@@ -128,6 +122,23 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
 
+        $userId = isset($user) ? $user->id : null;
+
+        $this->validate($request, [
+            'name' => 'required|string',
+            /*'password' => 'required|string|confirmed|min:8',*/
+           // 'email' => 'required|string|unique:users,email'. $user->id.',id',
+            'email' => 'email|unique:users,email,'. $userId,
+            /*'phone' => 'required|string|unique:users',*/
+            'role_id' => 'required'
+
+        ]);
+
+       /* $loggedUserRole= Auth::user()->role;
+
+        return $loggedUserRole;*/
+
+        /*return $user->role->id;*/
 
         $user->update($request->all());
 
