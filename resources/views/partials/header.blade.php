@@ -43,8 +43,9 @@
                         {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                        <a class="dropdown-item nav-link-color"href="{{ route('user.edit') }}">Profile Info</a>
 
-                            <a href="{{ route('logout') }}" class="nav-link nav-link-color"
+                        <a href="{{ route('logout') }}" class=" dropdown-item nav-link-color"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 Logout

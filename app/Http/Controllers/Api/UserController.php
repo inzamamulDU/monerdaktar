@@ -9,6 +9,7 @@ use App\Model\User;
 use App\Http\Resources\User\UserCollection;
 use App\Http\Resources\User\UserResource;
 use Illuminate\Support\Facades\Auth;
+use App\Rules\Api\UniqueDataRule;
 
 class UserController extends Controller
 {
@@ -127,18 +128,16 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required|string',
             /*'password' => 'required|string|confirmed|min:8',*/
-           // 'email' => 'required|string|unique:users,email'. $user->id.',id',
-            'email' => 'email|unique:users,email,'. $userId,
+           'email' => [new UniqueDataRule($user->email)],
+            'phone' => [new UniqueDataRule($user->phone)],
+           /*'phone' =>  [function ($attribute, $value, $fail) { if ($value <= 10) { $fail(':attribute needs more cowbell!'); } }],*/
+
             /*'phone' => 'required|string|unique:users',*/
-            'role_id' => 'required'
+
 
         ]);
 
-       /* $loggedUserRole= Auth::user()->role;
 
-        return $loggedUserRole;*/
-
-        /*return $user->role->id;*/
 
         $user->update($request->all());
 

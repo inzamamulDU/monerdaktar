@@ -23,3 +23,5 @@ Route::get('/articlecategory-show', 'Web\ArticlecategoryController@show')->name(
 Route::get('/user-show', 'Web\UserController@show')->name('user.show');
 Route::get('/user-create', 'Web\UserController@create')->name('user.create');
 Route::post('/user-create', 'Web\UserController@store')->name('user.store');
+Route::get('/user-edit', 'Web\UserController@edit')->name('user.edit');
+Route::post('/user-update', 'Web\UserController@update')->name('user.update');
