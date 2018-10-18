@@ -2,67 +2,115 @@
 
 @section('content')
     <div class="container">
+        <section class="py-3">
         <div class="row">
-            <div class="col-md-19 col-md-offset-0">
-                <div class="panel panel-default">
-                    <div class="panel-heading">User List</div>
+            <div class="col-md-12 offset-md-1">
+                <div class="card">
+                    <div class="card-title">
+                        <div class="alert alert-primary" role="alert">
 
-                    <div class="panel-body">
+                            <b>Doctor List </b>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table ">
                                 <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Photo</th>
-                                    <th>Address</th>
-                                    <th>Postcode</th>
-                                    <th>City</th>
-                                    <th>Country</th>
-                                    <th>Job Title</th>
-                                    <th>Orgnization</th>
-                                    <th>Role</th>
-                                    <th>Active</th>
 
-
-                                </tr>
                                 </thead>
                                 <tbody>
-                                @if($results)
 
 
-                                    @foreach($results->data as $key=>$result)
-                                        <tr>
-                                            <td>{{$result->id}}</td>
-                                            <td>{{$result->name}}</td>
-                                            <td>{{$result->email}}</td>
-                                            <td>{{$result->phone}}</td>
-                                            <td>{{$result->photo}}</td>
-                                            <td>{{$result->address}}</td>
-                                            <td>{{$result->postcode}}</td>
-                                            <td>{{$result->city}}</td>
-                                            <td>{{$result->country}}</td>
-                                            <td>{{$result->job_title}}</td>
-                                            <td>{{$result->orgnization}}</td>
-                                            <td>{{$result->role->name}}</td>
-
-                                            <td>{{$result->active}}</td>
-                                            <td></td>
-                                        </tr>
-                                    @endforeach
+                        @if($results)
 
 
-                                @else
-                                    <h4 class="alert alert-info">No data</h4>
-                                @endif
+                            @foreach($results->data as $key=>$result)
+                                <tr>
+                                    <td>
+                                <div class="from-row">
+                                    <div class="form-group col-md-6 ">
+                                        <span class="mr-5"><img class="thumbnail" width="300" height="300" src="{{ asset('images/userphoto/'.$result->photo) }}"></span>
+                                    </div>
+
+                                </div>
+                                    </td>
+                                    <td>
+                                        <div class="from-row">
+                                            <div class="form-group col-md-6 ">
+                                                <label for="name" class="control-label">Name:{{$result->name}}</label>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="from-row">
+                                            <div class="form-group col-md-6 ">
+                                                <label for="name" class="control-label">Job Title:{{$result->job_title}}</label>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="from-row">
+                                            <div class="form-group col-md-6 ">
+                                                <label for="name" class="control-label">Organization:{{$result->orgnization}}</label>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="from-row">
+                                            <div class="form-group col-md-6 ">
+                                                <label for="name" class="control-label">Addres:{{$result->address}}</label>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="from-row">
+                                            <div class="form-group col-md-6 ">
+                                                <label for="name" class="control-label">Country:{{$result->country}}</label>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="from-row">
+                                            <div class="form-group col-md-6 ">
+                                                <label for="name" class="control-label">City:{{$result->city}}</label>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="from-row">
+                                            <div class="form-group col-md-6 ">
+                                                <label for="name" class="control-label">Phone:{{$result->phone}}</label>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="from-row">
+                                            <div class="form-group col-md-6 ">
+                                                <label for="name" class="control-label">Email:{{$result->email}}</label>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            @endforeach
                                 </tbody>
                             </table>
-                        </div>
+                        @else
+                            <h4 class="alert alert-info">No data</h4>
+                        @endif
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 @endsection

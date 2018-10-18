@@ -216,6 +216,8 @@ class UserController extends Controller
         }
 
 
+
+
         return view('user.doctorlist',['results'=>$results]);
 
 
