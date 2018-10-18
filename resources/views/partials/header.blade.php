@@ -12,7 +12,7 @@
                 <a class="nav-link nav-link-color" href="{{route('home.welcome')}}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-link-color" href="about.html">Doctors</a>
+                <a class="nav-link nav-link-color" href="{{route('user.getdoctors')}}">Doctors</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link nav-link-color" href="services.html">Services</a>

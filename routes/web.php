@@ -13,6 +13,7 @@
 
 
 Auth::routes();
+Route::get('/user-getdoctors', 'Web\UserController@getDoctors')->name('user.getdoctors');
 Route::get('/', 'HomeController@welcome')->name('home.welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 
