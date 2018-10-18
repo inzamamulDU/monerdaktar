@@ -8,7 +8,7 @@
                     <div class="card">
                         <div class="card-title">
                             <div class="alert alert-primary" role="alert">
-                               <span class="mr-5"><img class="rounded-circle" width="100" height="100" src="{{ asset('images/userphoto/'.$results->data->photo) }}"></span>
+
                                 <b>Profile Info</b>
                             </div>
                         </div>
@@ -17,12 +17,13 @@
                             <form class="form-horizontal" method="POST" action="{{ route('user.update') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
 
-
-                                <div class="form-row">
+                                <div class="from-row">
                                     <div class="form-group col-md-6 ">
-                                        <b>{{ title_case( $results->data->role->name) }} </b>
+                                        <span class="mr-5"><img class="rounded-circle" width="100" height="100" src="{{ asset('images/userphoto/'.$results->data->photo) }}"></span>
                                     </div>
+                                    <p class="mt-3">   <b>{{ title_case( $results->data->role->name) }} </b></p>
                                 </div>
+
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6 {{ $errors->has('name') ? ' has-error' : '' }}">
