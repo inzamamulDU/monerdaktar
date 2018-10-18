@@ -27,6 +27,11 @@ class UserController extends Controller
         return UserCollection::collection(User::paginate(20));
     }
 
+    public function getAllDoctors()
+    {
+        return UserCollection::collection(User::where('role_id', '=', 2)->paginate(10));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -40,7 +45,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request:
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
