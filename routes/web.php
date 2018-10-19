@@ -17,6 +17,8 @@ Route::get('/user-getdoctors', 'Web\UserController@getDoctors')->name('user.getd
 Route::get('/', 'HomeController@welcome')->name('home.welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('/appoinment', 'Web\AppoinmentController');
+
 Route::get('/articlecategory-create', 'Web\ArticlecategoryController@create')->name('articlecategory.create');
 Route::post('/articlecategory-create', 'Web\ArticlecategoryController@store')->name('articlecategory.store');
 Route::get('/articlecategory-show', 'Web\ArticlecategoryController@show')->name('article.show');

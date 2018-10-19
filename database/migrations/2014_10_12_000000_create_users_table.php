@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->default("12345678");
             $table->string('photo')->default("default.jpg");
             $table->text('address')->nullable();
+            $table->text('biography')->nullable();
             $table->string('postcode')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();

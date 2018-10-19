@@ -22,6 +22,7 @@ class UserResource extends Resource
             'phone'          => $this->phone,
             'photo'          => $this->photo,
             'address'          => $this->address,
+            'biography'          => $this->biography,
             'country'          => $this->country,
             'postcode'          => $this->postcode,
             'city'          => $this->country,

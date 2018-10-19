@@ -23,7 +23,7 @@ Route::group(['prefix'=>'products'],function(){
 	Route::apiResource('/{product}/reviews','ReviewController');
 
 });*/
-Route::get('/user/getAllDoctors', 'Api\UserController@getAllDoctors')->name('user.getDoctors');
+Route::get('/user/getAllDoctors/{paginate}', 'Api\UserController@getAllDoctors')->name('user.getDoctors');
 
 Route::apiResource('/article-category', 'Api\ArticleCategoryController');
 Route::apiResource('/article', 'Api\ArticleController');

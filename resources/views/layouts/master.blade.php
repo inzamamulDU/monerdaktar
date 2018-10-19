@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'MonerDaktar') }}</title>
 
 
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -19,7 +19,9 @@
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 
     <link href="{{ asset('css/modern-business.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/jquery.datetimepicker.min.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    @yield('css')
 
 
 </head>

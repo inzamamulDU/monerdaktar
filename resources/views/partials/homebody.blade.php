@@ -4,104 +4,30 @@
 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
 
 <div class="row">
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="images/doctor-1.jpg" alt=""></a>
-            <div class="card-body">
-                <h5 class="card-title text-center">
-                    <span>Dr.Addison Alexander</span>
-                </h5>
-                <p class="py-1 text-center">
-                    <small class="doctor-info">
-                        Cardiac Clinic, Primary Health Care
-                    </small>
-                </p>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+    @if($results)
+        @foreach($results->data as $key=>$result)
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{{ asset('images/userphoto/'.$result->photo) }}" alt=""></a>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <span>{{$result->name}}</span>
+                        </h5>
+                        <p class="py-1 text-center">
+                            <small class="doctor-info">
+                                {{$result->orgnization}}
+                            </small>
+                        </p>
+                        <p class="card-text">{{$result->biography}}</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="images/doctor-2.jpg" alt=""></a>
-            <div class="card-body">
-                <h5 class="card-title text-center">
-                    <span>Dr.Andrew Bert</span>
-                </h5>
-                <p class="py-1 text-center">
-                    <small class="doctor-info">
-                        Cardiac Clinic, Primary Health Care
-                    </small>
-                </p>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="images/doctor-3.jpg" alt=""></a>
-            <div class="card-body">
-                <h5 class="card-title text-center">
-                    <span>Dr.Kylee Leewan</span>
-                </h5>
-                <p class="py-1 text-center">
-                    <small class="doctor-info">
-                        Cardiac Clinic, Primary Health Care
-                    </small>
-                </p>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="images/doctor-4.jpg" alt=""></a>
-            <div class="card-body">
-                <h5 class="card-title text-center">
-                    <span>Dr.Addison Alexander</span>
-                </h5>
-                <p class="py-1 text-center">
-                    <small class="doctor-info">
-                        Cardiac Clinic, Primary Health Care
-                    </small>
-                </p>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="images/doctor-5.jpg" alt=""></a>
-            <div class="card-body">
-                <h5 class="card-title text-center">
-                    <span>Dr.Andrew Bert</span>
-                </h5>
-                <p class="py-1 text-center">
-                    <small class="doctor-info">
-                        Cardiac Clinic, Primary Health Care
-                    </small>
-                </p>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="images/doctor-6.jpg" alt=""></a>
-            <div class="card-body">
-                <h5 class="card-title text-center">
-                    <span>Dr.Kylee Leewan</span>
-                </h5>
-                <p class="py-1 text-center">
-                    <small class="doctor-info">
-                        Cardiac Clinic, Primary Health Care
-                    </small>
-                </p>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-            </div>
-        </div>
-    </div>
+        @endforeach
+
+    @else
+        <h4 class="alert alert-info">No data</h4>
+    @endif
+
 </div>
 
 
@@ -111,6 +37,7 @@
 
 <!-- /.row -->
 
+{{--
 <!-- Features Section -->
 <div class="row">
     <div class="col-lg-6">
@@ -143,4 +70,4 @@
     <div class="col-md-4">
         <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
     </div>
-</div>
+</div>--}}
