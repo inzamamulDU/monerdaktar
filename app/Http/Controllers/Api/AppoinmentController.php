@@ -12,7 +12,7 @@ use App\Http\Resources\Appoinment\AppoinmentResource;
 class AppoinmentController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth:api')->except('index','show');
+       // $this->middleware('auth:api')->except('index','show');
     }
 
     /**
@@ -52,13 +52,17 @@ class AppoinmentController extends Controller
         ]);
 
 
-
         $appoinment = new Appoinment();
+        $appoinment_date = date('Y-m-d H:i:s',strtotime($request->appoinment_time));
+
+
 
         $appoinment->title = $request->title;
         $appoinment->guest_id = $request->guest_id;
         $appoinment->host_id = $request->host_id;
-        //ppoinment->appoinment_time = $request->appoinment_time;
+        $appoinment->appoinment_time = $appoinment_date;
+
+
         $appoinment->save();
 
         return response([
