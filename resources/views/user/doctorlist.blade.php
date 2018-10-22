@@ -3,116 +3,55 @@
 @section('content')
     <div class="container">
         <section class="py-3">
-            <div class="row">
-                <div class="col-md-12 offset-md-1">
-                    <div class="card">
-                        <div class="card-title">
-                            <div class="alert alert-primary" role="alert">
 
-                                <b>Doctor List </b>
+                @if($results)
+                    @php ($index=0)
+                    @foreach($results->data as $key=>$result)
+                        <?php
+
+
+
+
+                         if($index % 3 ==0 ) echo '<div class="row">'?>
+
+
+
+                            <div class="col-lg-4 col-sm-6 portfolio-item">
+                                <div class="card h-100">
+                                    <a href="#"><img class="card-img-top" src="{{ asset('images/userphoto/'.$result->photo) }}" alt=""></a>
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">
+                                            <span>{{$result->name}}</span>
+                                        </h5>
+                                        <p class="py-1 text-center">
+                                            <small class="doctor-info">
+                                                {{$result->orgnization}}
+                                            </small>
+                                        </p>
+                                        <p class="card-text">{{$result->biography}}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table ">
-                                    <thead>
-
-                                    </thead>
-                                    <tbody>
+                        <?php  $index++; if($index % 3 ==0 && $index!=0) echo '</div>';?>
 
 
-                                    @if($results)
+
+                        @endforeach
+
+                    @else
+                        <h4 class="alert alert-info">No data</h4>
+                @endif
+            </section>
+        @if($results->links)
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="{{doctorPaginationLink($results->links->first)}}">First</a></li>
+            <li class="page-item"><a class="page-link" href="{{$results->links->prev}}">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="{{$results->links->next}}">Next</a></li>
+            <li class="page-item"><a class="page-link" href="{{$results->links->last}}">Last</a></li>
+        </ul>
+        @endif
 
 
-                                        @foreach($results->data as $key=>$result)
-                                            <tr>
-                                                <td>
-                                                    <div class="from-row">
-                                                        <div class="form-group col-md-6 ">
-                                                            <span class="mr-5"><img class="thumbnail" width="300" height="300" src="{{ asset('images/userphoto/'.$result->photo) }}"></span>
-                                                        </div>
-
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="from-row">
-                                                        <div class="form-group col-md-6 ">
-                                                            <label for="name" class="control-label">Name:{{$result->name}}</label>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="from-row">
-                                                        <div class="form-group col-md-6 ">
-                                                            <label for="name" class="control-label">Job Title:{{$result->job_title}}</label>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="from-row">
-                                                        <div class="form-group col-md-6 ">
-                                                            <label for="name" class="control-label">Organization:{{$result->orgnization}}</label>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="from-row">
-                                                        <div class="form-group col-md-6 ">
-                                                            <label for="name" class="control-label">Addres:{{$result->address}}</label>
-
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="from-row">
-                                                        <div class="form-group col-md-6 ">
-                                                            <label for="name" class="control-label">Country:{{$result->country}}</label>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="from-row">
-                                                        <div class="form-group col-md-6 ">
-                                                            <label for="name" class="control-label">City:{{$result->city}}</label>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="from-row">
-                                                        <div class="form-group col-md-6 ">
-                                                            <label for="name" class="control-label">Phone:{{$result->phone}}</label>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="from-row">
-                                                        <div class="form-group col-md-6 ">
-                                                            <label for="name" class="control-label">Email:{{$result->email}}</label>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                @else
-                                    <h4 class="alert alert-info">No data</h4>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-    </div>
-@endsection
+        </div>
+    @endsection

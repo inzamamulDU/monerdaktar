@@ -27,10 +27,10 @@ class UserController extends Controller
         return UserCollection::collection(User::paginate(20));
     }
 
-    public function getAllDoctors($paginate=true)
+    public function getAllDoctors($element=0)
     {
-        if($paginate == true){
-            return UserCollection::collection(User::where('role_id', '=', 2)->paginate(3));
+        if($element != 0){
+            return UserCollection::collection(User::where('role_id', '=', 2)->paginate($element));
         }
         return UserCollection::collection(User::where('role_id', '=', 2)->get());
     }

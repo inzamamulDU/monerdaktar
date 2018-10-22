@@ -40,10 +40,7 @@ class HomeController extends Controller
         ];
 
         //$apiUrl= 'http://localhost/api/user';
-        $apiUrl= env('API_URL').'api/user/getAllDoctors/1';
-
-
-
+        $apiUrl= env('API_URL').'api/user/getAllDoctors/3';
 
         $client = new Client(['http_errors'=>true,'headers'=>$headers]);
         $errorResponse = null;
