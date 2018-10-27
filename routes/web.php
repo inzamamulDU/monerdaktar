@@ -13,9 +13,11 @@
 
 
 Auth::routes();
+Route::get('/appoinment/on-going/{id}', 'Web\AppoinmentController@ongoing')->name('appoinment.ongoing');
 Route::get('/user-getdoctors/{limit}/{page}', 'Web\UserController@getDoctors')->name('user.getdoctors');
 Route::get('/', 'HomeController@welcome')->name('home.welcome');
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::resource('/appoinment', 'Web\AppoinmentController');
 

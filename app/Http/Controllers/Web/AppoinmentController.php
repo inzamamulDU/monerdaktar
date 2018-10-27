@@ -15,7 +15,7 @@ class AppoinmentController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     public function create(){
@@ -122,6 +122,19 @@ class AppoinmentController extends Controller
 
 
 
+    }
+
+
+    public function ongoing($id)
+    {
+        if($id==0) {
+            $results=['my_peer_id' => 'jM1jfYU8ob', 'remote_peer_id' => 'v2n2N42tTE'];
+        } else {
+            $results=['my_peer_id' => 'v2n2N42tTE', 'remote_peer_id' => 'jM1jfYU8ob'];
+        }
+
+
+        return view('appoinment.ongoing',['results'=>$results]);
     }
 
 

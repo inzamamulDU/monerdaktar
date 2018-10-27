@@ -46,12 +46,23 @@
         @if($results->links)
         <ul class="pagination">
             <li class="page-item"><a class="page-link" href="{{doctorPaginationLink($results->links->first)}}">First</a></li>
-            <li class="page-item"><a class="page-link" href="{{$results->links->prev}}">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="{{$results->links->next}}">Next</a></li>
-            <li class="page-item"><a class="page-link" href="{{$results->links->last}}">Last</a></li>
+            <li class="page-item"><a class="page-link" href="{{doctorPaginationLink($results->links->prev)}}">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="{{doctorPaginationLink($results->links->next)}}">Next</a></li>
+            <li class="page-item"><a class="page-link" href="{{doctorPaginationLink($results->links->last)}}">Last</a></li>
         </ul>
         @endif
 
 
         </div>
     @endsection
+
+<?php
+function doctorPaginationLink($value){
+    preg_match_all('!\d+!', $value, $matches);
+
+    if(sizeof($matches[0])>0) {
+        echo route('user.getdoctors',['limit'=> $matches[0][0] , 'page'=>$matches[0][1]]);
+    }
+
+}
+?>
