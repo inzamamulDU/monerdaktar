@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Model\PatientInfo;
+use App\Model\DoctorInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -65,32 +67,82 @@ class UserController extends Controller
 //        regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/|
         $user = new User();
 
-        $user->name= $request->get("name");
+
         $user->password= bcrypt($request->get("password"));
         $user->email= $request->get("email");
+
         $user->phone= $request->get("phone");
-
-        $user->address= $request->get("address");
-        $user->postcode= $request->get("postcode");
-        $user->city= $request->get("city");
-        $user->country= $request->get("country");
-
-        if($request->has("job_title")) {
-            $user->job_title = $request->get("job_title");
-        }
-
-        if($request->has("orgnization")) {
-            $user->orgnization = $request->get("orgnization");
-        }
+        $user->role_id= $request->get("role_id");
+        $user->name= $request->get("name");
 
         if($request->has("photo")) {
             $user->photo = $request->get("photo");
         }
 
 
-        $user->role_id= $request->get("role_id");
-
         $user->save();
+
+
+        if($user->role_id==3){
+            $patientInfo= new PatientInfo();
+
+
+            $patientInfo->address= $request->get("address");
+            $patientInfo->postcode= $request->get("postcode");
+            $patientInfo->city= $request->get("city");
+            $patientInfo->country= $request->get("country");
+
+            $patientInfo->user_id = $user->id;
+
+            $patientInfo->save();
+
+            $user->patient_info_id = $patientInfo->id;
+            $user->save();
+
+        } else if($user->role_id==2) {
+            $doctorInfo = new DoctorInfo();
+
+
+            $doctorInfo->address = $request->get("address");
+            $doctorInfo->postcode = $request->get("postcode");
+            $doctorInfo->city = $request->get("city");
+            $doctorInfo->country = $request->get("country");
+
+
+            $doctorInfo->user_id = $user->id;
+
+
+            if ($request->has("designation")) {
+                $doctorInfo->designation = $request->get("designation");
+
+            }
+
+            if ($request->has("institute")) {
+                $doctorInfo->institute = $request->get("institute");
+
+            }
+
+            if ($request->has("degree")) {
+                $doctorInfo->degree = $request->get("degree");
+
+            }
+
+            if ($request->has("available_time")) {
+                $doctorInfo->available_time = $request->get("available_time");
+
+            }
+
+            if ($request->has("biography")) {
+                $doctorInfo->biography = $request->get("biography");
+
+            }
+
+
+            $doctorInfo->save();
+
+            $user->doctor_info_id = $doctorInfo->id;
+            $user->save();
+        }
 
 
         return response([
@@ -146,6 +198,16 @@ class UserController extends Controller
         ]);
 
 
+
+
+
+        if($user->patientInfo()!=null){
+            $user->patientInfo()->update($request->json('patientInfo'));
+        }
+
+         if($user->doctorInfo()!=null){
+            $user->doctorInfo()->update($request->json('doctorInfo'));
+         }
 
         $user->update($request->all());
 

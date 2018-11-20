@@ -86,7 +86,7 @@
                                     <div class="form-group col-md-12">
                                         <label for="address" class="control-label">Address</label>
 
-                                            <textarea class="form-control" rows="5" id="comment" name="address" >{{ $results->data->address }}</textarea>
+                                            <textarea class="form-control" rows="5" id="comment" name="address" >{{ ($results->data->patientInfo != null) ?$results->data->patientInfo->address :$results->data->doctorInfo->address }}</textarea>
 
                                     </div>
                                 </div>
@@ -94,20 +94,20 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="postcode" class="control-label">Post Code</label>
-                                            <input id="postcode" type="text" class="form-control" name="postcode" value="{{ $results->data->postcode }}"  >
+                                            <input id="postcode" type="text" class="form-control" name="postcode" value="{{ ($results->data->patientInfo != null) ?$results->data->patientInfo->postcode :$results->data->doctorInfo->postcode }}"  >
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label for="city" class="control-label">City</label>
 
-                                            <input id="city" type="text" class="form-control" name="city" value="{{ $results->data->city }}"  >
+                                            <input id="city" type="text" class="form-control" name="city" value="{{ ($results->data->patientInfo != null) ?$results->data->patientInfo->city :$results->data->doctorInfo->city }}"  >
 
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="country" class="control-label">Country</label>
-                                             <input id="country" type="text" class="form-control" name="country" value="{{ $results->data->country }}"  >
+                                             <input id="country" type="text" class="form-control" name="country" value="{{ ($results->data->patientInfo != null) ?$results->data->patientInfo->country :$results->data->doctorInfo->country }}"  >
                                     </div>
 
 
@@ -115,7 +115,7 @@
                                         <label for="phone" class="control-label">Phone</label>
 
 
-                                            <input id="phone" type="text" class="form-control" name="phone" value="{{  $results->data->phone}}" disabled>
+                                            <input id="phone" type="text" class="form-control" name="phone" value="{{ $results->data->phone }}" disabled>
 
                                             @if ($errors->has('phone'))
                                                 <span class="help-block">

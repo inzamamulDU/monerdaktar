@@ -20,15 +20,12 @@ class UserCollection extends Resource
             'email'          => $this->email,
             'phone'          => $this->phone,
             'photo'          => $this->photo,
-            'address'          => $this->address,
-            'biography'          => $this->biography,
-            'country'          => $this->country,
-            'postcode'          => $this->postcode,
-            'city'          => $this->country,
-            'job_title'          => $this->job_title,
-            'orgnization'          => $this->orgnization,
             'role_id'          => $this->role_id,
             'role'          => $this->role,
+            'patient_info_id' => $this->patient_info_id,
+            'patientInfo' => $this->patientInfo,
+            'doctor_info_id' => $this->doctor_info_id,
+            'doctorInfo' => $this->doctorInfo,
             'active'          => $this->active
 
         ];

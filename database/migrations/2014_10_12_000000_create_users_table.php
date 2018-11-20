@@ -17,21 +17,19 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('password');
             //$table->string('phone')->unique();
             $table->string('phone')->default("12345678");
-            $table->string('photo')->default("default.jpg");
-            $table->text('address')->nullable();
-            $table->text('biography')->nullable();
-            $table->string('postcode')->nullable();
-            $table->string('city')->nullable();
-            $table->string('country')->nullable();
-            $table->string('job_title')->nullable();
-            $table->string('orgnization')->nullable();
+            $table->string('password');
             $table->integer("role_id")->default(3);
+            $table->integer("doctor_info_id")->default(0);
+            $table->integer("patient_info_id")->default(0);
+            $table->string('photo')->default("default.png");
             $table->boolean("active")->default(true);
             $table->rememberToken();
             $table->timestamps();
+
+
+
         });
     }
 

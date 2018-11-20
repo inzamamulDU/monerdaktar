@@ -43,7 +43,7 @@ class UserController extends Controller
             'name' => 'required|string',
             'password' => 'required|string|confirmed|min:8',
             'email' => 'required|string|unique:users',
-            'phone' => 'required|integer|unique:users',
+            'phone' => 'required|string|unique:users',
             'photo' => 'image||mimes:jpeg,png,jpg',
             'role_id' => 'required'
 
@@ -51,9 +51,7 @@ class UserController extends Controller
 
 
         //$loggedUserID= Auth::user()->id;
-        $apiToken= env('API_TOKEN');//"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjFlNDg4MjEwMzdmMTcyYWRjNGE2YjllODEyYjY4ZjkzYzI4OTVhMmY4MmQ3N2FmZmQxMjRhZGM2NWExN2ZkZWMwYzY5NTFiOGM0Zjk0YjBiIn0.eyJhdWQiOiIxIiwianRpIjoiMWU0ODgyMTAzN2YxNzJhZGM0YTZiOWU4MTJiNjhmOTNjMjg5NWEyZjgyZDc3YWZmZDEyNGFkYzY1YTE3ZmRlYzBjNjk1MWI4YzRmOTRiMGIiLCJpYXQiOjE1Mzk0MjYzMjUsIm5iZiI6MTUzOTQyNjMyNSwiZXhwIjoxNTcwOTYyMzI1LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.u1ceEXJCiiO6x2LLjh55Ej7er9gZ5l1xt99f2nAQfhElCCU_8-9mpSgGEYZvgIkUsoDc_UZifhEiwExoh33ilHrQ6VvVHn-5NF24pxGTmk3wHYHHFLOvqgx66ouRP8zbPQVfzs-Wbzt_Sshbm_I4m9dkC5zeph9Bt0Q_xU2aEqH8pKseaUIfWypNju06by4Si6Qd3-UaWywHzWmWn5e-UkGDbqYwdEB3H02NTVuy7yTEa4guq45pwwH1fn8Z3ZP6zAOEgSol8brsYTIA81DsEzMmbH3tx6CapUVfN0HwsSq0V4NuK2fbHyTlZ7ajFAAJOZMcBkDkDNb9k-Vj5YBSGRW4xgL2Ingv4MBzN7KroEWuxZbMIXv8mY4wjb04BzsFkWkMNCDV487VX5MhkbGVvi5uSaUDu6mMghlpP9zkputp9nZP_9I_g17ktNq8Xr0pbw6Ac3e7VbNqDNCkqi5E_7u4kIUJnDgIEwzPBUvZa0dh2t6k1UOK8YfVC-ujh2N5n9UoHJrQ_Ly-huDtEM2HSoMxSlxeZBpsxRC5Lr8MTifMj-CRREInyhGyoQ1GYE9metF9H_-ll_86fd6rFG5UsAzo2WapohBWbMFpnxrPsUJ4XxxIzfbufeqvEOyoKq4Nlou5sACgIzvuLNldqxclnpUqx3wWKMjcI7Zv94OmgGo";
-        //env('API_TOKEN');
-
+        $apiToken= env('API_TOKEN');
         $headers = [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
@@ -90,10 +88,28 @@ class UserController extends Controller
 
         }
 
-        if($request->has("job_title")) {
+        if($request->has("designation")) {
+            $form_params['designation'] = $request->get("designation");
 
-            $form_params['job_title']=$request->get("job_title");
-            $form_params['orgnization']=$request->get("orgnization");
+        }
+
+        if($request->has("institute")) {
+            $form_params['institute'] = $request->get("institute");
+
+        }
+
+        if($request->has("degree")) {
+            $form_params['degree'] = $request->get("degree");
+
+        }
+
+        if($request->has("available_time")) {
+            $form_params['available_time'] = $request->get("available_time");
+
+        }
+
+        if($request->has("biography")) {
+            $form_params['biography'] = $request->get("biography");
 
         }
 
@@ -124,6 +140,8 @@ class UserController extends Controller
 
         }
 
+
+        dd([$jsonResponse,$results]);
 
         if($results){
 
@@ -265,6 +283,7 @@ class UserController extends Controller
         }
 
 
+
         if($results) {
             return view('user.edit', ['results' => $results]);
         }
@@ -285,6 +304,9 @@ class UserController extends Controller
         ]);*/
 
         /*dd($request->all());*/
+
+        dd($user);
+
         $loggedUserID=Auth::user()->id;
         $apiToken= env('API_TOKEN');//"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjFlNDg4MjEwMzdmMTcyYWRjNGE2YjllODEyYjY4ZjkzYzI4OTVhMmY4MmQ3N2FmZmQxMjRhZGM2NWExN2ZkZWMwYzY5NTFiOGM0Zjk0YjBiIn0.eyJhdWQiOiIxIiwianRpIjoiMWU0ODgyMTAzN2YxNzJhZGM0YTZiOWU4MTJiNjhmOTNjMjg5NWEyZjgyZDc3YWZmZDEyNGFkYzY1YTE3ZmRlYzBjNjk1MWI4YzRmOTRiMGIiLCJpYXQiOjE1Mzk0MjYzMjUsIm5iZiI6MTUzOTQyNjMyNSwiZXhwIjoxNTcwOTYyMzI1LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.u1ceEXJCiiO6x2LLjh55Ej7er9gZ5l1xt99f2nAQfhElCCU_8-9mpSgGEYZvgIkUsoDc_UZifhEiwExoh33ilHrQ6VvVHn-5NF24pxGTmk3wHYHHFLOvqgx66ouRP8zbPQVfzs-Wbzt_Sshbm_I4m9dkC5zeph9Bt0Q_xU2aEqH8pKseaUIfWypNju06by4Si6Qd3-UaWywHzWmWn5e-UkGDbqYwdEB3H02NTVuy7yTEa4guq45pwwH1fn8Z3ZP6zAOEgSol8brsYTIA81DsEzMmbH3tx6CapUVfN0HwsSq0V4NuK2fbHyTlZ7ajFAAJOZMcBkDkDNb9k-Vj5YBSGRW4xgL2Ingv4MBzN7KroEWuxZbMIXv8mY4wjb04BzsFkWkMNCDV487VX5MhkbGVvi5uSaUDu6mMghlpP9zkputp9nZP_9I_g17ktNq8Xr0pbw6Ac3e7VbNqDNCkqi5E_7u4kIUJnDgIEwzPBUvZa0dh2t6k1UOK8YfVC-ujh2N5n9UoHJrQ_Ly-huDtEM2HSoMxSlxeZBpsxRC5Lr8MTifMj-CRREInyhGyoQ1GYE9metF9H_-ll_86fd6rFG5UsAzo2WapohBWbMFpnxrPsUJ4XxxIzfbufeqvEOyoKq4Nlou5sACgIzvuLNldqxclnpUqx3wWKMjcI7Zv94OmgGo";
         //env('API_TOKEN');
@@ -329,12 +351,12 @@ class UserController extends Controller
 
 
 
-        if($request->has("job_title")) {
+       /* if($request->has("job_title")) {
 
             $form_params['job_title']=$request->get("job_title");
             $form_params['orgnization']=$request->get("orgnization");
 
-        }
+        }*/
 
 
 
@@ -347,6 +369,7 @@ class UserController extends Controller
         $jsonResponse = null;
         $clientExceptionCode = null;
         $results= null;
+
 
 
         try {

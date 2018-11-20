@@ -7,6 +7,8 @@ use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use App\Model\Role;
 use App\Model\Comment;
+use App\Model\DoctorInfo;
+use App\Model\PatientInfo;
 
 class User extends Model
 {
@@ -18,8 +20,7 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','phone','photo','address','biography',
-        'postcode','city','country','job_title','orgnization','role_id','active'
+         'name','email', 'password','phone','patient_info_id','doctor_info_id','role_id','photo','active'
     ];
 
     /**
@@ -33,6 +34,14 @@ class User extends Model
 
     public function role(){
         return $this->belongsTo(Role::class);
+    }
+
+    public function patientInfo(){
+        return $this->hasOne(PatientInfo::class);
+    }
+
+    public function doctorInfo(){
+        return $this->hasOne(DoctorInfo::class);
     }
 
     public function comment(){

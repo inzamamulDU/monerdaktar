@@ -88,7 +88,7 @@
                                     <div class="form-group col-md-12">
                                         <label for="address" class="control-label">Address</label>
 
-                                        <textarea class="form-control" rows="5" id="comment" name="address" >{{ old('address') }}</textarea>
+                                        <textarea class="form-control" rows="5" id="address" name="address" >{{ old('address') }}</textarea>
 
                                     </div>
                                 </div>
@@ -132,21 +132,47 @@
 
                                 <div class="form-row">
 
-                                    <div  id="job_title" class="form-group col-md-6 d-none">
-                                        <label for="job_title" class="control-label">Job Tile</label>
+                                    <div  id="designation" class="form-group col-md-6 d-none">
+                                        <label for="designation" class="control-label">Designation</label>
 
 
-                                        <input id="job_title" type="text" class="form-control" name="job_title" value="{{ old('job_title') }}" >
+                                        <input id="designation" type="text" class="form-control" name="designation" value="{{ old('designation') }}" >
 
                                     </div>
 
-                                    <div id="orgnization" class="form-group col-md-6 d-none">
-                                        <label for="orgnization" class="control-label">Orgnization</label>
-                                        <input id="job_title" type="text" class="form-control" name="orgnization" value="{{ old('orgnization') }}" >
+                                    <div id="institute" class="form-group col-md-6 d-none">
+                                        <label for="institute" class="control-label">Institute</label>
+                                        <input id="institute" type="text" class="form-control" name="institute" value="{{ old('institute') }}" >
 
                                     </div>
                                 </div>
 
+                                <div class="form-row">
+
+                                    <div  id="degree" class="form-group col-md-6 d-none">
+                                        <label for="degree" class="control-label">Degree</label>
+
+
+                                        <input id="degree" type="text" class="form-control" name="degree" value="{{ old('degree') }}" >
+
+                                    </div>
+
+                                    <div id="available_time" class="form-group col-md-6 d-none">
+                                        <label for="available_time" class="control-label">Available Time</label>
+                                        <input id="available_time" type="text" class="form-control" name="available_time" value="{{ old('available_time') }}" >
+
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+
+                                    <div id="biography" class="form-group col-md-12 d-none">
+                                        <label for="biography" class="control-label">Biography</label>
+
+                                        <textarea class="form-control" rows="5"  name="biography" >{{ old('biography') }}</textarea>
+
+                                    </div>
+                                </div>
 
 
                                 <div class="form-row">
@@ -182,14 +208,20 @@
 @section('javascript')
     <script>
         $("#doctor").change(function(){
-            $("#job_title").removeClass("d-none");
-            $("#orgnization").removeClass("d-none");
+            $("#designation").removeClass("d-none");
+            $("#institute").removeClass("d-none");
+            $("#biography").removeClass("d-none");
+            $("#degree").removeClass("d-none");
+            $("#available_time").removeClass("d-none");
 
 
         });
         $("#patient").change(function(){
-            $("#job_title").addClass("d-none");
-            $("#orgnization").addClass("d-none");
+            $("#designation").addClass("d-none");
+            $("#institute").addClass("d-none");
+            $("#biography").addClass("d-none");
+            $("#degree").addClass("d-none");
+            $("#available_time").addClass("d-none");
 
 
         });
