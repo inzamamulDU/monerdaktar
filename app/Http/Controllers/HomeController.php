@@ -26,7 +26,40 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.home');
+
+        $apiToken=env('API_TOKEN');
+
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer '.$apiToken,
+        ];
+
+        //$apiUrl= 'http://localhost/api/user';
+        $apiUrl= env('API_URL').'api/user/getAllDoctors/3';
+
+        $client = new Client(['http_errors'=>true,'headers'=>$headers]);
+        $errorResponse = null;
+        $clientExceptionCode = null;
+        $results= null;
+
+
+        try {
+            $response = $client->get($apiUrl);
+            $results = json_decode($response->getBody()->getContents());
+
+        } catch (\Exception $exception) {
+
+
+            $errorResponse=$exception;
+
+
+        }
+
+
+
+        return view('home.home',['results'=>$results]);
+
     }
     public function welcome()
     {
