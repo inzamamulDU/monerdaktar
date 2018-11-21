@@ -18,14 +18,20 @@
 
                             <div class="col-lg-4 col-sm-6 portfolio-item">
                                 <div class="card h-100">
-                                    <a href="#"><img class="card-img-top" src="{{ asset('images/userphoto/'.$result->photo) }}" alt=""></a>
+                                    <a href="#"><img class="card-img-top" src="{{ asset('images/userphoto/'.$result->user->photo) }}" alt=""></a>
                                     <div class="card-body">
                                         <h5 class="card-title text-center">
-                                            <span>{{$result->name}}</span>
+                                            <span>{{$result->designation}} {{$result->user->name}}</span>
                                         </h5>
+
+                                        <p class="py-0 text-center">
+                                            <small class="doctor-info">
+                                                {{$result->degree}}
+                                            </small>
+                                        </p>
                                         <p class="py-1 text-center">
                                             <small class="doctor-info">
-                                                {{$result->orgnization}}
+                                                {{$result->institute}}
                                             </small>
                                         </p>
                                         <p class="card-text">{{$result->biography}}</p>
@@ -43,26 +49,16 @@
                         <h4 class="alert alert-info">No data</h4>
                 @endif
             </section>
-        @if($results->links)
+      {{--  @if($results->links)
         <ul class="pagination">
             <li class="page-item"><a class="page-link" href="{{doctorPaginationLink($results->links->first)}}">First</a></li>
             <li class="page-item"><a class="page-link" href="{{doctorPaginationLink($results->links->prev)}}">Previous</a></li>
             <li class="page-item"><a class="page-link" href="{{doctorPaginationLink($results->links->next)}}">Next</a></li>
             <li class="page-item"><a class="page-link" href="{{doctorPaginationLink($results->links->last)}}">Last</a></li>
         </ul>
-        @endif
+        @endif--}}
 
 
         </div>
     @endsection
 
-<?php
-function doctorPaginationLink($value){
-    preg_match_all('!\d+!', $value, $matches);
-
-    if(sizeof($matches[0])>0) {
-        echo route('user.getdoctors',['limit'=> $matches[0][0] , 'page'=>$matches[0][1]]);
-    }
-
-}
-?>

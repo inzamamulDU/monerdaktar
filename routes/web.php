@@ -20,6 +20,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::resource('/appoinment', 'Web\AppoinmentController');
+Route::resource('/doctorinfo', 'Web\DoctorInfoController');
+
 
 Route::get('/articlecategory-create', 'Web\ArticlecategoryController@create')->name('articlecategory.create');
 Route::post('/articlecategory-create', 'Web\ArticlecategoryController@store')->name('articlecategory.store');
