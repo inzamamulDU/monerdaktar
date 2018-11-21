@@ -337,20 +337,58 @@ class UserController extends Controller
         }
 
 
-        $apiUrl= env('API_URL').'api/user/'.$loggedUserID;
-        //$apiUrl= 'http://localhost/api/user';
-
-        // dd([$apiUrl,$form_params]);
-        /*dd( $form_params);*/
-        $client = new Client(['http_errors'=>true,'headers'=>$headers]);
-        $jsonResponse = null;
-        $clientExceptionCode = null;
-        $results= null;
-
-
 
 
         if(Auth::user()->role_id ==2) {
+
+            $doctorInfo =[];
+
+            //$form_params['patientInfo'] = $patientInfo;
+
+            if($request->has('address')) {
+                $doctorInfo['address'] = $request->get('address');
+            }
+
+            if($request->has('postcode')) {
+                $doctorInfo['postcode'] = $request->get('postcode');
+            }
+
+            if($request->has('city')) {
+                $doctorInfo['city'] = $request->get('city');
+            }
+
+            if($request->has('country')) {
+                $doctorInfo['country'] = $request->get('country');
+            }
+
+            if($request->has('designation')) {
+                $doctorInfo['designation'] = $request->get('designation');
+            }
+
+
+            if($request->has('institute')) {
+                $doctorInfo['institute'] = $request->get('institute');
+            }
+
+
+
+            if($request->has('degree')) {
+                $doctorInfo['degree'] = $request->get('degree');
+            }
+
+            if($request->has('available_time')) {
+                $doctorInfo['available_time'] = $request->get('available_time');
+            }
+
+            if($request->has('biography')) {
+                $doctorInfo['biography'] = $request->get('biography');
+            }
+
+
+
+
+
+            $form_params['doctorInfo'] = $doctorInfo;
 
         }else if(Auth::user()->role_id ==3) {
 
@@ -378,35 +416,35 @@ class UserController extends Controller
 
             $form_params['patientInfo'] = $patientInfo;
 
-            try {
-                $response = $client->put($apiUrl, [
-                    'form_params' => $form_params
-
-
-                ]);
-                $results = json_decode($response->getBody()->getContents());
-
-            } catch (\Exception $exception) {
-
-
-                $jsonResponse=$exception;
-
-
-            }
 
 
         }
 
+        $apiUrl= env('API_URL').'api/user/'.$loggedUserID;
+        //$apiUrl= 'http://localhost/api/user';
+
+        // dd([$apiUrl,$form_params]);
+        /*dd( $form_params);*/
+        $client = new Client(['http_errors'=>true,'headers'=>$headers]);
+        $jsonResponse = null;
+        $clientExceptionCode = null;
+        $results= null;
+
+        try {
+            $response = $client->put($apiUrl, [
+                'form_params' => $form_params
 
 
-       /* if($request->has("job_title")) {
+            ]);
+            $results = json_decode($response->getBody()->getContents());
 
-            $form_params['job_title']=$request->get("job_title");
-            $form_params['orgnization']=$request->get("orgnization");
-
-        }*/
+        } catch (\Exception $exception) {
 
 
+            $jsonResponse=$exception;
+
+
+        }
 
 
 

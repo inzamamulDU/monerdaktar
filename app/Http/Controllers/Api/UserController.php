@@ -205,6 +205,7 @@ class UserController extends Controller
 
 
 
+
         if(count($patientInfoData) > 0){
 
 
@@ -213,6 +214,7 @@ class UserController extends Controller
         }
 
          if(count($doctorInfoData) >0){
+
              $user->doctorInfo()->update($doctorInfoData);
          }
 
