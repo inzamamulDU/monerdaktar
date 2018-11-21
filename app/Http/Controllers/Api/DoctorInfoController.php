@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\DoctorInfo\DoctorInfoCollection;
+use App\Http\Resources\DoctorInfo\DoctorInfoResource;
 use App\Model\DoctorInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,7 +17,7 @@ class DoctorInfoController extends Controller
      */
     public function index()
     {
-        //
+        return DoctorInfoCollection::collection(DoctorInfo::paginate(20));
     }
 
     /**
@@ -47,7 +49,7 @@ class DoctorInfoController extends Controller
      */
     public function show(DoctorInfo $doctorInfo)
     {
-        //
+        return new DoctorInfoResource($doctorInfo);
     }
 
     /**
