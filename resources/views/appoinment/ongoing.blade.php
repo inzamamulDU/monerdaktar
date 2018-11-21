@@ -31,8 +31,8 @@
 @endsection
 
 @section('javascript')
-    <script type="text/javascript" src="{{ secure_asset('js/jquery-confirm.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-confirm.min.js')}}"></script>
 
-    <script type="text/javascript" src="{{ secure_asset('js/skyway-latest.js')}}"></script>
-    <script type="text/javascript" src="{{ secure_asset('js/doctor.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('js/skyway-latest.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('js/doctor.js')}}"></script>
 @endsection

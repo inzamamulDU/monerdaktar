@@ -14,14 +14,14 @@
     <title>{{ config('app.name', 'MonerDaktar') }}</title>
 
 
-    <link href="{{ secure_asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ secure_asset('css/jquery-confirm.min.css') }}" rel="stylesheet">
-    <link href="{{ secure_asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery-confirm.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 
-    <link href="{{ secure_asset('css/modern-business.css') }}" rel="stylesheet">
-    <link href="{{ secure_asset('css/jquery.datetimepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/modern-business.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery.datetimepicker.min.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     @yield('css')
 
@@ -38,8 +38,8 @@
 
 
 @include('partials.footer')
-<script src="{{ secure_asset('js/jquery-3.3.1.min.js') }}"></script>
-<script src="{{ secure_asset('js/bootstrap.bundle.js') }}"></script>
+<script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
 {{--<script src="{{ asset('js/bootstrap.min.js') }}"></script>--}}
 
 <script>
