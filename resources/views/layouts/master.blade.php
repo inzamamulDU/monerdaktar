@@ -42,6 +42,15 @@
 <script src="{{ secure_asset('js/bootstrap.bundle.js') }}"></script>
 {{--<script src="{{ asset('js/bootstrap.min.js') }}"></script>--}}
 
+<script>
+    $(document).ready(function(){
+        var marginTop = $(window).height() - $("body").outerHeight();
+        if(marginTop > 0){
+            console.log(marginTop);
+            $('footer').css('margin-top', marginTop+17);
+        }
+    });
+</script>
 @yield('javascript')
 
 

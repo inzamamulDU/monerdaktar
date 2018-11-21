@@ -18,7 +18,7 @@
                 <a class="nav-link nav-link-color" href="services.html">Services</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-link-color" href="contact.html">Appointment</a>
+                <a class="nav-link nav-link-color" href="{{route('appoinment.index')}}">Appointment</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link nav-link-color" href="contact.html">Contact</a>

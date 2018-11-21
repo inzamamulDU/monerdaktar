@@ -29,6 +29,8 @@ Route::apiResource('/article-category', 'Api\ArticleCategoryController');
 Route::apiResource('/article', 'Api\ArticleController');
 
 Route::apiResource('/role', 'Api\RoleController');
+Route::apiResource('/doctor-info', 'Api\DoctorInfoController');
+Route::apiResource('/patient-info', 'Api\PatientInfoController');
 Route::apiResource('/user', 'Api\UserController');
 
 Route::apiResource('/comment', 'Api\CommentController');

@@ -28,14 +28,14 @@ class UserController extends Controller
     {
         return UserCollection::collection(User::paginate(20));
     }
-
+/*
     public function getAllDoctors($element=0)
     {
         if($element != 0){
-            return UserCollection::collection(User::where('role_id', '=', 2)->paginate($element));
+            return DoctorInfoCollection::collection(User::where('role_id', '=', 2)->paginate($element));
         }
-        return UserCollection::collection(User::where('role_id', '=', 2)->get());
-    }
+        return DoctorInfoCollection::collection(User::where('role_id', '=', 2)->get());
+    }*/
 
     /**
      * Show the form for creating a new resource.
@@ -199,14 +199,21 @@ class UserController extends Controller
 
 
 
+        $patientInfoData = $request->patientInfo;
+
+        $doctorInfoData = $request->doctorInfo;
 
 
-        if($user->patientInfo()!=null){
-            $user->patientInfo()->update($request->json('patientInfo'));
+
+        if(count($patientInfoData) > 0){
+
+
+
+            $user->patientInfo()->update($patientInfoData);
         }
 
-         if($user->doctorInfo()!=null){
-            $user->doctorInfo()->update($request->json('doctorInfo'));
+         if(count($doctorInfoData) >0){
+             $user->doctorInfo()->update($doctorInfoData);
          }
 
         $user->update($request->all());

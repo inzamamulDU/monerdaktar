@@ -18,7 +18,7 @@ class AppoinmentController extends Controller
         //$this->middleware('auth');
     }
 
-    public function create(){
+    public function index(){
 
         $apiToken=env('API_TOKEN');
 

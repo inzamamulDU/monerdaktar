@@ -1,9 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\PatientInfo;
+
+use App\Http\Resources\PatientInfo\PatientInfoCollection;
+use App\Http\Resources\PatientInfo\PatientInfoResource;
+use App\Model\PatientInfo;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 
 class PatientInfoController extends Controller
 {
@@ -14,7 +19,7 @@ class PatientInfoController extends Controller
      */
     public function index()
     {
-        //
+        return PatientInfoCollection::collection(PatientInfo::paginate(20));
     }
 
     /**
@@ -46,7 +51,7 @@ class PatientInfoController extends Controller
      */
     public function show(PatientInfo $patientInfo)
     {
-        //
+        return new PatientInfoResource($patientInfo);
     }
 
     /**
