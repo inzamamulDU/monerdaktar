@@ -17,7 +17,7 @@ class DoctorInfoController extends Controller
      */
     public function index()
     {
-        return DoctorInfoCollection::collection(DoctorInfo::paginate(20));
+        return DoctorInfoCollection::collection(DoctorInfo::paginate(6));
     }
 
     /**

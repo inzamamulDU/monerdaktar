@@ -36,7 +36,7 @@ class HomeController extends Controller
         ];
 
         //$apiUrl= 'http://localhost/api/user';
-        $apiUrl= env('API_URL').'api/user/getAllDoctors/3';
+        $apiUrl= env('API_URL').'api/doctor-info';
 
         $client = new Client(['http_errors'=>true,'headers'=>$headers]);
         $errorResponse = null;
@@ -55,8 +55,6 @@ class HomeController extends Controller
 
 
         }
-
-
 
         return view('home.home',['results'=>$results]);
 
@@ -73,7 +71,7 @@ class HomeController extends Controller
         ];
 
         //$apiUrl= 'http://localhost/api/user';
-        $apiUrl= env('API_URL').'api/user/getAllDoctors/3';
+        $apiUrl= env('API_URL').'api/doctor-info';
 
         $client = new Client(['http_errors'=>true,'headers'=>$headers]);
         $errorResponse = null;
@@ -92,7 +90,6 @@ class HomeController extends Controller
 
 
         }
-
 
 
         return view('home.welcome',['results'=>$results]);

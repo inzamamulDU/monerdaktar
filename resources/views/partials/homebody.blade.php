@@ -8,14 +8,20 @@
         @foreach($results->data as $key=>$result)
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 <div class="card h-100">
-                    <a href="#"><img class="card-img-top" src="{{ asset('images/userphoto/'.$result->photo) }}" alt=""></a>
+                    <a href="#"><img class="card-img-top" src="{{ asset('images/userphoto/'.$result->user->photo) }}" alt=""></a>
                     <div class="card-body">
                         <h5 class="card-title text-center">
-                            <span>{{$result->name}}</span>
+                            <span>{{$result->designation}} {{$result->user->name}}</span>
                         </h5>
+
+                        <p class="py-0 text-center">
+                            <small class="doctor-info">
+                                {{$result->degree}}
+                            </small>
+                        </p>
                         <p class="py-1 text-center">
                             <small class="doctor-info">
-                                {{$result->orgnization}}
+                                {{$result->institute}}
                             </small>
                         </p>
                         <p class="card-text">{{$result->biography}}</p>
