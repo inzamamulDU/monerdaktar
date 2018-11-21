@@ -130,20 +130,49 @@
                                 @if($results->data->role->id == 2)
                                     <div class="form-row">
 
-                                        <div  id="job_title" class="form-group col-md-6">
-                                            <label for="job_title" class="control-label">Job Tile</label>
+                                        <div  id="designation" class="form-group col-md-6">
+                                            <label for="designation" class="control-label">Designation</label>
 
 
-                                            <input id="job_title" type="text" class="form-control" name="job_title" value="{{  $results->data->job_title}}" >
+                                            <input id="designation" type="text" class="form-control" name="designation" value="{{ $results->data->doctorInfo->designation }}" >
 
                                         </div>
 
-                                        <div id="orgnization" class="form-group col-md-6">
-                                            <label for="orgnization" class="control-label">Orgnization</label>
-                                            <input id="job_title" type="text" class="form-control" name="orgnization" value="{{  $results->data->orgnization}}" >
+                                        <div id="institute" class="form-group col-md-6">
+                                            <label for="institute" class="control-label">Institute</label>
+                                            <input id="institute" type="text" class="form-control" name="institute" value="{{ $results->data->doctorInfo->designation }}" >
 
                                         </div>
                                     </div>
+
+                                    <div class="form-row">
+
+                                        <div  id="degree" class="form-group col-md-6">
+                                            <label for="degree" class="control-label">Degree</label>
+
+
+                                            <input id="degree" type="text" class="form-control" name="degree" value="{{ $results->data->doctorInfo->degree }}" >
+
+                                        </div>
+
+                                        <div id="available_time" class="form-group col-md-6">
+                                            <label for="available_time" class="control-label">Available Time</label>
+                                            <input id="available_time" type="text" class="form-control" name="available_time" value="{{ $results->data->doctorInfo->available_time }}" >
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+
+                                        <div id="biography" class="form-group col-md-12">
+                                            <label for="biography" class="control-label">Biography</label>
+
+                                            <textarea class="form-control" rows="5"  name="biography" >{{ $results->data->doctorInfo->biography }}</textarea>
+
+                                        </div>
+                                    </div>
+
+
                                 @endif
 
 
