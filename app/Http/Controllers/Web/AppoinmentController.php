@@ -53,8 +53,8 @@ class AppoinmentController extends Controller
         }
 
 
-        //$apiUrlAppoinment = env('API_URL').'api/appoinment/'.Auth::user()->role_id.'/'.Auth::user()->id;
-        $apiUrlAppoinment=route('appointment.appointmentList',['role_id'=>Auth::user()->role_id,'user_id'=>Auth::user()->id]);
+        $apiUrlAppoinment = env('API_URL').'api/appoinment/'.Auth::user()->role_id.'/'.Auth::user()->id;
+        //$apiUrlAppoinment=route('appointment.appointmentList',['role_id'=>Auth::user()->role_id,'user_id'=>Auth::user()->id]);
         $myAppointment = null;
         $myAppointmentError = null;
 
