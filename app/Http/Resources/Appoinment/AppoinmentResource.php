@@ -17,8 +17,12 @@ class AppoinmentResource extends Resource
         return [
             'id'           =>$this->id,
             'title'          => $this->title,
-            'host_id'          => $this->host_id,
-            'guest_id'          => $this->guest_id,
+            'doctor_id'          => $this->doctor_id,
+            'doctor'          => $this->doctor,
+            'doctor_secret_key'          => $this->doctor_secret_key,
+            'patient_id'          => $this->patient_id,
+            'patient'          => $this->patient,
+            'patient_secret_key'          => $this->patient_secret_key,
             'appoinment_time'          => $this->appoinment_time
 
 

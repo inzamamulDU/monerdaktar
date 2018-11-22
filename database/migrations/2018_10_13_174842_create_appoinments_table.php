@@ -16,8 +16,10 @@ class CreateAppoinmentsTable extends Migration
         Schema::create('appoinments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->integer('host_id');
-            $table->integer('guest_id');
+            $table->integer('doctor_id');
+            $table->integer('patient_id');
+            $table->string('patient_secret_key');
+            $table->string('doctor_secret_key');
             $table->timestamp('appoinment_time')->default(DB::raw('CURRENT_TIMESTAMP'));;
             $table->timestamps();
         });

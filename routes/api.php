@@ -23,6 +23,8 @@ Route::group(['prefix'=>'products'],function(){
 	Route::apiResource('/{product}/reviews','ReviewController');
 
 });*/
+
+Route::get('/appoinment/{role_id}/{user_id}', 'Api\AppoinmentController@appointmentList')->name('appointment.appointmentList');
 Route::get('/user/getAllDoctors/{paginate}', 'Api\UserController@getAllDoctors')->name('user.getDoctors');
 
 Route::apiResource('/article-category', 'Api\ArticleCategoryController');

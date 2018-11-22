@@ -8,11 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Model\Appoinment;
 use App\Http\Resources\Appoinment\AppoinmentCollection;
 use App\Http\Resources\Appoinment\AppoinmentResource;
+use Illuminate\Support\Facades\Auth;
 
 class AppoinmentController extends Controller
 {
     public function __construct(){
-       // $this->middleware('auth:api')->except('index','show');
+        $this->middleware('auth:api');
     }
 
     /**
@@ -22,8 +23,24 @@ class AppoinmentController extends Controller
      */
     public function index()
     {
+
+
         return AppoinmentCollection::collection(Appoinment::paginate(20));
+
     }
+
+    public function appointmentList($role_id=0, $user_id=0)
+    {
+        if($role_id ==2){
+
+            return AppoinmentCollection::collection(Appoinment::where('doctor_id', '=', $user_id)->paginate(20));
+
+        }
+
+        return AppoinmentCollection::collection(Appoinment::where('patient_id', '=', $user_id)->paginate(20));
+
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -45,12 +62,12 @@ class AppoinmentController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|string|min:4',
-            'guest_id' => 'required|integer',
-            'host_id' => 'required|integer',
-            'appoinment_time' => 'required|string',
+            'doctor_id' => 'required|integer',
+            'patient_id' => 'required|integer',
+            'appoinment_time' => 'required|string'
+
 
         ]);
-
 
         $appoinment = new Appoinment();
         $appoinment_date = date('Y-m-d H:i:s',strtotime($request->appoinment_time));
@@ -58,9 +75,11 @@ class AppoinmentController extends Controller
 
 
         $appoinment->title = $request->title;
-        $appoinment->guest_id = $request->guest_id;
-        $appoinment->host_id = $request->host_id;
+        $appoinment->doctor_id = $request->doctor_id;
+        $appoinment->patient_id = $request->patient_id;
         $appoinment->appoinment_time = $appoinment_date;
+        $appoinment->patient_secret_key = $this->generateRandomString();
+        $appoinment->doctor_secret_key = $this->generateRandomString();
 
 
         $appoinment->save();
@@ -76,9 +95,9 @@ class AppoinmentController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Appoinment $appointment)
     {
-        $appointment = Appoinment::findOrFail($id);
+
         return new AppoinmentResource($appointment);
     }
 
@@ -88,7 +107,7 @@ class AppoinmentController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit(Appoinment $appoinment)
     {
         //
     }
@@ -124,5 +143,16 @@ class AppoinmentController extends Controller
         $appointment->delete();
 
         return response(null,Response::HTTP_NO_CONTENT);
+    }
+
+
+    public function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 }

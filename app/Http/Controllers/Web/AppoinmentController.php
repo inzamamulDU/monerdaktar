@@ -15,7 +15,7 @@ class AppoinmentController extends Controller
 
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function index(){
@@ -29,7 +29,8 @@ class AppoinmentController extends Controller
         ];
 
         //$apiUrl= 'http://localhost/api/user';
-        $apiUrl= env('API_URL').'api/user/getAllDoctors/0';
+        $apiUrl= env('API_URL').'api/doctor-info/';
+
 
 
         $client = new Client(['http_errors'=>true,'headers'=>$headers]);
@@ -50,7 +51,27 @@ class AppoinmentController extends Controller
 
         }
 
-        return view('appoinment.create',['results'=>$results]);
+
+        //$apiUrlAppoinment = env('API_URL').'api/appoinment/'.Auth::user()->role_id.'/'.Auth::user()->id;
+        $apiUrlAppoinment=route('appointment.appointmentList',['role_id'=>Auth::user()->role_id,'user_id'=>Auth::user()->id]);
+        $myAppointment = null;
+        $myAppointmentError = null;
+
+        try {
+            $response = $client->get($apiUrlAppoinment);
+            $myAppointment = json_decode($response->getBody()->getContents());
+
+        } catch (\Exception $exception) {
+
+
+            $myAppointmentError=$exception;
+
+
+        }
+
+
+
+        return view('appoinment.create',['results'=>$results,'appointmentList'=>$myAppointment]);
     }
 
     public function store(Request $request)
@@ -77,9 +98,9 @@ class AppoinmentController extends Controller
 
         $form_params = [
             'title' => $request->get("title"),
-            'host_id' => $request->get("host_id"),
+            'doctor_id' => $request->get("host_id"),
             'appoinment_time' => date('Y-m-d H:i:s',strtotime($request->get("appointment_date"))),
-            'guest_id' => Auth::user()->id
+            'patient_id' => Auth::user()->id
         ];
 
 
@@ -105,6 +126,7 @@ class AppoinmentController extends Controller
             $jsonResponse=$exception;
 
         }
+
 
         if($results){
 
@@ -155,4 +177,5 @@ class AppoinmentController extends Controller
     {
 
     }
+
 }
