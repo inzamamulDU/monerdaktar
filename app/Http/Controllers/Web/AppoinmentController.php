@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Model\Appoinment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
@@ -149,10 +150,22 @@ class AppoinmentController extends Controller
 
     public function ongoing($id)
     {
-        if($id==0) {
-            $results=['my_peer_id' => 'jM1jfYU8ob', 'remote_peer_id' => 'v2n2N42tTE'];
+
+        $appointment = Appoinment::findOrFail($id);
+        if(Auth::user()->role_id ==2 && Auth::user()->id!=$appointment->doctor_id){
+            return redirect()->back()->with('error','No Available Appointment');
+        }
+
+        if(Auth::user()->role_id ==3 && Auth::user()->id!=$appointment->patient_id){
+            return redirect()->back()->with('error','No Available Appointment');
+        }
+
+
+        if(Auth::user()->role_id ==2) {
+
+            $results=['my_peer_id' => $appointment->doctor_secret_key, 'remote_peer_id' => $appointment->patient_secret_key];
         } else {
-            $results=['my_peer_id' => 'v2n2N42tTE', 'remote_peer_id' => 'jM1jfYU8ob'];
+            $results=['my_peer_id' => $appointment->patient_secret_key, 'remote_peer_id' => $appointment->doctor_secret_key];
         }
 
 
