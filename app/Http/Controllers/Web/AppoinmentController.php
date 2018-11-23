@@ -78,11 +78,12 @@ class AppoinmentController extends Controller
     public function store(Request $request)
     {
 
-        //dd($request->all());
+
         $this->validate($request, [
             'title' => 'required',
             'host_id' => 'required',
-            'appointment_date' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
         ]);
 
 
@@ -100,7 +101,8 @@ class AppoinmentController extends Controller
         $form_params = [
             'title' => $request->get("title"),
             'doctor_id' => $request->get("host_id"),
-            'appoinment_time' => date('Y-m-d H:i:s',strtotime($request->get("appointment_date"))),
+            'start_time' => date('Y-m-d H:i:s',strtotime($request->get("start_date"))),
+            'end_time' => date('Y-m-d H:i:s',strtotime($request->get("end_date"))),
             'patient_id' => Auth::user()->id
         ];
 
@@ -129,13 +131,15 @@ class AppoinmentController extends Controller
         }
 
 
+
+
         if($results){
 
-            return redirect()->back()->with('success','Your appointment created susccessfully');
+            return redirect()->back()->with('success','Your appointment created successfully');
 
         }
 
-        return redirect()->back()->with('error','Appintment creation failed');
+        return redirect()->back()->with('error','appointment creation failed');
 
 
     }

@@ -20,7 +20,8 @@ class CreateAppoinmentsTable extends Migration
             $table->integer('patient_id');
             $table->string('patient_secret_key');
             $table->string('doctor_secret_key');
-            $table->timestamp('appoinment_time')->default(DB::raw('CURRENT_TIMESTAMP'));;
+            $table->timestamp('start_time')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('end_time')->nullable();
             $table->timestamps();
         });
     }

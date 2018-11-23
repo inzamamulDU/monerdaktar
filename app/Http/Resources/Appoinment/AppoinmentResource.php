@@ -23,7 +23,8 @@ class AppoinmentResource extends Resource
             'patient_id'          => $this->patient_id,
             'patient'          => $this->patient,
             'patient_secret_key'          => $this->patient_secret_key,
-            'appoinment_time'          => $this->appoinment_time
+            'start_time'          => $this->start_time,
+            'end_time'          => $this->end_time
 
 
         ];

@@ -64,20 +64,23 @@ class AppoinmentController extends Controller
             'title' => 'required|string|min:4',
             'doctor_id' => 'required|integer',
             'patient_id' => 'required|integer',
-            'appoinment_time' => 'required|string'
+            'start_time' => 'required|string',
+            'end_time' => 'required|string'
 
 
         ]);
 
         $appoinment = new Appoinment();
-        $appoinment_date = date('Y-m-d H:i:s',strtotime($request->appoinment_time));
+        $start_date = date('Y-m-d H:i:s',strtotime($request->start_time));
+        $end_date = date('Y-m-d H:i:s',strtotime($request->end_time));
 
 
 
         $appoinment->title = $request->title;
         $appoinment->doctor_id = $request->doctor_id;
         $appoinment->patient_id = $request->patient_id;
-        $appoinment->appoinment_time = $appoinment_date;
+        $appoinment->start_time = $start_date;
+        $appoinment->end_time = $end_date;
         $appoinment->patient_secret_key = $this->generateRandomString();
         $appoinment->doctor_secret_key = $this->generateRandomString();
 

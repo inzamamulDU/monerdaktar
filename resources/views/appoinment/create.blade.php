@@ -54,12 +54,22 @@
                                     </div>
 
                                     <div class="form-row">
-                                        <div class="form-group col-md-6 {{ $errors->has('appointment_date') ? ' has-error' : '' }}">
-                                            <label for="appointment_date" class="">Select date and time</label>
-                                            <input id="appointment_date" type="text" class="form-control" name="appointment_date">
+                                        <div class="form-group col-md-3 {{ $errors->has('start_date') ? ' has-error' : '' }}">
+                                            <label for="start_date" class="">Select Start date and time</label>
+                                            <input id="start_date" type="text" class="form-control" name="start_date">
 
-                                            @if ($errors->has('appointment_date'))
-                                                <small class="form-text text-danger">{{ $errors->first('appointment_date') }}</small>
+                                            @if ($errors->has('start_date'))
+                                                <small class="form-text text-danger">{{ $errors->first('start_date') }}</small>
+                                            @endif
+
+                                        </div>
+
+                                        <div class="form-group col-md-3 {{ $errors->has('end_date') ? ' has-error' : '' }}">
+                                            <label for="end_date" class="">Select End date and time</label>
+                                            <input id="end_date" type="text" class="form-control" name="end_date">
+
+                                            @if ($errors->has('end_date'))
+                                                <small class="form-text text-danger">{{ $errors->first('end_date') }}</small>
                                             @endif
 
                                         </div>
@@ -95,7 +105,8 @@
                                 <th scope="col">Meeting Title</th>
                                 <th scope="col">Doctor</th>
                                 <th scope="col">Patient</th>
-                                <th scope="col">Time</th>
+                                <th scope="col">Start Time</th>
+                                <th scope="col">End Time</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -106,7 +117,8 @@
                                 <td>{{$appointment->title}}</td>
                                 <td>{{$appointment->doctor->name}}</td>
                                 <td>{{$appointment->patient->name}}</td>
-                                <td>{{$appointment->appoinment_time}}</td>
+                                <td>{{$appointment->start_time}}</td>
+                                <td>{{$appointment->end_time}}</td>
                                 <td><a href="{{route('appoinment.ongoing',['id'=>$appointment->id])}}" class="btn btn-sm btn-info disabled" >Start</a></td>
                             </tr>
                             @endforeach
@@ -125,7 +137,8 @@
 @section('javascript')
     <script src="{{ asset('js/jquery.datetimepicker.full.min.js') }}"></script>
     <script>
-        $('#appointment_date').datetimepicker();
+        $('#start_date').datetimepicker();
+        $('#end_date').datetimepicker();
     </script>
 @endsection
 
