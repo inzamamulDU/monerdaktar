@@ -9,8 +9,8 @@
                         <div class="card-title alert alert-primary">
 
                                 <h5>
-                                    <span>Appoinment</span>
-                                    <button class="btn btn-primary btn-sm float-md-right" type="button" data-toggle="collapse" data-target="#appoinment_create" aria-expanded="false" aria-controls="appoinment_create">
+                                    <span>Article</span>
+                                    <button class="btn btn-primary btn-sm float-md-right" type="button" data-toggle="collapse" data-target="#article_create" aria-expanded="false" aria-controls="article_create">
                                         <i class="material-icons">
                                             border_color
                                         </i> Create
@@ -21,14 +21,14 @@
                         </div>
 
 
-                            <div class="collapse" id="appoinment_create">
+                            <div class="collapse" id="article_create">
                                 <div class="card-body">
 
-                                    <form class="form-horizontal" method="POST" action="{{ route('appoinment.store') }}">
+                                    <form class="form-horizontal" method="POST" action="{{ route('article.store') }}">
                                     {{ csrf_field() }}
                                         <div class="form-row">
-                                            <div class="form-group col-md-6{{ $errors->has('title') ? ' has-error' : '' }}">
-                                                <label for="title" class="control-label">Appointment title</label>
+                                            <div class="form-group col-md-12{{ $errors->has('title') ? ' has-error' : '' }}">
+                                                <label for="title" class="control-label">Article title</label>
                                                 <input id="title" type="title" class="form-control" name="title" value="{{ old('title') }}" autofocus>
                                                 @if ($errors->has('title'))
                                                     <small class="form-text text-danger">{{ $errors->first('title') }}</small>
@@ -37,40 +37,28 @@
                                             </div>
                                         </div>
                                     <div class="form-row">
-                                        <div class="form-group col-md-6{{ $errors->has('host_id') ? ' has-error' : '' }}">
-                                            <label for="host_id" class="">Doctors</label>
-                                            <select name="host_id" class="form-control" id="doctors-dropdown">
+                                        <div class="form-group col-md-12{{ $errors->has('host_id') ? ' has-error' : '' }}">
+                                            <label for="article_category_id" class="">Article Category</label>
+                                            <select name="article_category_id" class="form-control" id="article-category-dropdown">
                                                 <option value="">--Choose one--</option>
                                                 @if($results)
                                                     @foreach($results->data as $key=>$value)
-                                                    <option value="{{ $value->user->id }}" >{{ $value->user->name }}</option>
+                                                    <option value="{{ $value->id }}" >{{ $value->name }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
-                                                @if($errors->has('host_id'))
-                                                    <small class="form-text text-danger">{{ $errors->first('host_id') }}</small>
+                                                @if($errors->has('article_category_id'))
+                                                    <small class="form-text text-danger">{{ $errors->first('article_category_id') }}</small>
                                                 @endif
                                         </div>
                                     </div>
 
                                     <div class="form-row">
-                                        <div class="form-group col-md-3 {{ $errors->has('start_date') ? ' has-error' : '' }}">
-                                            <label for="start_date" class="">Select Start date and time</label>
-                                            <input id="start_date" type="text" class="form-control" name="start_date">
 
-                                            @if ($errors->has('start_date'))
-                                                <small class="form-text text-danger">{{ $errors->first('start_date') }}</small>
-                                            @endif
+                                        <div class="form-group col-md-12">
+                                            <label for="article_content" class="control-label">Content</label>
 
-                                        </div>
-
-                                        <div class="form-group col-md-3 {{ $errors->has('end_date') ? ' has-error' : '' }}">
-                                            <label for="end_date" class="">Select End date and time</label>
-                                            <input id="end_date" type="text" class="form-control" name="end_date">
-
-                                            @if ($errors->has('end_date'))
-                                                <small class="form-text text-danger">{{ $errors->first('end_date') }}</small>
-                                            @endif
+                                            <textarea id="article_content" class="form-control" rows="5"  name="article_content" >{{ old('article_content') }}</textarea>
 
                                         </div>
                                     </div>
@@ -94,7 +82,7 @@
             </div>
         </section>
 
-        @if($appointmentList)
+        {{--@if($appointmentList)
         <section class="py-1">
             <div class="row">
                 <div class="col-md-10 offset-md-1">
@@ -129,17 +117,20 @@
             </div>
         </section>
         @endif
-
+--}}
     </div>
 
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('js/jquery.datetimepicker.full.min.js') }}"></script>
+    <script src="{{ asset('js/ckeditor.js') }}"></script>
     <script>
-        $('#start_date').datetimepicker();
-        $('#end_date').datetimepicker();
+        CKEDITOR.replace( 'article_content' );
+        CKEDITOR.config.height = 200;
+        CKEDITOR.config.width = 'auto';
+
     </script>
+
 @endsection
 
 @section('css')
