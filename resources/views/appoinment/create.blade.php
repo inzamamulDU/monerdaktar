@@ -119,7 +119,7 @@
                                 <td>{{$appointment->patient->name}}</td>
                                 <td>{{$appointment->start_time}}</td>
                                 <td>{{$appointment->end_time}}</td>
-                                <td><a href="{{route('appoinment.ongoing',['id'=>$appointment->id])}}" class="btn btn-sm btn-info disabled" >Start</a></td>
+                                <td><a href="{{route('appoinment.ongoing',['id'=>$appointment->id])}}" class="btn btn-sm btn-info" >Start</a></td>
                             </tr>
                             @endforeach
 
@@ -132,6 +132,7 @@
 
     </div>
 
+
 @endsection
 
 @section('javascript')
@@ -140,6 +141,7 @@
         $('#start_date').datetimepicker();
         $('#end_date').datetimepicker();
     </script>
+
 @endsection
 
 @section('css')
