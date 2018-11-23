@@ -22,7 +22,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return ArticleCollection::collection(Article::paginate(20));
+        return ArticleCollection::collection(Article::paginate(5));
     }
 
     /**

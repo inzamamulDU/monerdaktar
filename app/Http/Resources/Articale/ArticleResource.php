@@ -22,7 +22,10 @@ class ArticleResource extends Resource
             'user_id'          => $this->user_id,
             'articlecategory'          => $this->articlecategory,
             'user'          => $this->user,
-            'comments'          => $this->comments
+            'comments'          => $this->comments,
+            'created_at'          => $this->created_at,
+            'updated_at'          => $this->updated_at
+
 
 
         ];

@@ -14,6 +14,54 @@ class ArticleController extends Controller
         $this->middleware('auth');
     }
 
+    public function index() {
+
+
+        $apiToken=env('API_TOKEN');
+
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer '.$apiToken,
+        ];
+
+        //$apiUrl= 'http://localhost/api/user';
+        $apiUrl= env('API_URL').'api/article/';
+
+
+
+        $client = new Client(['http_errors'=>true,'headers'=>$headers]);
+        $errorResponse = null;
+        $clientExceptionCode = null;
+        $results= null;
+
+
+        try {
+            $response = $client->get($apiUrl);
+            $results = json_decode($response->getBody()->getContents());
+
+        } catch (\Exception $exception) {
+
+
+            $errorResponse=$exception;
+
+
+        }
+
+        $articleObject = null;
+
+        if($results) {
+            $articleObject = new \stdClass();
+
+            $articleObject->links = $results->links;
+
+            $articleObject->meta = $results->meta;
+        }
+
+        return view('article.show',['results'=>$results,'articleObject' => $articleObject]);
+
+    }
+
     public function create()
     {
 

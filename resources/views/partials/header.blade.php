@@ -23,7 +23,11 @@
             <li class="nav-item">
                 <a class="nav-link nav-link-color" href="contact.html">Contact</a>
             </li>
-            <li class="nav-item dropdown">
+
+            <li class="nav-item">
+                <a class="nav-link nav-link-color" href="{{route('article.index')}}">Article</a>
+            </li>
+            {{--<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle nav-link-color" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Pages
                 </a>
@@ -33,7 +37,7 @@
                     <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
                 </div>
             </li>
-
+--}}
             <li class="nav-item dropdown">
                 @guest
                 <li class="nav-item"><a class="nav-link nav-link-color" href="{{ route('login') }}">Login</a></li>
