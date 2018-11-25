@@ -129,7 +129,7 @@ class DoctorInfoController extends Controller
 
         }
 
-        return view('doctorinfo.doctorlist',['results' => $results]);
+        return view('doctorinfo.list',['results' => $results]);
     }
 
 
