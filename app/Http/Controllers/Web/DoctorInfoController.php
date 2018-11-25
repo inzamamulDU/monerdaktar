@@ -25,9 +25,9 @@ class DoctorInfoController extends Controller
     }
 
 
-    public function  index($limit=0, $page=0)
+    public function  index()
     {
-        $apiToken=env('API_TOKEN');
+       /* $apiToken=env('API_TOKEN');
 
         $headers = [
             'Content-Type' => 'application/json',
@@ -64,10 +64,10 @@ class DoctorInfoController extends Controller
 
         }
 
+*/
 
 
-
-        return view('doctorinfo.doctorlist',['results'=>$results]);
+        return view('doctorinfo.show');
 
     }
 
@@ -88,11 +88,48 @@ class DoctorInfoController extends Controller
 
     }
 
-    public function getDoctors($limit=0 , $page =0)
+    public function getDoctorList(Request $request)
     {
 
 
 
+
+        $apiToken=env('API_TOKEN');
+
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer '.$apiToken,
+        ];
+
+        //$apiUrl= 'http://localhost/api/user';
+
+       // $apiUrl = env('API_URL') . $request->get('url');
+       $apiUrl = env('API_URL') . 'api/doctor-info';
+
+
+
+
+
+        $client = new Client(['http_errors'=>true,'headers'=>$headers]);
+        $errorResponse = null;
+        $clientExceptionCode = null;
+        $results= null;
+
+
+        try {
+            $response = $client->get($apiUrl);
+            $results = json_decode($response->getBody()->getContents());
+
+        } catch (\Exception $exception) {
+
+
+            $errorResponse=$exception;
+
+
+        }
+
+        return view('doctorinfo.doctorlist',['results' => $results]);
     }
 
 

@@ -20,6 +20,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::resource('/appoinment', 'Web\AppoinmentController');
+Route::get('/doctorinfo/getdoctors', 'Web\DoctorInfoController@getDoctorList')->name('doctorinfo.getdoctors');
 Route::resource('/doctorinfo', 'Web\DoctorInfoController');
 Route::resource('/article', 'Web\ArticleController');
 

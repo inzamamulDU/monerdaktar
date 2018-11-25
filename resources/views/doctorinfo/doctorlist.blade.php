@@ -1,6 +1,4 @@
-@extends('layouts.master')
 
-@section('content')
     <div class="container">
         <section class="py-3">
 
@@ -8,8 +6,6 @@
                     @php ($index=0)
                     @foreach($results->data as $key=>$result)
                         <?php
-
-
 
 
                          if($index % 3 ==0 ) echo '<div class="row">'?>
@@ -49,16 +45,18 @@
                         <h4 class="alert alert-info">No data</h4>
                 @endif
             </section>
-      {{--  @if($results->links)
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="{{doctorPaginationLink($results->links->first)}}">First</a></li>
-            <li class="page-item"><a class="page-link" href="{{doctorPaginationLink($results->links->prev)}}">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="{{doctorPaginationLink($results->links->next)}}">Next</a></li>
-            <li class="page-item"><a class="page-link" href="{{doctorPaginationLink($results->links->last)}}">Last</a></li>
-        </ul>
-        @endif--}}
-
-
-        </div>
-    @endsection
-
+   @if($results->links)
+            <div class="row mt-2">
+                <div class="col-md-6 offset-md-5">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" onclick="populateDoctorList('{{$results->links->first}}')" >First</a></li>
+                            <li class="page-item"><a class="page-link" onclick="populateDoctorList('{{$results->links->prev}}')">Previous</a></li>
+                            <li class="page-item"><a class="page-link" onclick="populateDoctorList('{{$results->links->next}}')" >Next</a></li>
+                            <li class="page-item"><a class="page-link" onclick="populateDoctorList('{{$results->links->last}}')">Last</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        @endif
+    </div>
