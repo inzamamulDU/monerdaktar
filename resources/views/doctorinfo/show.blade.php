@@ -13,11 +13,8 @@
 
         $(document).ready(function(){
 
-            var base_url = '<?php echo env('API_URL')  ?>';
 
-            var url =base_url+"api/doctor-info";
-            populateDoctorList(url);
-
+            $('.data-show').html('<?php echo $results  ?>');
 
 
 
@@ -40,7 +37,7 @@
             $.ajax({
                 headers: {
                     'Accept':'application/json',
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    /*'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),*/
                     'Content-Type':'application/json' },
                 method: "POST",
                 url: api_URL,

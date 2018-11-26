@@ -15,6 +15,7 @@ use File;
 use App\Http\Requests\Web\UserUpdateRequest;
 use App\Http\Resources\User\DoctorInfoCollection;
 use App\Http\Resources\User\DoctorInfoResource;
+use Illuminate\Support\Facades\Route;
 
 
 class DoctorInfoController extends Controller
@@ -27,47 +28,20 @@ class DoctorInfoController extends Controller
 
     public function  index()
     {
-       /* $apiToken=env('API_TOKEN');
-
-        $headers = [
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
-            'Authorization' => 'Bearer '.$apiToken,
-        ];
-
-        //$apiUrl= 'http://localhost/api/user';
-
-        if($page==0) {
-            $apiUrl = env('API_URL') . 'api/doctor-info';
-        } else {
-            $apiUrl = env('API_URL') . 'api/doctor-info/' . $limit.'?page='.$page;
-        }
 
 
+        $apiUrl = env('API_URL') . 'doctorinfo/getdoctors';
+        $param_url = env('API_URL') . 'api/doctor-info';
+
+        $request= Request::create($apiUrl,'POST',['url'=> $param_url]);
 
 
-        $client = new Client(['http_errors'=>true,'headers'=>$headers]);
-        $errorResponse = null;
-        $clientExceptionCode = null;
-        $results= null;
+        $response = $this->getDoctorList($request);
 
+        $response = preg_replace( "/\r|\n/", "", $response );
+        $response = str_replace("'", '"', $response);
 
-        try {
-            $response = $client->get($apiUrl);
-            $results = json_decode($response->getBody()->getContents());
-
-        } catch (\Exception $exception) {
-
-
-            $errorResponse=$exception;
-
-
-        }
-
-*/
-
-
-        return view('doctorinfo.show');
+        return view('doctorinfo.show',['results' => $response]);
 
     }
 
@@ -104,8 +78,13 @@ class DoctorInfoController extends Controller
 
         //$apiUrl= 'http://localhost/api/user';
 
-       $apiUrl = $request->get('url');
-       //$apiUrl = env('API_URL') . 'api/doctor-info';
+        if($request!=null){
+            $apiUrl = $request->get('url');
+        } else {
+            $apiUrl = env('API_URL') . 'api/doctor-info';
+        }
+
+       //
 
 
 
