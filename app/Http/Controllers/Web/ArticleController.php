@@ -16,51 +16,17 @@ class ArticleController extends Controller
 
     public function index() {
 
-/*
-        $apiToken=env('API_TOKEN');
+        $apiUrl = env('API_URL') . 'article/get-articles';
+        $param_url = env('API_URL') . 'api/article';
 
-        $headers = [
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
-            'Authorization' => 'Bearer '.$apiToken,
-        ];
+        $request= Request::create($apiUrl,'POST',['url'=> $param_url]);
 
-        //$apiUrl= 'http://localhost/api/user';
-        $apiUrl= env('API_URL').'api/article/';
+
+        $response = $this->getArticleList($request);
 
 
 
-        $client = new Client(['http_errors'=>true,'headers'=>$headers]);
-        $errorResponse = null;
-        $clientExceptionCode = null;
-        $results= null;
-
-
-        try {
-            $response = $client->get($apiUrl);
-            $results = json_decode($response->getBody()->getContents());
-
-        } catch (\Exception $exception) {
-
-
-            $errorResponse=$exception;
-
-
-        }
-
-        $articleObject = null;
-
-        if($results) {
-            $articleObject = new \stdClass();
-
-            $articleObject->links = $results->links;
-
-            $articleObject->meta = $results->meta;
-        }*/
-
-
-
-        return view('article.show');
+        return view('article.show',['results' => $response]);
 
     }
 

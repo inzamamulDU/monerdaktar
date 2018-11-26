@@ -2,6 +2,11 @@
 
 @section('content')
     <div class="data-show">
+
+        <?php
+            if($results)
+                echo $results;
+        ?>
     </div>
 @endsection
 
@@ -10,19 +15,6 @@
 
 @section('javascript')
     <script type="text/javascript">
-
-
-        $(document).ready(function(){
-
-            var base_url = '<?php echo env('API_URL')  ?>';    
-
-            var url = base_url+"api/article";
-            populateArticleList(url);
-
-
-
-        });
-
 
 
         function populateArticleList(request){

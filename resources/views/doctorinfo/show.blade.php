@@ -4,8 +4,8 @@
     <div class="data-show">
 
             <?php
-            if($results)
-            echo $results;
+                if($results)
+                    echo $results;
             ?>
 
     </div>
