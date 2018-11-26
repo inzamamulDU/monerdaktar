@@ -48,8 +48,15 @@
                 </div>
 
                 @else
-                    <h4 class="alert alert-info">No data</h4>
-            @endif
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2 text-center"><h4 class="alert alert-info">No data</h4></div>
+
+                    </div>
+
+                </div>
+
+                @endif
     </div>
 </section>
 
