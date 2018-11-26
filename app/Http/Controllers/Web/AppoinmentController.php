@@ -52,10 +52,18 @@ class AppoinmentController extends Controller
 
         }
 
+        $apiUrl = env('API_URL') . 'appoinment/get-appointments';
+        $param_url = env('API_URL') . 'api/appoinment/'.Auth::user()->role_id.'/'.Auth::user()->id;
+
+        $articleListReq= Request::create($apiUrl,'POST',['url'=> $param_url]);
+
+
+        $articleListRes = $this->getAppointmentList($articleListReq);
 
 
 
-        return view('appoinment.create',['results'=>$results,'userID' => Auth::user()->id, 'roleID' =>Auth::user()->role_id]);
+
+        return view('appoinment.create',['results'=>$results,'html_data'=>$articleListRes]);
     }
 
     public function store(Request $request)

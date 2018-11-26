@@ -96,6 +96,10 @@
 
 
         <div class="data-show">
+            <?php
+                if($html_data)
+                    echo $html_data;
+            ?>
         </div>
 
 
@@ -118,14 +122,8 @@
         $(document).ready(function(){
 
 
-            var base_url = '<?php echo env('API_URL')  ?>';
 
-            var val2 = '<?php echo $userID  ?>';
-            var val1 = '<?php echo $roleID  ?>';
-
-            var url = base_url+"api/appoinment/"+val1+"/"+val2;
-            populateAppointmentList(url,true);
-
+            setFooterPosition();
 
 
 
@@ -136,7 +134,7 @@
 
 
 
-        function populateAppointmentList(request,set_position=false){
+        function populateAppointmentList(request){
 
             if(request=="") return;
 
@@ -167,10 +165,7 @@
                     console.log("success");
                     $('.data-show').html(result);
 
-                    if(set_position) {
-                        setFooterPosition();
 
-                    }
 
 
                 },
