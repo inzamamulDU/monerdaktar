@@ -217,9 +217,7 @@ class ArticleController extends Controller
 
         //$apiUrl= 'http://localhost/api/user';
 
-        // $apiUrl = env('API_URL') . $request->get('url');
-        $apiUrl = env('API_URL') . 'api/article/';
-
+        $apiUrl = $request->get('url');
 
 
 

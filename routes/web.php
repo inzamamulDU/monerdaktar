@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/appoinment', 'Web\AppoinmentController');
 Route::post('/doctorinfo/getdoctors', 'Web\DoctorInfoController@getDoctorList')->name('doctorinfo.getdoctors');
 Route::resource('/doctorinfo', 'Web\DoctorInfoController');
-Route::get('/article/get-articles', 'Web\ArticleController@getArticleList')->name('article.list');
+Route::post('/article/get-articles', 'Web\ArticleController@getArticleList')->name('article.list');
 Route::resource('/article', 'Web\ArticleController');
 
 

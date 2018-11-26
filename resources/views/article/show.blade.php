@@ -1,14 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="container">
-        <section class="py-3">
-
-            <div class="data-show">
-            </div>
-        </section>
+    <div class="data-show">
     </div>
 @endsection
+
 
 
 
@@ -18,7 +14,9 @@
 
         $(document).ready(function(){
 
-            var url ="api/article";
+            var base_url = '<?php echo env('API_URL')  ?>';    
+
+            var url = base_url+"api/article";
             populateArticleList(url);
 
 
@@ -31,7 +29,9 @@
 
             if(request=="") return;
 
-            var api_URL = 'http://localhost/article/get-articles';
+            var base_url = '<?php echo env('API_URL')  ?>';
+
+            var api_URL = base_url+'article/get-articles';
 
             var request_data = '{\"url\" :\"'+request+'\"}';
 
@@ -44,9 +44,14 @@
 
 
             $.ajax({
-                method: "GET",
+                 headers: {
+                    'Accept':'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Content-Type':'application/json' },
+                method: "POST",
                 url: api_URL,
                 data: request_data,
+                dataType : 'text',
                 success: function(result){
                     console.log("success");
                     $('.data-show').html(result);
