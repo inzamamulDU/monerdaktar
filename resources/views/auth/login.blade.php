@@ -74,3 +74,31 @@
 
 </div>
 @endsection
+
+
+@section('javascript')
+    <script src="{{ asset('js/jquery.datetimepicker.full.min.js') }}"></script>
+    <script>
+        $('#start_date').datetimepicker();
+        $('#end_date').datetimepicker();
+    </script>
+
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function(){
+
+            setFooterPosition();
+
+        });
+
+
+
+    </script>
+
+@endsection
+
+@section('css')
+
+@endsection

@@ -117,15 +117,11 @@
 
 
     <script type="text/javascript">
-        var set_position = true;
+
 
         $(document).ready(function(){
 
-
-
             setFooterPosition();
-
-
 
         });
 
