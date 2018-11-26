@@ -37,9 +37,9 @@ class DoctorInfoController extends Controller
 
 
         $response = $this->getDoctorList($request);
-
+/*
         $response = preg_replace( "/\r|\n/", "", $response );
-        $response = str_replace("'", '"', $response);
+        $response = str_replace("'", '"', $response);*/
 
         return view('doctorinfo.show',['results' => $response]);
 
@@ -77,12 +77,12 @@ class DoctorInfoController extends Controller
         ];
 
         //$apiUrl= 'http://localhost/api/user';
-
-        if($request!=null){
+        $apiUrl = $request->get('url');
+        /*if($request!=null){
             $apiUrl = $request->get('url');
         } else {
             $apiUrl = env('API_URL') . 'api/doctor-info';
-        }
+        }*/
 
        //
 

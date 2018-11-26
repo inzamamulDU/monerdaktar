@@ -2,6 +2,12 @@
 
 @section('content')
     <div class="data-show">
+
+            <?php
+            if($results)
+            echo $results;
+            ?>
+
     </div>
 @endsection
 
@@ -9,17 +15,6 @@
 
 @section('javascript')
     <script type="text/javascript">
-
-
-        $(document).ready(function(){
-
-
-            $('.data-show').html('<?php echo $results  ?>');
-
-
-
-        });
-
 
 
         function populateDoctorList(request){
@@ -37,7 +32,7 @@
             $.ajax({
                 headers: {
                     'Accept':'application/json',
-                    /*'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),*/
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                     'Content-Type':'application/json' },
                 method: "POST",
                 url: api_URL,
