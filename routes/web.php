@@ -18,7 +18,7 @@ Route::get('/user-getdoctors/{limit}/{page}', 'Web\UserController@getDoctors')->
 Route::get('/', 'HomeController@welcome')->name('home.welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::post('/appoinment/get-appointments', 'Web\AppoinmentController@getAppointmentList')->name('appointment.list');
 Route::resource('/appoinment', 'Web\AppoinmentController');
 Route::post('/doctorinfo/getdoctors', 'Web\DoctorInfoController@getDoctorList')->name('doctorinfo.getdoctors');
 Route::resource('/doctorinfo', 'Web\DoctorInfoController');

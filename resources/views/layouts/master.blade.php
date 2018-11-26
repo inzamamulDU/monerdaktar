@@ -41,6 +41,19 @@
 <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
 {{--<script src="{{ asset('js/bootstrap.min.js') }}"></script>--}}
+
+<script>
+    function setFooterPosition(){
+        var marginTop = $(window).height() - $("body").outerHeight();
+        console.log($("body").outerHeight());
+        console.log(marginTop);
+        console.log($(window).height());
+        if(marginTop > 0){
+            //console.log(marginTop);
+            $('footer').css('margin-top', marginTop);
+        }
+    }
+</script>
 @yield('javascript')
 
 {{--

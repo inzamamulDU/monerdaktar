@@ -94,41 +94,10 @@
             </div>
         </section>
 
-        @if($appointmentList)
-        <section class="py-1">
-            <div class="row">
-                <div class="col-md-10 offset-md-1">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
 
-                                <th scope="col">Meeting Title</th>
-                                <th scope="col">Doctor</th>
-                                <th scope="col">Patient</th>
-                                <th scope="col">Start Time</th>
-                                <th scope="col">End Time</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($appointmentList->data as $key=>$appointment)
-                            <tr>
+        <div class="data-show">
+        </div>
 
-                                <td>{{$appointment->title}}</td>
-                                <td>{{$appointment->doctor->name}}</td>
-                                <td>{{$appointment->patient->name}}</td>
-                                <td>{{$appointment->start_time}}</td>
-                                <td>{{$appointment->end_time}}</td>
-                                <td><a href="{{route('appoinment.ongoing',['id'=>$appointment->id])}}" class="btn btn-sm btn-info" >Start</a></td>
-                            </tr>
-                            @endforeach
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-        @endif
 
     </div>
 
@@ -140,6 +109,82 @@
     <script>
         $('#start_date').datetimepicker();
         $('#end_date').datetimepicker();
+    </script>
+
+
+    <script type="text/javascript">
+        var set_position = true;
+
+        $(document).ready(function(){
+
+
+            var base_url = '<?php echo env('API_URL')  ?>';
+
+            var val2 = '<?php echo $userID  ?>';
+            var val1 = '<?php echo $roleID  ?>';
+
+            var url = base_url+"api/appoinment/"+val1+"/"+val2;
+            populateAppointmentList(url,true);
+
+
+
+
+        });
+
+
+
+
+
+
+        function populateAppointmentList(request,set_position=false){
+
+            if(request=="") return;
+
+            var base_url = '<?php echo env('API_URL')  ?>';
+
+            var api_URL = base_url+'appoinment/get-appointments';
+
+            var request_data = '{\"url\" :\"'+request+'\"}';
+
+
+            var json = JSON.parse(request_data);
+            console.log(json);
+
+
+
+
+
+            $.ajax({
+                headers: {
+                    'Accept':'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Content-Type':'application/json' },
+                method: "POST",
+                url: api_URL,
+                data: request_data,
+                dataType : 'text',
+                success: function(result){
+                    console.log("success");
+                    $('.data-show').html(result);
+
+                    if(set_position) {
+                        setFooterPosition();
+
+                    }
+
+
+                },
+                error: function( jqXhr, textStatus, errorThrown ) {
+
+                    console.log(jqXhr, textStatus.toString(), errorThrown.toString());
+                }
+            });
+
+
+
+
+        }
+
     </script>
 
 @endsection

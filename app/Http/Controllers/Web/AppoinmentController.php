@@ -53,26 +53,9 @@ class AppoinmentController extends Controller
         }
 
 
-        $apiUrlAppoinment = env('API_URL').'api/appoinment/'.Auth::user()->role_id.'/'.Auth::user()->id;
-        //$apiUrlAppoinment=route('appointment.appointmentList',['role_id'=>Auth::user()->role_id,'user_id'=>Auth::user()->id]);
-        $myAppointment = null;
-        $myAppointmentError = null;
-
-        try {
-            $response = $client->get($apiUrlAppoinment);
-            $myAppointment = json_decode($response->getBody()->getContents());
-
-        } catch (\Exception $exception) {
 
 
-            $myAppointmentError=$exception;
-
-
-        }
-
-
-
-        return view('appoinment.create',['results'=>$results,'appointmentList'=>$myAppointment]);
+        return view('appoinment.create',['results'=>$results,'userID' => Auth::user()->id, 'roleID' =>Auth::user()->role_id]);
     }
 
     public function store(Request $request)
@@ -152,6 +135,28 @@ class AppoinmentController extends Controller
     }
 
 
+
+
+
+
+
+
+    public function edit(){
+
+
+    }
+
+    public function update(Request $request,User $user){
+
+
+    }
+
+    public function destroy(Request $request, User $user)
+    {
+
+    }
+
+
     public function ongoing($id)
     {
 
@@ -176,23 +181,47 @@ class AppoinmentController extends Controller
         return view('appoinment.ongoing',['results'=>$results]);
     }
 
-
-
-
-
-    public function edit(){
-
-
-    }
-
-    public function update(Request $request,User $user){
-
-
-    }
-
-    public function destroy(Request $request, User $user)
+    public function getAppointmentList(Request $request)
     {
 
+
+
+
+        $apiToken=env('API_TOKEN');
+
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer '.$apiToken,
+        ];
+
+        //$apiUrl= 'http://localhost/api/user';
+
+        $apiUrl = $request->get('url');
+
+        $client = new Client(['http_errors'=>true,'headers'=>$headers]);
+        $errorResponse = null;
+        $clientExceptionCode = null;
+        $results= null;
+
+        try {
+            $response = $client->get($apiUrl);
+            $results = json_decode($response->getBody()->getContents());
+
+        } catch (\Exception $exception) {
+
+
+            $clientExceptionCode=$exception;
+
+
+        }
+
+
+
+        //$results=null;
+
+        return view('appoinment.list',['appointmentList' => $results]);
     }
+
 
 }
