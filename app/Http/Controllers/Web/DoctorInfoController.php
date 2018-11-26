@@ -104,8 +104,8 @@ class DoctorInfoController extends Controller
 
         //$apiUrl= 'http://localhost/api/user';
 
-       // $apiUrl = env('API_URL') . $request->get('url');
-       $apiUrl = env('API_URL') . 'api/doctor-info';
+       $apiUrl = $request->get('url');
+       //$apiUrl = env('API_URL') . 'api/doctor-info';
 
 
 
@@ -128,6 +128,8 @@ class DoctorInfoController extends Controller
 
 
         }
+
+        //$results=null;
 
         return view('doctorinfo.list',['results' => $results]);
     }

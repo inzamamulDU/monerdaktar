@@ -41,7 +41,9 @@
 <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
 {{--<script src="{{ asset('js/bootstrap.min.js') }}"></script>--}}
+@yield('javascript')
 
+{{--
 <script>
     $(document).ready(function(){
         var marginTop = $(window).height() - $("body").outerHeight();
@@ -51,7 +53,7 @@
         }
     });
 </script>
-@yield('javascript')
+--}}
 
 
 
