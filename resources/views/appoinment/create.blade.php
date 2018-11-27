@@ -96,10 +96,9 @@
 
 
         <div class="data-show">
-            <?php
-                if($html_data)
-                    echo $html_data;
-            ?>
+            @if($html_data)
+                {!! $html_data !!}
+            @endif
         </div>
 
 
