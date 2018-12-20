@@ -38,10 +38,10 @@ class UserController extends Controller
         return view('user.create');
     }
 
-    public function store(Request $request)
+    public function store(UserUpdateRequest $request)
     {
 
-        $this->validate($request, [
+       /* $this->validate($request, [
             'name' => 'required|string',
             'password' => 'required|string|confirmed|min:8',
             'email' => 'required|string|unique:users',
@@ -49,7 +49,9 @@ class UserController extends Controller
             'photo' => 'image||mimes:jpeg,png,jpg',
             'role_id' => 'required'
 
-        ]);
+        ]);*/
+
+        dd($request->all());
 
 
         //$loggedUserID= Auth::user()->id;

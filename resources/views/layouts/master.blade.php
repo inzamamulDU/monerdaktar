@@ -22,7 +22,9 @@
 
     <link href="{{ asset('css/modern-business.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jquery.datetimepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery.timepicker.min.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     @yield('css')
 
 

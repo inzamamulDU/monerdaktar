@@ -29,7 +29,7 @@ class UserUpdateRequest extends FormRequest
 
         //dd($this->request->all());
 
-        /*if($this->request->has('name')){
+        if($this->request->has('name')){
             $rules['name'] = 'required|string';
         }
 
@@ -42,7 +42,7 @@ class UserUpdateRequest extends FormRequest
         }
 
         if($this->request->has('phone')){
-            $rules['phone'] = 'required|integer|unique:users';
+            $rules['phone'] = 'required|unique:users';
         }
 
         if($this->request->has('photo')){
@@ -53,10 +53,21 @@ class UserUpdateRequest extends FormRequest
             $rules['role_id'] = 'required';
         }
 
-        if($this->request->has('job_title')){
-            $rules['job_title'] = 'required';
-            $rules['orgnization'] = 'required';
-        }*/
+        if($this->request->has('start_time')) {
+
+            $statTime = $this->request->get('start_time');
+            $endTime = $this->request->get('end_time');
+            $day = $this->request->get('day');
+
+            foreach ($statTime as $key => $val) {
+                $rules['start_time.' . $key] = 'required';
+                $rules['end_time.' . $key] = 'required';
+                $rules['day.' . $key] = 'required|min:3';
+            }
+
+            //validation error need apply in front end
+
+        }
 
         return $rules;
     }

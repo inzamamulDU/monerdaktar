@@ -23,12 +23,10 @@ class DoctorInfoCollection extends Resource
             'biography'          => $this->biography,
             'designation'          => $this->designation,
             'institute' => $this->institute,
-            'available_time' => $this->available_time,
+            'doctor_availability' => $this->doctorAvailabilities,
             'degree' => $this->degree,
             'user' => $this->user,
             'user_id' => $this->user_id
-
-
         ];
     }
 }

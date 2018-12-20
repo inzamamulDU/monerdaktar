@@ -23,7 +23,7 @@ class CreateDoctorInfosTable extends Migration
             $table->text('biography')->nullable();
             $table->string('designation')->nullable();
             $table->string('institute')->nullable();
-            $table->string('available_time')->nullable();
+            /*$table->string('available_time')->nullable();*/
             $table->string('degree')->nullable();
 
             $table->timestamps();
