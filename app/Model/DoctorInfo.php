@@ -15,10 +15,10 @@ class DoctorInfo extends Model
         return $this->belongsTo(User::class);
     }
 
-   /* public function doctorAvailabilities()
-    {
-        return $this->morphMany(DoctorAvailability::class,'doctor_info');
-    }*/
+    public function doctorAvailabilities(){
+        return $this->hasMany(DoctorAvailability::class);
+    }
+
 
 
 }

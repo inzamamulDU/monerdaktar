@@ -13,12 +13,9 @@ class DoctorAvailability extends Model
 
 
     public function doctorInfo(){
-        return $this->hasOne(DoctorInfo::class);
+        return $this->belongsTo(DoctorInfo::class);
     }
 
-  /*  public function doctor_info()
-    {
-        return $this->morphTo();
-    }*/
+
 
 }

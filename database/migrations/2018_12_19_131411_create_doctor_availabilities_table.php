@@ -15,10 +15,13 @@ class CreateDoctorAvailabilitiesTable extends Migration
     {
         Schema::create('doctor_availabilities', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('doctor_info_id');
+            $table->integer('doctor_info_id')->unsigned();
             $table->string('day');
             $table->time('start_time')->default("00:00");
             $table->time('end_time')->default("00:00");
+
+            $table->foreign('doctor_info_id') ->references('id')->on('doctor_infos') ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
