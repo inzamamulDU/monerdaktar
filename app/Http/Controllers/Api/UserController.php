@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\Web\UserUpdateRequest;
 use App\Model\PatientInfo;
 use App\Model\DoctorInfo;
+use App\Model\DoctorAvailability;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,18 +55,22 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request:
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserUpdateRequest $request)
     {
 
-        $this->validate($request, [
+        /*$this->validate($request, [
             'name' => 'required|string',
             'password' => 'required|string|confirmed|min:8',
             'email' => 'required|string|unique:users',
             'phone' => 'required|string|unique:users',
             'role_id' => 'required'
 
-        ]);
+        ]);*/
 //        regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/|
+
+
+
+
         $user = new User();
 
 
@@ -83,23 +89,8 @@ class UserController extends Controller
         $user->save();
 
 
-        if($user->role_id==3){
-            $patientInfo= new PatientInfo();
 
-
-            $patientInfo->address= $request->get("address");
-            $patientInfo->postcode= $request->get("postcode");
-            $patientInfo->city= $request->get("city");
-            $patientInfo->country= $request->get("country");
-
-            $patientInfo->user_id = $user->id;
-
-            $patientInfo->save();
-
-            $user->patient_info_id = $patientInfo->id;
-            $user->save();
-
-        } else if($user->role_id==2) {
+        if($user->role->id==2) {
             $doctorInfo = new DoctorInfo();
 
 
@@ -141,6 +132,46 @@ class UserController extends Controller
             $doctorInfo->save();
 
             $user->doctor_info_id = $doctorInfo->id;
+            $user->save();
+            if($request->has('start_time')) {
+
+
+
+                $statTime =$request->get('start_time');
+                $endTime = $request->get('end_time');
+                $day = $request->get('day');
+
+
+
+                foreach ($statTime as $key => $val) {
+
+
+                    $doctorAvailability = new DoctorAvailability();
+
+                    $doctorAvailability->doctor_info_id = $doctorInfo->id;
+                    $doctorAvailability->start_time= $statTime[$key];
+                    $doctorAvailability->end_time= $endTime[$key];
+                    $doctorAvailability->day= $day[$key];
+                    $doctorAvailability->save();
+                }
+            }
+        }
+
+
+        elseif($user->role->id==3) {
+            $patientInfo= new PatientInfo();
+
+
+            $patientInfo->address= $request->get("address");
+            $patientInfo->postcode= $request->get("postcode");
+            $patientInfo->city= $request->get("city");
+            $patientInfo->country= $request->get("country");
+
+            $patientInfo->user_id = $user->id;
+
+            $patientInfo->save();
+
+            $user->patient_info_id = $patientInfo->id;
             $user->save();
         }
 

@@ -51,7 +51,7 @@ class UserController extends Controller
 
         ]);*/
 
-        dd($request->all());
+
 
 
         //$loggedUserID= Auth::user()->id;
@@ -117,6 +117,21 @@ class UserController extends Controller
 
         }
 
+        if($request->has("day")) {
+            $form_params['day'] = $request->get("day");
+
+        }
+
+        if($request->has("start_time")) {
+            $form_params['start_time'] = $request->get("start_time");
+
+        }
+
+        if($request->has("end_time")) {
+            $form_params['end_time'] = $request->get("end_time");
+
+        }
+
 
 
         $apiUrl= env('API_URL').'api/user';
@@ -145,7 +160,7 @@ class UserController extends Controller
         }
 
 
-        dd([$jsonResponse,$results]);
+
 
         if($results){
 
