@@ -112,6 +112,16 @@ class UserController extends Controller
 
         }
 
+        if($request->has("is_consultant")) {
+            $form_params['is_consultant'] = $request->get("is_consultant");
+
+        }
+
+        if($request->has("is_psychotherapist")) {
+            $form_params['is_psychotherapist'] = $request->get("is_psychotherapist");
+
+        }
+
         if($request->has("biography")) {
             $form_params['biography'] = $request->get("biography");
 
@@ -171,7 +181,7 @@ class UserController extends Controller
         }
 
 
-        //$results = json_decode($response->getBody()->getContents());
+        $results = json_decode($response->getBody()->getContents());
 
         return redirect(route('user.create'))->with('fail','true')->with('message',$jsonResponse->getMessage()['message']);
 
@@ -407,7 +417,7 @@ class UserController extends Controller
 
             $form_params['doctorInfo'] = $doctorInfo;
 
-        }else if(Auth::user()->role_id ==3) {
+        }elseif(Auth::user()->role_id ==3) {
 
 
             $patientInfo =[];

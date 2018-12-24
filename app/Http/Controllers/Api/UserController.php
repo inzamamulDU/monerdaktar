@@ -128,6 +128,17 @@ class UserController extends Controller
 
             }
 
+            if($request->has("is_consultant")) {
+                $doctorInfo->is_consultant = $request->get("is_consultant");
+
+            }
+
+            if($request->has("is_psychotherapist")) {
+                $doctorInfo->is_psychotherapist = $request->get("is_psychotherapist");
+
+            }
+
+
 
             $doctorInfo->save();
 

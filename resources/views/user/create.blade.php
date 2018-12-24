@@ -149,11 +149,17 @@
 
                                 <div class="form-row">
 
-                                    <div  id="degree" class="form-group col-md-12 d-none">
+                                    <div  id="degree" class="form-group col-md-6 d-none">
                                         <label for="degree" class="control-label">Degree</label>
 
 
                                         <input id="degree" type="text" class="form-control" name="degree" value="{{ old('degree') }}" >
+
+                                    </div>
+
+                                    <div id="doc_info_category" class="form-group col-md-6 checkbox d-none">
+                                        <label><input type="checkbox" name="is_consultant" value="1">Consultant</label>
+                                        <label><input type="checkbox" name="is_psychotherapist" value="1">Psychotherapist</label>
 
                                     </div>
 
@@ -162,49 +168,49 @@
 
 
 
-                                    <div class="form-row d-none" id="available_time">
-                                        <fieldset class="scheduler-border">
-                                            <legend class="scheduler-border">Availabilities:</legend>
-                                            <div id="dynamic_field">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-2">
-                                                    <label for="sname" class="checkout-req-lebel">Day</label>
+                                <div class="form-row d-none" id="available_time">
+                                    <fieldset class="scheduler-border">
+                                        <legend class="scheduler-border">Availabilities:</legend>
+                                        <div id="dynamic_field">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-2">
+                                                <label for="sname" class="checkout-req-lebel">Day</label>
 
-                                                    <select name="day[1]" id="day" class="form-control">
-                                                        <option value="">---</option>
-                                                        <option value="sat">Sat</option>
-                                                        <option value="sun">Sun</option>
-                                                        <option value="mon">Mon</option>
-                                                        <option value="tue">Tue</option>
-                                                        <option value="wed">Wed</option>
-                                                        <option value="thu">Thu</option>
-                                                        <option value="fri">Fri</option>
-                                                    </select>
-
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="start_time" class="checkout-req-lebel">Start Time</label>
-                                                    <input type="text" class="timepicker form-control" name="start_time[1]" >
-                                                    <small class="form-text text-danger" id="start_time_1_err"></small>
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="start_time" class="checkout-req-lebel">End Time</label>
-                                                    <input type="text" class="timepicker form-control" name="end_time[1]">
-                                                    <small class="form-text text-danger" id="end_time_1_err"></small>
-                                                </div>
-
-                                                <div class="form-group col-md-2">
-                                                    <label for="lname" class="checkout-req-lebel text-center">Add more</label>
-                                                    <button type="button" name="add" id="add" class="btn btn-info btn-sm">
-                                                        <span class="fa fa-md fa-plus"></span>
-                                                    </button>
-                                                </div>
+                                                <select name="day[1]" id="day" class="form-control">
+                                                    <option value="">---</option>
+                                                    <option value="sat">Sat</option>
+                                                    <option value="sun">Sun</option>
+                                                    <option value="mon">Mon</option>
+                                                    <option value="tue">Tue</option>
+                                                    <option value="wed">Wed</option>
+                                                    <option value="thu">Thu</option>
+                                                    <option value="fri">Fri</option>
+                                                </select>
 
                                             </div>
-                                        </div>
-                                        </fieldset>
+                                            <div class="form-group col-md-4">
+                                                <label for="start_time" class="checkout-req-lebel">Start Time</label>
+                                                <input type="text" class="timepicker form-control" name="start_time[1]" >
+                                                <small class="form-text text-danger" id="start_time_1_err"></small>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="start_time" class="checkout-req-lebel">End Time</label>
+                                                <input type="text" class="timepicker form-control" name="end_time[1]">
+                                                <small class="form-text text-danger" id="end_time_1_err"></small>
+                                            </div>
 
+                                            <div class="form-group col-md-2">
+                                                <label for="lname" class="checkout-req-lebel text-center">Add more</label>
+                                                <button type="button" name="add" id="add" class="btn btn-info btn-sm">
+                                                    <span class="fa fa-md fa-plus"></span>
+                                                </button>
+                                            </div>
+
+                                        </div>
                                     </div>
+                                    </fieldset>
+
+                                </div>
 
 
 
@@ -236,7 +242,7 @@
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
                                         <button type="submit" class="btn btn-primary">
-                                            Update
+                                            Submit
                                         </button>
                                     </div>
                                 </div>
@@ -259,6 +265,7 @@
             $("#biography").removeClass("d-none");
             $("#degree").removeClass("d-none");
             $("#available_time").removeClass("d-none");
+            $("#doc_info_category").removeClass("d-none");
 
 
 
@@ -270,6 +277,7 @@
             $("#biography").addClass("d-none");
             $("#degree").addClass("d-none");
             $("#available_time").addClass("d-none");
+            $("#doc_info_category").addClass("d-none");
 
 
 

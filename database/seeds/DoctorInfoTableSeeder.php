@@ -22,7 +22,7 @@ class DoctorInfoTableSeeder extends Seeder
             'institute' => 'Primary Health Care',
             'degree' => 'FCPS FRCS',
             'is_consultant' => true,
-            'is_psychologist' => true,
+            'is_psychotherapist' => true,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
@@ -40,7 +40,7 @@ class DoctorInfoTableSeeder extends Seeder
             'institute' => 'Primary Health Care',
             'degree' => 'FCPS FRCS',
             'is_consultant' => true,
-            'is_psychologist' => false,
+            'is_psychotherapist' => false,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
@@ -57,7 +57,7 @@ class DoctorInfoTableSeeder extends Seeder
             'institute' => 'Primary Health Care',
             'degree' => 'MBBS',
             'is_consultant' => true,
-            'is_psychologist' => true,
+            'is_psychotherapist' => true,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
@@ -75,7 +75,7 @@ class DoctorInfoTableSeeder extends Seeder
             'institute' => 'Primary Health Care',
             'degree' => 'FCPS FRCS',
             'is_consultant' => true,
-            'is_psychologist' => true,
+            'is_psychotherapist' => true,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
@@ -93,7 +93,7 @@ class DoctorInfoTableSeeder extends Seeder
             'institute' => 'Primary Health Care',
             'degree' => 'MBBS',
             'is_consultant' => true,
-            'is_psychologist' => false,
+            'is_psychotherapist' => false,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
@@ -111,7 +111,7 @@ class DoctorInfoTableSeeder extends Seeder
             'institute' => 'Primary Health Care',
             'degree' => 'MBBS',
             'is_consultant' => true,
-            'is_psychologist' => true,
+            'is_psychotherapist' => true,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
