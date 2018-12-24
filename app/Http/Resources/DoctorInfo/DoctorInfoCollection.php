@@ -24,6 +24,8 @@ class DoctorInfoCollection extends Resource
             'designation'          => $this->designation,
             'institute' => $this->institute,
             'doctor_availability' => $this->doctorAvailabilities,
+            'isConsultant'=> $this->is_consultant,
+            'isPsychologist'=> $this->is_psychologist,
             'degree' => $this->degree,
             'user' => $this->user,
             'user_id' => $this->user_id
