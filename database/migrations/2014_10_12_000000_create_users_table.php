@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->integer("patient_info_id")->default(0);
             $table->string('photo')->default("default.png");
             $table->boolean("active")->default(true);
+
             $table->rememberToken();
             $table->timestamps();
 

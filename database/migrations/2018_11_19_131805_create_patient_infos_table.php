@@ -15,11 +15,12 @@ class CreatePatientInfosTable extends Migration
     {
         Schema::create('patient_infos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
             $table->text('address')->nullable();
             $table->string('postcode')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
+            $table->foreign('user_id') ->references('id')->on('users') ->onDelete('cascade');
 
 
             $table->timestamps();

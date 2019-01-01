@@ -120,7 +120,7 @@
                                         <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}" required>
 
                                         @if ($errors->has('phone'))
-                                            <span class="help-block">
+                                            <span class="text-danger">
                                                      <strong>{{ $errors->first('phone') }}</strong>
                                                 </span>
                                         @endif
@@ -157,12 +157,63 @@
 
                                     </div>
 
-                                    <div id="available_time" class="form-group col-md-6 d-none">
-                                        <label for="available_time" class="control-label">Available Time</label>
-                                        <input id="available_time" type="text" class="form-control" name="available_time" value="{{ old('available_time') }}" >
+                                    <div id="doc_info_category" class="form-group col-md-6 checkbox d-none">
+                                        <label><input type="checkbox" name="is_consultant" value="1">Consultant</label>
+                                        <label><input type="checkbox" name="is_psychotherapist" value="1">Psychotherapist</label>
 
                                     </div>
+
                                 </div>
+
+
+
+
+                                <div class="form-row d-none" id="available_time">
+                                    <fieldset class="scheduler-border">
+                                        <legend class="scheduler-border">Availabilities:</legend>
+                                        <div id="dynamic_field">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-2">
+                                                <label for="sname" class="checkout-req-lebel">Day</label>
+
+                                                <select name="day[1]" id="day" class="form-control">
+                                                    <option value="">---</option>
+                                                    <option value="sat">Sat</option>
+                                                    <option value="sun">Sun</option>
+                                                    <option value="mon">Mon</option>
+                                                    <option value="tue">Tue</option>
+                                                    <option value="wed">Wed</option>
+                                                    <option value="thu">Thu</option>
+                                                    <option value="fri">Fri</option>
+                                                </select>
+
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="start_time" class="checkout-req-lebel">Start Time</label>
+                                                <input type="text" class="timepicker form-control" name="start_time[1]" >
+                                                <small class="form-text text-danger" id="start_time_1_err"></small>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="start_time" class="checkout-req-lebel">End Time</label>
+                                                <input type="text" class="timepicker form-control" name="end_time[1]">
+                                                <small class="form-text text-danger" id="end_time_1_err"></small>
+                                            </div>
+
+                                            <div class="form-group col-md-2">
+                                                <label for="lname" class="checkout-req-lebel text-center">Add more</label>
+                                                <button type="button" name="add" id="add" class="btn btn-info btn-sm">
+                                                    <span class="fa fa-md fa-plus"></span>
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    </fieldset>
+
+                                </div>
+
+
+
 
                                 <div class="form-row">
 
@@ -191,7 +242,7 @@
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
                                         <button type="submit" class="btn btn-primary">
-                                            Update
+                                            Submit
                                         </button>
                                     </div>
                                 </div>
@@ -206,6 +257,7 @@
 @endsection
 
 @section('javascript')
+    <script src="{{ asset('js/jquery.timepicker.min.js') }}"></script>
     <script>
         $("#doctor").change(function(){
             $("#designation").removeClass("d-none");
@@ -213,6 +265,9 @@
             $("#biography").removeClass("d-none");
             $("#degree").removeClass("d-none");
             $("#available_time").removeClass("d-none");
+            $("#doc_info_category").removeClass("d-none");
+
+
 
 
         });
@@ -222,9 +277,85 @@
             $("#biography").addClass("d-none");
             $("#degree").addClass("d-none");
             $("#available_time").addClass("d-none");
+            $("#doc_info_category").addClass("d-none");
+
 
 
         });
+
+
+        $('.timepicker').timepicker({
+            timeFormat: 'H:mm',
+            interval: 15,
+            minTime: '00',
+            maxTime: '11:45pm',
+            defaultTime: '11',
+            startTime: '00:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+
+
+        var child = $('#dynamic_field .form-row').length;
+        //console.log('number of child'+child);
+        var i = child;
+
+        $('#add').click(function(){
+            i++;
+            var countchild = $('#dynamic_field .form-row').length;
+            var maxlen = '12';
+            console.log(maxlen);
+            if(countchild < maxlen){
+
+            var innerText= '<div id="row'+i+'" class="form-row">' +
+                '<div class="form-group col-md-2">' +
+                    '<select name="day['+i+']" id="day" class="form-control">' +
+                    '<option value="">---</option>' +
+                    '<option value="sat">Sat</option>' +
+                    '<option value="sun">Sun</option>' +
+                    '<option value="mon">Mon</option>' +
+                    '<option value="tue">Tue</option>' +
+                    '<option value="wed">Wed</option>' +
+                    '<option value="thu">Thu</option>' +
+                    '<option value="fri">Fri</option>' +
+                    '</select>' +
+                    '</div>' +
+                    '<div class="form-group col-md-4">' +
+                    '<input type="text" id="timepicker_start'+i+'" class="form-control" onfocus="renderTimePicker(this)" name="start_time['+i+']" >' +
+                    '<small class="form-text text-danger" id="start_time_'+i+'_err"></small>' +
+                    '</div>' +
+                    '<div class="form-group col-md-4"> ' +
+                    '<input type="text" id="timepicker_end'+i+'" class="form-control" onfocus="renderTimePicker(this)" name="end_time['+i+']" >' +
+                    '<small class="form-text text-danger" id="end_time_'+i+'_err"></small>' +
+                    '</div>'+
+                    '<div class="form-group col-md-2"><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn-sm btn_remove"><i class="fa fa-trash" aria-hidden="true"></i></button></div>' +
+                    '</div>';
+                $('#dynamic_field').append(innerText);
+            }
+        });
+
+        $(document).on('click', '.btn_remove', function(){
+            var button_id = $(this).attr("id");
+            $('#row'+button_id+'').remove();
+        });
+
+        function renderTimePicker(data) {
+            $('#'+data.id).timepicker({
+                timeFormat: 'H:mm',
+                interval: 15,
+                minTime: '00',
+                maxTime: '11:45pm',
+                defaultTime: '11',
+                startTime: '00:00',
+                dynamic: true,
+                dropdown: true,
+                scrollbar: true
+            });
+
+
+        }
+
 
     </script>
 @endsection

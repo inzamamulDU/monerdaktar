@@ -38,10 +38,10 @@ class UserController extends Controller
         return view('user.create');
     }
 
-    public function store(Request $request)
+    public function store(UserUpdateRequest $request)
     {
 
-        $this->validate($request, [
+       /* $this->validate($request, [
             'name' => 'required|string',
             'password' => 'required|string|confirmed|min:8',
             'email' => 'required|string|unique:users',
@@ -49,7 +49,9 @@ class UserController extends Controller
             'photo' => 'image||mimes:jpeg,png,jpg',
             'role_id' => 'required'
 
-        ]);
+        ]);*/
+
+
 
 
         //$loggedUserID= Auth::user()->id;
@@ -110,8 +112,33 @@ class UserController extends Controller
 
         }
 
+        if($request->has("is_consultant")) {
+            $form_params['is_consultant'] = $request->get("is_consultant");
+
+        }
+
+        if($request->has("is_psychotherapist")) {
+            $form_params['is_psychotherapist'] = $request->get("is_psychotherapist");
+
+        }
+
         if($request->has("biography")) {
             $form_params['biography'] = $request->get("biography");
+
+        }
+
+        if($request->has("day")) {
+            $form_params['day'] = $request->get("day");
+
+        }
+
+        if($request->has("start_time")) {
+            $form_params['start_time'] = $request->get("start_time");
+
+        }
+
+        if($request->has("end_time")) {
+            $form_params['end_time'] = $request->get("end_time");
 
         }
 
@@ -143,7 +170,7 @@ class UserController extends Controller
         }
 
 
-        dd([$jsonResponse,$results]);
+
 
         if($results){
 
@@ -154,7 +181,7 @@ class UserController extends Controller
         }
 
 
-        //$results = json_decode($response->getBody()->getContents());
+        $results = json_decode($response->getBody()->getContents());
 
         return redirect(route('user.create'))->with('fail','true')->with('message',$jsonResponse->getMessage()['message']);
 
@@ -390,7 +417,7 @@ class UserController extends Controller
 
             $form_params['doctorInfo'] = $doctorInfo;
 
-        }else if(Auth::user()->role_id ==3) {
+        }elseif(Auth::user()->role_id ==3) {
 
 
             $patientInfo =[];

@@ -44,6 +44,7 @@ class User extends Model
         return $this->hasOne(DoctorInfo::class);
     }
 
+
     public function comment(){
         return $this->hasMany(Comment::class);
     }

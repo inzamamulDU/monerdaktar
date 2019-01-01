@@ -21,7 +21,8 @@ class DoctorInfoTableSeeder extends Seeder
             'designation' => 'Asst. Professor',
             'institute' => 'Primary Health Care',
             'degree' => 'FCPS FRCS',
-            'available_time' => 'Monday 1 PM to 5 PM',
+            'is_consultant' => true,
+            'is_psychotherapist' => true,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
@@ -38,7 +39,8 @@ class DoctorInfoTableSeeder extends Seeder
             'designation' => 'Professor',
             'institute' => 'Primary Health Care',
             'degree' => 'FCPS FRCS',
-            'available_time' => 'Tues 3 PM to 5 PM',
+            'is_consultant' => true,
+            'is_psychotherapist' => false,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
@@ -54,7 +56,8 @@ class DoctorInfoTableSeeder extends Seeder
             'designation' => 'Doctor',
             'institute' => 'Primary Health Care',
             'degree' => 'MBBS',
-            'available_time' => 'All Day 1 PM to 5 PM',
+            'is_consultant' => true,
+            'is_psychotherapist' => true,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
@@ -71,7 +74,8 @@ class DoctorInfoTableSeeder extends Seeder
             'designation' => 'Professor',
             'institute' => 'Primary Health Care',
             'degree' => 'FCPS FRCS',
-            'available_time' => 'Tues 3 PM to 5 PM',
+            'is_consultant' => true,
+            'is_psychotherapist' => true,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
@@ -88,7 +92,8 @@ class DoctorInfoTableSeeder extends Seeder
             'designation' => 'Doctor',
             'institute' => 'Primary Health Care',
             'degree' => 'MBBS',
-            'available_time' => 'All Day 1 PM to 5 PM',
+            'is_consultant' => true,
+            'is_psychotherapist' => false,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
@@ -105,7 +110,8 @@ class DoctorInfoTableSeeder extends Seeder
             'designation' => 'Doctor',
             'institute' => 'Primary Health Care',
             'degree' => 'MBBS',
-            'available_time' => 'All Day 1 PM to 5 PM',
+            'is_consultant' => true,
+            'is_psychotherapist' => true,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
