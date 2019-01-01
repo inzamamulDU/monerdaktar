@@ -25,13 +25,13 @@
                                     </p>
                                     <p class="card-text">{{$result->biography}}</p>
 
-
+                                    @if (Auth::id() > 0)
                                     <div class="col-md-6 col-md-offset-4">
                                         <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#appointmentModal">
                                             Set Appointment
                                         </button>
                                     </div>
-
+                                    @endif
                                     <!-- Modal -->
                                     <div class="modal fade" id="appointmentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                                          aria-hidden="true">
@@ -69,12 +69,8 @@
                                                             <div class="form-group col-md-6{{ $errors->has('host_id') ? ' has-error' : '' }}">
                                                                 <label for="doctor_id" class="">Doctors</label>
                                                                 <select name="doctor_id" class="form-control" id="doctors-dropdown">
-                                                                    <option value="">--Choose one--</option>
-                                                                    @if($results)
-                                                                        @foreach($results->data as $key=>$value)
-                                                                            <option value="{{ $value->user->id }}" >{{ $value->user->name }}</option>
-                                                                        @endforeach
-                                                                    @endif
+                                                                    <option value="{{$result->user->id}}">{{$result->user->name}}</option>
+
                                                                 </select>
                                                                 @if($errors->has('doctor_id'))
                                                                     <small class="form-text text-danger">{{ $errors->first('host_id') }}</small>
