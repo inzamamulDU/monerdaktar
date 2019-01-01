@@ -38,32 +38,86 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header text-center">
-                                                    <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+                                                    <h4 class="modal-title w-100 font-weight-bold">Appointment</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body mx-3">
-                                                    <div class="md-form mb-5">
-                                                        <i class="fa fa-user prefix grey-text"></i>
-                                                        <input type="text" id="orangeForm-name" class="form-control validate">
-                                                        <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
-                                                    </div>
-                                                    <div class="md-form mb-5">
-                                                        <i class="fa fa-envelope prefix grey-text"></i>
-                                                        <input type="email" id="orangeForm-email" class="form-control validate">
-                                                        <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
-                                                    </div>
+                                                    <form class="form-horizontal" method="POST" action="{{ route('appoinment.store') }}">
+                                                        {{ csrf_field() }}
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6{{ $errors->has('title') ? ' has-error' : '' }}">
+                                                                <label for="title" class="control-label">Appointment title</label>
+                                                                <input id="title" type="title" class="form-control" name="title" value="{{ old('title') }}" autofocus>
+                                                                @if ($errors->has('title'))
+                                                                    <small class="form-text text-danger">{{ $errors->first('title') }}</small>
+                                                                @endif
 
-                                                    <div class="md-form mb-4">
-                                                        <i class="fa fa-lock prefix grey-text"></i>
-                                                        <input type="password" id="orangeForm-pass" class="form-control validate">
-                                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
-                                                    </div>
+                                                            </div>
 
+                                                        </div>
+                                                        <div class="from-row">
+                                                            <div class="form-group col-md-6 ">
+                                                                <label><input  type="radio" name="type" value="consultation" checked  >Consultation</label>
+
+                                                                <label><input type="radio" name="type" value="psychotherapy" >Psychotherapy</label>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6{{ $errors->has('host_id') ? ' has-error' : '' }}">
+                                                                <label for="doctor_id" class="">Doctors</label>
+                                                                <select name="doctor_id" class="form-control" id="doctors-dropdown">
+                                                                    <option value="">--Choose one--</option>
+                                                                    @if($results)
+                                                                        @foreach($results->data as $key=>$value)
+                                                                            <option value="{{ $value->user->id }}" >{{ $value->user->name }}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </select>
+                                                                @if($errors->has('doctor_id'))
+                                                                    <small class="form-text text-danger">{{ $errors->first('host_id') }}</small>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-3 {{ $errors->has('start_time') ? ' has-error' : '' }}">
+                                                                <label for="start_time" class="">Select Start date and time</label>
+                                                                <input id="start_time" type="text" class="form-control" name="start_time">
+
+                                                                @if ($errors->has('start_time'))
+                                                                    <small class="form-text text-danger">{{ $errors->first('start_time') }}</small>
+                                                                @endif
+
+                                                            </div>
+
+                                                            <div class="form-group col-md-3 {{ $errors->has('end_time') ? ' has-error' : '' }}">
+                                                                <label for="end_time" class="">Select End date and time</label>
+                                                                <input id="end_time" type="text" class="form-control" name="end_time">
+
+                                                                @if ($errors->has('end_time'))
+                                                                    <small class="form-text text-danger">{{ $errors->first('end_time') }}</small>
+                                                                @endif
+
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-8 col-md-offset-4">
+                                                                <button type="submit" class="btn btn-primary">
+                                                                    Set Appointment
+                                                                </button>
+
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                                 <div class="modal-footer d-flex justify-content-center">
-                                                    <button class="btn btn-deep-orange">Sign up</button>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -103,4 +157,14 @@
                 @endif
     </div>
 </section>
+
+@section('javascript')
+    <script src="{{ asset('js/jquery.datetimepicker.full.min.js') }}"></script>
+    <script>
+        $('#start_time').datetimepicker();
+        $('#end_time').datetimepicker();
+    </script>
+
+
+@endsection
 
