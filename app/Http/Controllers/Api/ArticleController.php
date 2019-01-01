@@ -12,7 +12,7 @@ use App\Http\Resources\Article\ArticleResource;
 class ArticleController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth:api')->except('index','show');
+        $this->middleware('auth:api');
     }
 
     /**

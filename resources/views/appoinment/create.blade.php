@@ -35,11 +35,20 @@
                                                 @endif
 
                                             </div>
+
+                                        </div>
+                                        <div class="from-row">
+                                            <div class="form-group col-md-6 ">
+                                                <label><input  type="radio" name="type" value="consultation" checked  >Consultation</label>
+
+                                                <label><input type="radio" name="type" value="psychotherapy" >Psychotherapy</label>
+                                            </div>
+
                                         </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6{{ $errors->has('host_id') ? ' has-error' : '' }}">
-                                            <label for="host_id" class="">Doctors</label>
-                                            <select name="host_id" class="form-control" id="doctors-dropdown">
+                                            <label for="doctor_id" class="">Doctors</label>
+                                            <select name="doctor_id" class="form-control" id="doctors-dropdown">
                                                 <option value="">--Choose one--</option>
                                                 @if($results)
                                                     @foreach($results->data as $key=>$value)
@@ -47,29 +56,29 @@
                                                     @endforeach
                                                 @endif
                                             </select>
-                                                @if($errors->has('host_id'))
+                                                @if($errors->has('doctor_id'))
                                                     <small class="form-text text-danger">{{ $errors->first('host_id') }}</small>
                                                 @endif
                                         </div>
                                     </div>
 
                                     <div class="form-row">
-                                        <div class="form-group col-md-3 {{ $errors->has('start_date') ? ' has-error' : '' }}">
-                                            <label for="start_date" class="">Select Start date and time</label>
-                                            <input id="start_date" type="text" class="form-control" name="start_date">
+                                        <div class="form-group col-md-3 {{ $errors->has('start_time') ? ' has-error' : '' }}">
+                                            <label for="start_time" class="">Select Start date and time</label>
+                                            <input id="start_time" type="text" class="form-control" name="start_time">
 
-                                            @if ($errors->has('start_date'))
-                                                <small class="form-text text-danger">{{ $errors->first('start_date') }}</small>
+                                            @if ($errors->has('start_time'))
+                                                <small class="form-text text-danger">{{ $errors->first('start_time') }}</small>
                                             @endif
 
                                         </div>
 
-                                        <div class="form-group col-md-3 {{ $errors->has('end_date') ? ' has-error' : '' }}">
-                                            <label for="end_date" class="">Select End date and time</label>
-                                            <input id="end_date" type="text" class="form-control" name="end_date">
+                                        <div class="form-group col-md-3 {{ $errors->has('end_time') ? ' has-error' : '' }}">
+                                            <label for="end_time" class="">Select End date and time</label>
+                                            <input id="end_time" type="text" class="form-control" name="end_time">
 
-                                            @if ($errors->has('end_date'))
-                                                <small class="form-text text-danger">{{ $errors->first('end_date') }}</small>
+                                            @if ($errors->has('end_time'))
+                                                <small class="form-text text-danger">{{ $errors->first('end_time') }}</small>
                                             @endif
 
                                         </div>
@@ -110,8 +119,8 @@
 @section('javascript')
     <script src="{{ asset('js/jquery.datetimepicker.full.min.js') }}"></script>
     <script>
-        $('#start_date').datetimepicker();
-        $('#end_date').datetimepicker();
+        $('#start_time').datetimepicker();
+        $('#end_time').datetimepicker();
     </script>
 
 

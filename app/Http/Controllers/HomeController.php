@@ -35,7 +35,7 @@ class HomeController extends Controller
             'Authorization' => 'Bearer '.$apiToken,
         ];
 
-        //$apiUrl= 'http://localhost/api/user';
+        
         $apiUrl= env('API_URL').'api/doctor-info';
 
         $client = new Client(['http_errors'=>true,'headers'=>$headers]);

@@ -18,8 +18,8 @@ class CreateAppoinmentsTable extends Migration
             $table->string('title');
             $table->integer('doctor_id');
             $table->integer('patient_id');
-            $table->string('patient_secret_key');
-            $table->string('doctor_secret_key');
+            $table->string('room');
+            $table->enum('type', ['consultation', 'psychotherapy']);
             $table->timestamp('start_time')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('end_time')->nullable();
             $table->timestamps();

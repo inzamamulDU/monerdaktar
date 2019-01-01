@@ -62,6 +62,7 @@ class AppoinmentController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|string|min:4',
+            'type' => 'required|string',
             'doctor_id' => 'required|integer',
             'patient_id' => 'required|integer',
             'start_time' => 'required|string',
@@ -77,12 +78,13 @@ class AppoinmentController extends Controller
 
 
         $appoinment->title = $request->title;
+        $appoinment->type = $request->type;
         $appoinment->doctor_id = $request->doctor_id;
         $appoinment->patient_id = $request->patient_id;
         $appoinment->start_time = $start_date;
         $appoinment->end_time = $end_date;
-        $appoinment->patient_secret_key = $this->generateRandomString();
-        $appoinment->doctor_secret_key = $this->generateRandomString();
+        $appoinment->room = env('APPOINTMENT_URL').$this->generateRandomString();
+
 
 
         $appoinment->save();
