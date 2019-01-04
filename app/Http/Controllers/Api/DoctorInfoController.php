@@ -97,7 +97,7 @@ class DoctorInfoController extends Controller
     {
         $online_users = $request->get("online_users");
 
-        return DoctorInfoCollection::collection(DoctorInfo::whereIn('id',$online_users)->get());
-        
+        return DoctorInfoCollection::collection(DoctorInfo::whereIn('user_id',$online_users)->get());
+
     }
 }
