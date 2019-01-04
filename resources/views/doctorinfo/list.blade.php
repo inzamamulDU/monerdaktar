@@ -154,13 +154,4 @@
     </div>
 </section>
 
-@section('javascript')
-    <script src="{{ asset('js/jquery.datetimepicker.full.min.js') }}"></script>
-    <script>
-        $('#start_time').datetimepicker();
-        $('#end_time').datetimepicker();
-    </script>
-
-
-@endsection
 
