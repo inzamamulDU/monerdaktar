@@ -7,6 +7,8 @@ use App\Http\Resources\DoctorInfo\DoctorInfoResource;
 use App\Model\DoctorInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class DoctorInfoController extends Controller
 {
@@ -22,7 +24,7 @@ class DoctorInfoController extends Controller
      */
     public function index()
     {
-        return DoctorInfoCollection::collection(DoctorInfo::paginate(6));
+        return DoctorInfoCollection::collection(DoctorInfo::paginate(3));
     }
 
     /**
@@ -89,5 +91,13 @@ class DoctorInfoController extends Controller
     public function destroy(DoctorInfo $doctorInfo)
     {
         //
+    }
+
+    public function getSelectedDoctorInfo(Request $request)
+    {
+        $online_users = $request->get("online_users");
+
+        return DoctorInfoCollection::collection(DoctorInfo::whereIn('id',$online_users)->get());
+        
     }
 }
