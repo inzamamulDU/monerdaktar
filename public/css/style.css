@@ -22,3 +22,7 @@ legend.scheduler-border {
     padding:0 10px;
     border-bottom:none;
 }
+
+.online {
+    color: #00dd1c;
+}

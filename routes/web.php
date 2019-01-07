@@ -20,6 +20,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/appoinment/get-appointments', 'Web\AppoinmentController@getAppointmentList')->name('appointment.list');
 Route::resource('/appoinment', 'Web\AppoinmentController');
+Route::post('/doctorinfo/getOnlineDoctors', 'Web\DoctorInfoController@getOnlineDoctors')->name('doctorinfo.getOnlineDoctors');
 Route::post('/doctorinfo/getdoctors', 'Web\DoctorInfoController@getDoctorList')->name('doctorinfo.getdoctors');
 Route::resource('/doctorinfo', 'Web\DoctorInfoController');
 Route::post('/article/get-articles', 'Web\ArticleController@getArticleList')->name('article.list');

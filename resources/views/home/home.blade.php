@@ -18,3 +18,16 @@
     </div>
 
 @endsection
+
+@if(Auth::id() > 0)
+@section('javascript')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script>
+        $(function () {
+            var usrId = "{{Auth::id()}}";
+            var socket = io.connect('http://104.248.155.229:5000?token='+usrId);
+
+        });
+    </script>
+@endsection
+@endif

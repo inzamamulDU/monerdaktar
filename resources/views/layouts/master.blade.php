@@ -58,6 +58,8 @@
 </script>
 @yield('javascript')
 
+
+
 {{--
 <script>
     $(document).ready(function(){

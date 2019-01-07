@@ -62,6 +62,63 @@ class DoctorInfoController extends Controller
 
     }
 
+
+    public function getOnlineDoctors(Request $request)
+    {
+
+
+        $apiToken=env('API_TOKEN');
+
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer '.$apiToken,
+        ];
+
+
+
+        $apiUrl = env('API_URL') . 'api/doctorInfo/getSelectedDoctorInfo';
+
+
+        $client = new Client(['http_errors'=>true,'headers'=>$headers]);
+        $errorResponse = null;
+        $clientExceptionCode = null;
+        $results= null;
+
+        //response = $client->request('POST', [ 'headers' => [ 'Content-Type' => 'application/x-www-form-urlencoded' ], 'form_params' => $fruits ]);
+
+
+        $form_params = [
+            'online_users' => array_unique($request->get("online_users"))
+
+
+
+        ];
+
+
+        try {
+            $response = $client->post($apiUrl, [
+                'form_params' => $form_params
+            ]);
+
+
+            $results = json_decode($response->getBody()->getContents());
+
+        } catch (\Exception $exception) {
+
+
+            $jsonResponse=$exception;
+
+
+        }
+
+
+
+        return view('doctorinfo.onlineusers',['results' => $results]);
+
+
+    }
+
     public function getDoctorList(Request $request)
     {
 

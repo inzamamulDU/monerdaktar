@@ -15,14 +15,8 @@
                 </div>
             </div>
             <div class="col-lg-2">
-                <div class="container">
-                    <ul class="list-group">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Morbi leo risus</li>
-                        <li class="list-group-item">Porta ac consectetur ac</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
+                <div class="container" id="online_doctors">
+
                 </div>
             </div>
         </div>
@@ -90,20 +84,24 @@
 
 
             socket.on('allconnected',function (data){
-                console.log(data);
+                //console.log(data);
         });
             socket.on('broadcast',function (data){
                 //var connectedUsers = JSON.parse(data);
-                console.log('broadcast received');
-            console.log(data);
-            //console.log(Object.keys(connectedUsers).length);
+                //console.log('broadcast received');
+                //console.log(data);
+
+
+                //console.log(Object.keys(connectedUsers).length);
             // for(var i=0; i < connectedUsers.lenght;i++){
             //     console.log(connectedUsers[i]);
             // }
 
+                updateOnlineUser(data);
+
         });
             socket.on('me',function (data){
-                console.log( data);
+                updateOnlineUser(data);
         });
             //broadcast received for all user except sender
             socket.on('to-others-'+1,function (msg){
@@ -118,6 +116,56 @@
                 return false;
             });
         });
+
+
+
+        function updateOnlineUser(data) {
+
+            var base_url = '<?php echo env('API_URL')  ?>';
+
+
+
+            var api_URL = base_url+'doctorinfo/getOnlineDoctors';
+
+            var online_users = [];
+
+
+            for (key in data)
+            {
+                online_users.push(data[key]);
+            }
+
+            console.log(online_users);
+            var request_data = '{"online_users": ['+online_users+']}';
+
+
+
+
+
+            $.ajax({
+                headers: {
+                    'Accept':'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Content-Type':'application/json' },
+                method: "POST",
+                url: api_URL,
+                data: request_data,
+                dataType : 'text',
+
+
+                success: function(result){
+                    console.log(result);
+
+                    $('#online_doctors').html(result);
+                },
+                error: function( jqXhr, textStatus, errorThrown ) {
+
+                    console.log(jqXhr, textStatus.toString(), errorThrown.toString());
+                }
+            });
+
+
+        }
     </script>
 
 
