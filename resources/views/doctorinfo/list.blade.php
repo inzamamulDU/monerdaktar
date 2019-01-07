@@ -1,5 +1,5 @@
-<section class="py-3">
-    <div class="container">
+
+
 
             @if($results)
                 <div class="row">
@@ -151,7 +151,6 @@
                 </div>
 
                 @endif
-    </div>
-</section>
+
 
 
