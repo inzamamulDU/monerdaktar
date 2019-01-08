@@ -13,7 +13,7 @@
                     {{$result->user->name}}
 
                     <small>
-                        <a class="btn btn-sm btn-info" href="#">Set Appointment</a>
+                        <a class="btn btn-sm btn-info" href="#">Request for Appointment</a>
                     </small>
                 </li>
 

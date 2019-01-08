@@ -42,37 +42,21 @@
 @include('partials.footer')
 <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
-{{--<script src="{{ asset('js/bootstrap.min.js') }}"></script>--}}
+<script src="{{ asset('js/monerdaktar.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 
-<script>
-    function setFooterPosition(){
-        var marginTop = $(window).height() - $("body").outerHeight();
-        console.log($("body").outerHeight());
-        console.log(marginTop);
-        console.log($(window).height());
-        if(marginTop > 0){
-            //console.log(marginTop);
-            $('footer').css('margin-top', marginTop);
-        }
-    }
+@if(Auth::check())
+<script type="text/javascript">
+
+        $(function () {
+            var usrId = "{{Auth::id()}}";
+            var socket = io.connect('http://104.248.155.229:5000?token='+usrId);
+            window.socket = socket;
+        });
+
 </script>
+@endif
 @yield('javascript')
-
-
-
-{{--
-<script>
-    $(document).ready(function(){
-        var marginTop = $(window).height() - $("body").outerHeight();
-        if(marginTop > 0){
-            console.log(marginTop);
-            $('footer').css('margin-top', marginTop+17);
-        }
-    });
-</script>
---}}
-
-
 
 </body>
 
