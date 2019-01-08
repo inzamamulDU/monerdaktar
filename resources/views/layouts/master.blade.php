@@ -50,8 +50,8 @@
 
         $(function () {
             var usrId = "{{Auth::id()}}";
-            var socket = io.connect('http://104.248.155.229:5000?token='+usrId);
-            window.socket = socket;
+            var masterSocket = io.connect('http://104.248.155.229:5000?token='+usrId);
+            window.socket = masterSocket;
         });
 
 </script>
