@@ -52,6 +52,10 @@
             var usrId = "{{Auth::id()}}";
             var masterSocket = io.connect('http://104.248.155.229:5000?token='+usrId);
             window.socket = masterSocket;
+
+            window.userInfo = '{!! Auth::user() !!}';
+
+            /*console.log(window.userInfo);*/
         });
 
 </script>
