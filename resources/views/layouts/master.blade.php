@@ -38,7 +38,7 @@
 
 @yield('content')
 
-
+<div id="modal_content_appointment"></div>
 @include('partials.footer')
 <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
