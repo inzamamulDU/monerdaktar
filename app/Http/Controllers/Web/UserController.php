@@ -181,8 +181,6 @@ class UserController extends Controller
         }
 
 
-        $results = json_decode($response->getBody()->getContents());
-
         return redirect(route('user.create'))->with('fail','true')->with('message',$jsonResponse->getMessage()['message']);
 
     }
