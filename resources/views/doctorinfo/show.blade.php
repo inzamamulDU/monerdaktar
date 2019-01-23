@@ -95,7 +95,7 @@
             });
             // broadcast received for online users
             socket.on('me',function (data){
-               // console.log(data);
+                console.log(data);
                 updateOnlineUser(data);
             });
             //broadcast received for appointment request

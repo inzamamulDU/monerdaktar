@@ -30,14 +30,14 @@ class UserController extends Controller
     {
         return UserCollection::collection(User::paginate(20));
     }
-/*
-    public function getAllDoctors($element=0)
+
+    public function getUserDetails()
     {
-        if($element != 0){
-            return DoctorInfoCollection::collection(User::where('role_id', '=', 2)->paginate($element));
-        }
-        return DoctorInfoCollection::collection(User::where('role_id', '=', 2)->get());
-    }*/
+
+       return Auth::guard('api')->user();
+
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -57,17 +57,6 @@ class UserController extends Controller
      */
     public function store(UserUpdateRequest $request)
     {
-
-        /*$this->validate($request, [
-            'name' => 'required|string',
-            'password' => 'required|string|confirmed|min:8',
-            'email' => 'required|string|unique:users',
-            'phone' => 'required|string|unique:users',
-            'role_id' => 'required'
-
-        ]);*/
-//        regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/|
-
 
 
 
