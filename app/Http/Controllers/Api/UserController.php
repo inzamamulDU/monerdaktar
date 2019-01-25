@@ -18,7 +18,7 @@ use App\Rules\Api\UniqueDataRule;
 class UserController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth:api');
+        $this->middleware('auth:api')->except('store');
     }
 
     /**
