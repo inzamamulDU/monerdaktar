@@ -35,11 +35,11 @@
 
             if(request=="") return;
 
-            var base_url = '<?php echo env('API_URL')  ?>';
 
 
 
-            var api_URL = base_url+'doctorinfo/getdoctors';
+
+            var api_URL = '{{route('doctorinfo.getdoctors')}}';
 
             var request_data = '{\"url\" :\"'+request+'\"}';
 

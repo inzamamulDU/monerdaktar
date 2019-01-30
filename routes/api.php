@@ -27,7 +27,8 @@ Route::group(['prefix'=>'products'],function(){
 Route::get('/appoinment/{role_id}/{user_id}', 'Api\AppoinmentController@appointmentList')->name('appointment.appointmentList');
 Route::post('/user/getUserDetails', 'Api\UserController@getUserDetails')->name('user.getUserDetails');
 
-Route::post('/doctorInfo/getSelectedDoctorInfo', 'Api\DoctorInfoController@getSelectedDoctorInfo')->name('doctorInfo.getSelectedDoctorInfo');
+Route::post('/doctor-info/getSelectedDoctorInfo', 'Api\DoctorInfoController@getSelectedDoctorInfo')->name('doctorInfo.getSelectedDoctorInfo');
+Route::get('/doctor-info/getDoctorInfoList/{limit}', 'Api\DoctorInfoController@getDoctorInfoList')->name('doctorInfo.getDoctorInfoList');
 
 Route::apiResource('/article-category', 'Api\ArticleCategoryController');
 Route::apiResource('/article', 'Api\ArticleController');

@@ -30,7 +30,7 @@ class AppoinmentController extends Controller
         ];
 
         //$apiUrl= 'http://localhost/api/user';
-        $apiUrl= env('API_URL').'api/doctor-info/';
+        $apiUrl=route('doctorInfo.getDoctorInfoList', ['limit'=>0]);;
 
 
 

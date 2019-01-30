@@ -29,17 +29,14 @@ class DoctorInfoController extends Controller
     public function  index()
     {
 
+        $apiUrl = route('doctorinfo.getdoctors');
 
-        $apiUrl = env('API_URL') . 'doctorinfo/getdoctors';
-        $param_url = env('API_URL') . 'api/doctor-info';
+        $param_url = route('doctorInfo.getDoctorInfoList', ['limit'=>6]);
 
         $request= Request::create($apiUrl,'POST',['url'=> $param_url]);
 
 
         $response = $this->getDoctorList($request);
-/*
-        $response = preg_replace( "/\r|\n/", "", $response );
-        $response = str_replace("'", '"', $response);*/
 
         return view('doctorinfo.show',['results' => $response]);
 
@@ -77,7 +74,7 @@ class DoctorInfoController extends Controller
 
 
 
-        $apiUrl = env('API_URL') . 'api/doctorInfo/getSelectedDoctorInfo';
+        $apiUrl = route('doctorInfo.getSelectedDoctorInfo');
 
 
         $client = new Client(['http_errors'=>true,'headers'=>$headers]);
@@ -133,17 +130,8 @@ class DoctorInfoController extends Controller
             'Authorization' => 'Bearer '.$apiToken,
         ];
 
-        //$apiUrl= 'http://localhost/api/user';
+
         $apiUrl = $request->get('url');
-        /*if($request!=null){
-            $apiUrl = $request->get('url');
-        } else {
-            $apiUrl = env('API_URL') . 'api/doctor-info';
-        }*/
-
-       //
-
-
 
 
 

@@ -100,4 +100,14 @@ class DoctorInfoController extends Controller
         return DoctorInfoCollection::collection(DoctorInfo::whereIn('user_id',$online_users)->get());
 
     }
+
+    public function getDoctorInfoList($limit)
+    {
+        if($limit >0) {
+            return DoctorInfoCollection::collection(DoctorInfo::paginate($limit));
+        }
+        return DoctorInfoCollection::collection(DoctorInfo::paginate());
+
+
+    }
 }
