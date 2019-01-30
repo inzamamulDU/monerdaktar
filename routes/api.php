@@ -42,3 +42,4 @@ Route::apiResource('/user', 'Api\UserController');
 Route::apiResource('/comment', 'Api\CommentController');
 Route::apiResource('/appoinment', 'Api\AppoinmentController');
 Route::apiResource('/article-category', 'Api\ArticleCategoryController');
+Route::apiResource('/oauth-clients', 'Api\OAuthClientsController');
