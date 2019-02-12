@@ -19,9 +19,9 @@
 
                                 <div class="from-row">
                                     <div class="form-group col-md-6 ">
-                                        <label><input id="patient" type="radio" name="role_id" value="3" checked  >Patient</label>
+                                        <label><input id="patient" type="radio" name="role_id" value="3" @if (old('role_id')!=2) checked @endif>Patient</label>
 
-                                        <label><input id="doctor"  type="radio" name="role_id" value="2" >Doctor</label>
+                                        <label><input id="doctor"  type="radio" name="role_id" value="2"  {{ old('role_id')==2 ? 'checked' : ''   }} >Doctor</label>
                                     </div>
 
                                 </div>
@@ -51,7 +51,7 @@
 
                                         @if ($errors->has('email'))
 
-                                            <span class="help-block">
+                                            <span class="text-danger">
                                                     <strong>{{ $errors->first('email') }}</strong>
                                                 </span>
                                         @endif
@@ -67,7 +67,7 @@
                                         <input id="password" type="password" class="form-control" name="password"  required>
 
                                         @if ($errors->has('password'))
-                                            <span class="help-block">
+                                            <span class="text-danger">
                                                     <strong>{{ $errors->first('password') }}</strong>
                                                 </span>
                                         @endif
@@ -282,6 +282,30 @@
 
 
         });
+
+
+        if($('#patient')[0].checked){
+            $("#designation").addClass("d-none");
+            $("#institute").addClass("d-none");
+            $("#biography").addClass("d-none");
+            $("#degree").addClass("d-none");
+            $("#available_time").addClass("d-none");
+            $("#doc_info_category").addClass("d-none");
+
+        }
+
+        if($('#doctor')[0].checked){
+
+            $("#designation").removeClass("d-none");
+            $("#institute").removeClass("d-none");
+            $("#biography").removeClass("d-none");
+            $("#degree").removeClass("d-none");
+            $("#available_time").removeClass("d-none");
+            $("#doc_info_category").removeClass("d-none");
+        }
+
+
+
 
 
         $('.timepicker').timepicker({

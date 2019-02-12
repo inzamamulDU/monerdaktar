@@ -53,7 +53,8 @@ class UserUpdateRequest extends FormRequest
             $rules['role_id'] = 'required';
         }
 
-       /* if($this->request->has('start_time')) {
+        if($this->request->get('role_id') == 2) {
+
 
             $statTime = $this->request->get('start_time');
             $endTime = $this->request->get('end_time');
@@ -67,7 +68,7 @@ class UserUpdateRequest extends FormRequest
 
             //validation error need apply in front end
 
-        }*/
+        }
 
         return $rules;
     }

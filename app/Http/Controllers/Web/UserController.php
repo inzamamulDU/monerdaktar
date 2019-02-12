@@ -26,14 +26,7 @@ class UserController extends Controller
 
     public function create()
     {
-/*
-        $article = Article::get();
-        foreach ($article as $key=>$value){
-            foreach($value->comments as $key1=>$value1){
-                dd($value1->user);
-            }
 
-        }*/
 
         return view('user.create');
     }
