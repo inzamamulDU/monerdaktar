@@ -14,7 +14,7 @@
                         </div>
 
                         <div class="card-body">
-                            <form class="form-horizontal" method="POST" action="{{ route('user.store') }}" enctype="multipart/form-data">
+                            <form class="form-horizontal" method="POST" action="{{ route('webuser.store') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
 
                                 <div class="from-row">

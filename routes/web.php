@@ -31,8 +31,8 @@ Route::get('/articlecategory-create', 'Web\ArticlecategoryController@create')->n
 Route::post('/articlecategory-create', 'Web\ArticlecategoryController@store')->name('articlecategory.store');
 Route::get('/articlecategory-show', 'Web\ArticlecategoryController@show')->name('article.show');
 
-Route::get('/user-show', 'Web\UserController@show')->name('user.show');
-Route::get('/user-create', 'Web\UserController@create')->name('user.create');
-Route::post('/user-create', 'Web\UserController@store')->name('user.store');
-Route::get('/user-edit', 'Web\UserController@edit')->name('user.edit');
-Route::post('/user-update', 'Web\UserController@update')->name('user.update');
+Route::get('/user-show', 'Web\UserController@show')->name('webuser.show');
+Route::get('/user-create', 'Web\UserController@create')->name('webuser.create');
+Route::post('/user-create', 'Web\UserController@store')->name('webuser.store');
+Route::get('/user-edit', 'Web\UserController@edit')->name('webuser.edit');
+Route::post('/user-update', 'Web\UserController@update')->name('webuser.update');

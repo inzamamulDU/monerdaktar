@@ -41,124 +41,180 @@ class UserController extends Controller
     public function store(UserUpdateRequest $request)
     {
 
-       /* $this->validate($request, [
-            'name' => 'required|string',
-            'password' => 'required|string|confirmed|min:8',
-            'email' => 'required|string|unique:users',
-            'phone' => 'required|string|unique:users',
-            'photo' => 'image||mimes:jpeg,png,jpg',
-            'role_id' => 'required'
-
-        ]);*/
 
 
-
-
-        //$loggedUserID= Auth::user()->id;
-        $apiToken= env('API_TOKEN');
         $headers = [
             'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
-            'Authorization' => 'Bearer '.$apiToken,
-        ];
-
-        /*dd($loggedUserID);*/
-
-        $form_params = [
-            'name' => $request->get("name"),
-            'email' => $request->get("email"),
-            'phone' => $request->get("phone"),
-            'password' => $request->get("password"),
-            'password_confirmation' => $request->get("password_confirmation"),
-            'address' => $request->get("address"),
-            'postcode' => $request->get("postcode"),
-            'city' => $request->get("city"),
-            'country' => $request->get("country"),
-            'role_id' => $request->get("role_id")
-
-
+            'Accept' => 'application/json'
 
         ];
+
+
+
+        $output = [
+            [
+                'name'     => 'name',
+                'contents' => $request->get("name")
+            ],
+            [
+                'name'     => 'email',
+                'contents' => $request->get("email")
+            ],
+            [
+                'name'     => 'phone',
+                'contents' => $request->get("phone")
+            ],
+            [
+                'name'     => 'password',
+                'contents' => $request->get("password")
+            ],
+            [
+                'name'     => 'password_confirmation',
+                'contents' => $request->get("password_confirmation")
+            ],
+            [
+                'name'     => 'address',
+                'contents' => $request->get("address")
+            ],
+            [
+                'name'     => 'postcode',
+                'contents' => $request->get("postcode")
+            ],
+            [
+                'name'     => 'city',
+                'contents' => $request->get("city")
+            ],
+            [
+                'name'     => 'country',
+                'contents' => $request->get("country")
+            ],
+            [
+                'name'     => 'role_id',
+                'contents' => $request->get("role_id")
+            ]
+        ];
+
+
+
+
 
         if($request->has('photo')){
             $image = $request->file('photo');
-            $phone = time().$request->input('phone');
-            $imageName = $phone.".".$image->getClientOriginalExtension();
 
-            $upload = new Common();
-            $imageUpload = $upload->uploadImage($phone,$image,'/images/userphoto/');
 
-            $form_params['photo']=$imageName;
-
-        }
-
-        if($request->has("designation")) {
-            $form_params['designation'] = $request->get("designation");
-
-        }
-
-        if($request->has("institute")) {
-            $form_params['institute'] = $request->get("institute");
-
-        }
-
-        if($request->has("degree")) {
-            $form_params['degree'] = $request->get("degree");
-
-        }
-
-        if($request->has("available_time")) {
-            $form_params['available_time'] = $request->get("available_time");
-
-        }
-
-        if($request->has("is_consultant")) {
-            $form_params['is_consultant'] = $request->get("is_consultant");
-
-        }
-
-        if($request->has("is_psychotherapist")) {
-            $form_params['is_psychotherapist'] = $request->get("is_psychotherapist");
-
-        }
-
-        if($request->has("biography")) {
-            $form_params['biography'] = $request->get("biography");
-
-        }
-
-        if($request->has("day")) {
-            $form_params['day'] = $request->get("day");
-
-        }
-
-        if($request->has("start_time")) {
-            $form_params['start_time'] = $request->get("start_time");
-
-        }
-
-        if($request->has("end_time")) {
-            $form_params['end_time'] = $request->get("end_time");
+            $output[] = [
+                'name'     => 'photo',
+                'contents' => fopen( $image->getPathname(), 'r' ),
+                'filename' => $image->getClientOriginalName()
+            ];
 
         }
 
 
+        if($request->get("role_id")==2) {
+            if($request->has("designation")) {
+                //$form_params['designation'] = $request->get("designation");
+                $output[] =[
+                    'name'     => 'designation',
+                    'contents' => $request->get("designation")
+                ];
 
-        $apiUrl= env('API_URL').'api/user';
-        //$apiUrl= 'http://localhost/api/user';
+            }
+
+            if($request->has("institute")) {
+
+                $output[] =[
+                    'name'     => 'institute',
+                    'contents' => $request->get("institute")
+                ];
+
+            }
+
+            if($request->has("degree")) {
 
 
-        /*dd( $form_params);*/
+                $output[] =[
+                    'name'     => 'degree',
+                    'contents' => $request->get("degree")
+                ];
+
+            }
+
+            if($request->has("available_time")) {
+
+                $output[] =[
+                    'name'     => 'available_time',
+                    'contents' => $request->get("available_time")
+                ];
+
+            }
+
+            if($request->has("is_consultant")) {
+
+                $output[] =[
+                    'name'     => 'is_consultant',
+                    'contents' => $request->get("is_consultant")
+                ];
+
+            }
+
+            if($request->has("is_psychotherapist")) {
+
+                $output[] =[
+                    'name'     => 'is_psychotherapist',
+                    'contents' => $request->get("is_psychotherapist")
+                ];
+
+            }
+
+            if($request->has("biography")) {
+
+                $output[] =[
+                    'name'     => 'biography',
+                    'contents' => $request->get("biography")
+                ];
+
+            }
+
+            if($request->has("day")) {
+                //$form_params['day'] = $request->get("day");
+                $output[] =[
+                    'name'     => 'day',
+                    'contents' => $request->get("day")
+                ];
+
+            }
+
+            if($request->has("start_time")) {
+                //$form_params['start_time'] = $request->get("start_time");
+                $output[] =[
+                    'name'     => 'start_time',
+                    'contents' => $request->get("start_time")
+                ];
+
+            }
+
+            if($request->has("end_time")) {
+                $output[] =[
+                    'name'     => 'end_time',
+                    'contents' => $request->get("end_time")
+                ];
+
+            }
+
+        }
+
+
+
+
         $client = new Client(['http_errors'=>true,'headers'=>$headers]);
-        $jsonResponse = null;
-        $clientExceptionCode = null;
-        $results= null;
 
 
         try {
-            $response = $client->post($apiUrl, [
-                'form_params' => $form_params
+            $response = $client->post(route('user.store'), [
+                'multipart' => $output
             ]);
+
             $results = json_decode($response->getBody()->getContents());
 
         } catch (\Exception $exception) {
@@ -168,8 +224,6 @@ class UserController extends Controller
 
 
         }
-
-
 
 
         if($results){

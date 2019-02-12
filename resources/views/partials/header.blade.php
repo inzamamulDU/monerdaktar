@@ -41,13 +41,13 @@
             <li class="nav-item dropdown">
                 @guest
                 <li class="nav-item"><a class="nav-link nav-link-color" href="{{ route('login') }}">Login</a></li>
-                <li class="nav-item"><a class="nav-link nav-link-color" href="{{ route('user.create') }}">Register</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-color" href="{{ route('webuser.create') }}">Register</a></li>
                 @else
                     <a class="nav-link dropdown-toggle nav-link-color" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                        <a class="dropdown-item nav-link-color"href="{{ route('user.edit') }}">Profile Info</a>
+                        <a class="dropdown-item nav-link-color"href="{{ route('webuser.edit') }}">Profile Info</a>
 
                         <a href="{{ route('logout') }}" class=" dropdown-item nav-link-color"
                                onclick="event.preventDefault();

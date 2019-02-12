@@ -14,6 +14,9 @@ use App\Http\Resources\User\UserCollection;
 use App\Http\Resources\User\UserResource;
 use Illuminate\Support\Facades\Auth;
 use App\Rules\Api\UniqueDataRule;
+use App\Model\Web\Common;
+use Image;
+use File;
 
 class UserController extends Controller
 {
@@ -70,8 +73,19 @@ class UserController extends Controller
         $user->role_id= $request->get("role_id");
         $user->name= $request->get("name");
 
-        if($request->has("photo")) {
-            $user->photo = $request->get("photo");
+        if($request->file("photo")) {
+            $image = $request->file('photo');
+            $phone = $request->input('phone');
+            $phone = time().substr($phone,1,strlen($phone));
+
+            $imageName = $phone.".".$image->getClientOriginalExtension();
+
+            $upload = new Common();
+            $imageUpload = $upload->uploadImage($phone,$image,'/images/userphoto/');
+
+            $user['photo'] = asset('/images/userphoto/'.$imageName);
+
+
         }
 
 
