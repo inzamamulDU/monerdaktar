@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->integer("role_id")->default(3);
             $table->integer("doctor_info_id")->default(0);
             $table->integer("patient_info_id")->default(0);
-            $table->string('photo')->default("default.png");
+            $table->string('photo')->default(asset('/images/userphoto/default.png'));
             $table->boolean("active")->default(true);
 
             $table->rememberToken();
