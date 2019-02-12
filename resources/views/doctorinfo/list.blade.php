@@ -7,7 +7,7 @@
 
                         <div class="col-lg-4 col-sm-12 portfolio-item">
                             <div class="card">
-                                <a href="#"><img class="card-img-top" src="{{ asset('images/userphoto/'.$result->user->photo) }}" alt=""></a>
+                                <a href="#"><img class="card-img-top" src="{{ asset($result->user->photo) }}" alt=""></a>
                                 <div class="card-body">
                                     <h5 class="card-title text-center">
                                         <span>{{$result->designation}} {{$result->user->name}}</span>
