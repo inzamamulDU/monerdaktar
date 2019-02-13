@@ -26,34 +26,25 @@ class UserUpdateRequest extends FormRequest
         $rules = [];
 
 
+        $rules['name'] = 'required|string';
 
-        //dd($this->request->all());
 
-        if($this->request->has('name')){
-            $rules['name'] = 'required|string';
-        }
+        $rules['password'] = 'required|string|confirmed|min:8';
 
-        if($this->request->has('password') && $this->request->get('password')!=''){
-            $rules['password'] = 'required|string|confirmed|min:8';
-        }
+        $rules['email'] = 'required|string|unique:users';
 
-        if($this->request->has('email')){
-            $rules['email'] = 'required|string|unique:users';
-        }
+        $rules['phone'] = 'required|unique:users';
 
-        if($this->request->has('phone')){
-            $rules['phone'] = 'required|unique:users';
-        }
 
         if($this->request->has('photo')){
             $rules['photo'] = 'image||mimes:jpeg,png,jpg';
         }
 
-        if($this->request->has('role_id')){
-            $rules['role_id'] = 'required';
-        }
 
-        if($this->request->get('role_id') == 2) {
+        $rules['role_id'] = 'required';
+
+
+        if($this->request->get('role_id') == 2 && $this->request->has('start_time') ) {
 
 
             $statTime = $this->request->get('start_time');
