@@ -202,7 +202,7 @@ class UserController extends Controller
 
         $client = new Client(['http_errors'=>true,'headers'=>$headers]);
 
-
+        print_r($output);
         try {
             $response = $client->post(route('user.store'), [
                 'multipart' => $output
