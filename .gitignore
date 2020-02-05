@@ -1,10 +1,6 @@
 /node_modules
 /public/hot
 /public/storage
-/vendor
-/storage
-vendor/*
-boostrap/*
 /.idea
 /.vagrant
 Homestead.json
