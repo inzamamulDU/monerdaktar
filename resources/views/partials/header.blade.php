@@ -15,7 +15,7 @@
                     <a class="nav-link nav-link-color" href="{{route('doctorinfo.index')}}">Doctors</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-color" href="services.html">Services</a>
+                    <a class="nav-link nav-link-color" href="{{route('services.index')}}">Services</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-color" href="{{route('appoinment.index')}}">Appointment</a>

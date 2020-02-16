@@ -48,6 +48,7 @@
 
 .footer {
     padding-top: 40px;
+    clear: both;
 }
 
 .no_decoration {
@@ -55,8 +56,7 @@
 }
 
 .no_decoration:hover {
-    text-decoration: none;
-    color: tomato;
+    color: inherit;
 }
 
 .colorBlack {
@@ -71,7 +71,23 @@
     padding-bottom: 50px;
 }
 
-.explore_more:hover {
+.custom_button:hover {
     text-decoration: none;
     color: yellow;
+}
+
+.width100 {
+    width: 100%;
+}
+
+.centered {
+    text-align: center;
+}
+
+.right_align {
+    text-align: right;
+}
+
+.margin_0px {
+    margin: 0;
 }

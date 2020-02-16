@@ -1,26 +1,30 @@
 <div class="services ">
     <h2 class="text-uppercase text-center py-2"><b>Our Services</b></h2>
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-5">
-            <a class="no_decoration" href=""><h3>24/7 direct consultation to available Psychiatrists and Psychologists</h3></a>
-            <ul class="text-justify">
-                <li>Online Psychiatric Consultation: We provide the psychiatric consultation from the most reputed psychiatrist in the country having MD or FCPS and other advanced degrees.</li>
-                <li>Online Psychotherapy and Counselling: Our expert Clinical Psychologists and Councilors provide evidence based services for our clients.</li>
-            </ul>
+    <div class="row margin_0px padding-top-20">
+        <div class="col-md-4">
+            <h3>24/7 direct consultation to available Psychiatrists and Psychologists</h3>
+            <div class="text-justify padding-top-20">
+                <p>Online Psychiatric Consultation: We provide the psychiatric consultation from the most reputed psychiatrist in the country having MD or FCPS and other advanced degrees.</p>
+                <p>Online Psychotherapy and Counselling: Our expert Clinical Psychologists and Councilors provide evidence based services for our clients.</p>
+            </div>
         </div>
-        <div class="col-md-5">
-            <a class="no_decoration" href=""><h3>Self Assessment</h3></a>
-            <ul class="text-justify">
-                <li>Assess Depression</li>
-                <li>Assess Your Personality Trait</li>
-                <li>Assess overall your Stress, Anxiety, Depression, …</li>
-            </ul>
+        <div class="col-md-4">
+            <h3>Self Assessment</h3>
+            <div class="text-justify padding-top-20">
+                <p>Assess Depression</p>
+                <p>Assess Your Personality Trait</p>
+                <p>Assess overall your Stress, Anxiety, Depression, …</p>
+            </div>
         </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-1"></div>
-        <div class="col-md-5">
-            <a class="no_decoration" href=""><h3>Information related nearest mental health hospitals, mental health professionals and pharmacy</h3></a>
+        <div class="col-md-4">
+            <h3>Information related nearest mental health hospitals, mental health professionals and pharmacy</h3>
+        </div>
+    </div>
+    <div class="row margin_0px">
+        <div class="col-lg-10 col-sm-9"></div>
+            <div class="col-lg-2 col-sm-3">
+                <button class="custom_button btn btn-dark" onclick="window.location.href = 'http://localhost/services'">Learn More<span>&#8594;</span></button>
+            </div>
         </div>
     </div>
 </div>
@@ -100,7 +104,7 @@
         <!-- Marketing Icons Section -->
         <p class="text-center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
 
-        <div class="row">
+        <div class="row margin_0px">
             @if($results)
                 @foreach($results->data as $key=>$result)
                     <div class="col-lg-4 col-sm-6 portfolio-item">
@@ -133,10 +137,10 @@
 
         </div>
 
-        <div class="row">
+        <div class="row margin_0px">
             <div class="col-lg-10 col-sm-9"></div>
             <div class="col-lg-2 col-sm-3">
-                <button class="explore_more btn btn-dark" href="{{route('doctorinfo.index')}}">Explore Everyone <span>&#8594;</span></button>
+                <button class="custom_button btn btn-dark" onclick="window.location.href = 'http://localhost/doctorinfo'">Explore Everyone <span>&#8594;</span></button>
             </div>
         </div>
         <br />

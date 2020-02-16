@@ -36,3 +36,5 @@ Route::get('/user-create', 'Web\UserController@create')->name('webuser.create');
 Route::post('/user-create', 'Web\UserController@store')->name('webuser.store');
 Route::get('/user-edit', 'Web\UserController@edit')->name('webuser.edit');
 Route::post('/user-update', 'Web\UserController@update')->name('webuser.update');
+
+Route::get('/services', 'Web\ServicesController@index')->name('services.index');
