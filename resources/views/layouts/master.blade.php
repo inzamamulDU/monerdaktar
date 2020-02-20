@@ -51,7 +51,9 @@
 
         $(function () {
             var usrId = "{{Auth::id()}}";
-            var masterSocket = io.connect('http://167.99.74.154:5000?token='+usrId);
+	    //var masterSocket = io.connect('http://167.99.74.154:5000?token='+usrId);
+	    var masterSocket = io.connect('https://monerdaktar.com:5000?token='+usrId);
+
             window.socket = masterSocket;
 
             window.userInfo = '{!! Auth::user() !!}';
