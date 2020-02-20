@@ -17,6 +17,7 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jquery-confirm.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/homebody.css') }}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 

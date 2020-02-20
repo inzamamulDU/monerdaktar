@@ -2,9 +2,6 @@
 
 @section('content')
     @include('partials.slider')
-    <div class="container">
-
-        @include('partials.homebody')
-    </div>
+    @include('partials.homebody')
 
 @endsection('content')
