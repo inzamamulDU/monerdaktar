@@ -36,8 +36,9 @@
 <!-- Page Content -->
 @include('partials.header')
 
-
-@yield('content')
+<div class="parent_container">
+    @yield('content')
+</div>
 
 <div id="modal_content_appointment"></div>
 @include('partials.footer')

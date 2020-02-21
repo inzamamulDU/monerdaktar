@@ -27,6 +27,10 @@
                 <li class="nav-item">
                     <a class="nav-link nav-link-color" href="{{route('article.index')}}">Article</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link nav-link-color" href="{{route('about.index')}}">About Us</a>
+                </li>
                 <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-link-color" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Pages

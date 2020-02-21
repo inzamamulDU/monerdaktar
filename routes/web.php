@@ -38,3 +38,5 @@ Route::get('/user-edit', 'Web\UserController@edit')->name('webuser.edit');
 Route::post('/user-update', 'Web\UserController@update')->name('webuser.update');
 
 Route::get('/services', 'Web\ServicesController@index')->name('services.index');
+
+Route::get('/about', 'Web\AboutController@index')->name('about.index');
