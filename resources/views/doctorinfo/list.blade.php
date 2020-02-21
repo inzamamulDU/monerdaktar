@@ -23,7 +23,7 @@
                                             {{$result->institute}}
                                         </small>
                                     </p>
-                                    <p class="card-text">{{$result->biography}}</p>
+                                    <p class="card-text text-justify">{{$result->biography}}</p>
 
                                     @if (Auth::id() > 0)
                                     <div class="col-md-6 col-md-offset-4">

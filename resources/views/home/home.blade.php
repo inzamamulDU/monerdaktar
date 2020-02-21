@@ -2,7 +2,7 @@
 
 @section('content')
     @include('partials.slider')
-    <div class="container">
+    <div>
         @if (Session::has('fail'))
             <div class="alert alert-warning">
                 {{ Session::get('message') }}

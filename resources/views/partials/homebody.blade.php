@@ -1,16 +1,16 @@
-<div class="services ">
+<div class="custom_container text-justify">
     <h2 class="text-uppercase text-center py-2"><b>Our Services</b></h2>
     <div class="row margin_0px padding-top-20">
         <div class="col-md-4">
             <h3>24/7 direct consultation to available Psychiatrists and Psychologists</h3>
-            <div class="text-justify padding-top-20">
+            <div class="padding-top-20">
                 <p>Online Psychiatric Consultation: We provide the psychiatric consultation from the most reputed psychiatrist in the country having MD or FCPS and other advanced degrees.</p>
                 <p>Online Psychotherapy and Counselling: Our expert Clinical Psychologists and Councilors provide evidence based services for our clients.</p>
             </div>
         </div>
         <div class="col-md-4">
             <h3>Self Assessment</h3>
-            <div class="text-justify padding-top-20">
+            <div class="padding-top-20">
                 <p>Assess Depression</p>
                 <p>Assess Your Personality Trait</p>
                 <p>Assess overall your Stress, Anxiety, Depression, …</p>
@@ -20,10 +20,11 @@
             <h3>Information related nearest mental health hospitals, mental health professionals and pharmacy</h3>
         </div>
     </div>
+    <br >
     <div class="row margin_0px">
         <div class="col-lg-10 col-sm-9"></div>
-            <div class="col-lg-2 col-sm-3">
-                <button class="custom_button btn btn-dark" onclick="window.location.href = 'http://localhost/services'">Learn More<span>&#8594;</span></button>
+            <div class="col-lg-2 col-sm-3 right_align">
+                <a class="custom_button btn btn-dark" href = "{{route('services.index')}}">Learn More<span>&#8594;</span></a>
             </div>
         </div>
     </div>
@@ -98,7 +99,7 @@
         </div>
 </div>
 
-<div class="ourDoctors">
+<div class="custom_container">
         <h2 class="text-center text-uppercase py-2"><b>Meet Our Doctors</b></h2>
 
         <!-- Marketing Icons Section -->
@@ -125,7 +126,7 @@
                                         {{$result->institute}}
                                     </small>
                                 </p>
-                                <p class="card-text">{{$result->biography}}</p>
+                                <p class="card-text text-justify">{{$result->biography}}</p>
                             </div>
                         </div>
                     </div>
@@ -140,7 +141,7 @@
         <div class="row margin_0px">
             <div class="col-lg-10 col-sm-9"></div>
             <div class="col-lg-2 col-sm-3">
-                <button class="custom_button btn btn-dark" onclick="window.location.href = 'http://localhost/doctorinfo'">Explore Everyone <span>&#8594;</span></button>
+                <a class="custom_button btn btn-dark" href = "{{route('doctorinfo.index')}}">Explore Everyone <span>&#8594;</span></a>
             </div>
         </div>
         <br />

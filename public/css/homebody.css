@@ -1,7 +1,6 @@
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    height: 300px;
     width: 100%;
 }
 
@@ -10,13 +9,7 @@
     text-decoration: none;
 }
 
-.services {
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
-
-.ourDoctors {
-    /* background-color: #343a40; */
+.custom_container {
     padding: 30px 25px;
 }
 
