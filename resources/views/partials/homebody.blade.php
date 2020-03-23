@@ -48,7 +48,7 @@
 
                         <div class="form-group col-md-6 {{ $errors->has('start_time') ? ' has-error' : '' }}">
                             <label for="start_time" class="">Start date and time</label>
-                            <input id="start_time" type="datetime-local" class="form-control" name="start_time">
+                            <input id="start_time" type="text" class="form-control" name="start_time">
                             @if ($errors->has('start_time'))
                                 <small class="form-text text-danger">{{ $errors->first('start_time') }}</small>
                             @endif
@@ -58,7 +58,7 @@
                     <div class="row">
 
                         <div class="form-group col-md-6 {{ $errors->has('host_id') ? ' has-error' : '' }}">
-                            <label for="second_input">Doctors</label>
+                            <label for="second_input">Experts</label>
                             <select class="form-control" id="second_input" type="select">
                                 <option value="">--Choose one--</option>
                                 @if($results)
@@ -74,7 +74,7 @@
 
                         <div class="form-group col-md-6 {{ $errors->has('end_time') ? ' has-error' : '' }}">
                             <label for="end_time" class="">End date and time</label>
-                            <input id="end_time" type="datetime-local" class="form-control" name="end_time">
+                            <input id="end_time" type="text" class="form-control" name="end_time">
                             @if ($errors->has('end_time'))
                                 <small class="form-text text-danger">{{ $errors->first('end_time') }}</small>
                             @endif
@@ -100,7 +100,7 @@
 </div>
 
 <div class="custom_container">
-        <h2 class="text-center text-uppercase py-2"><b>Meet Our Doctors</b></h2>
+        <h2 class="text-center text-uppercase py-2"><b>Meet Our Experts</b></h2>
 
         <!-- Marketing Icons Section -->
         <p class="text-center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
@@ -131,7 +131,7 @@
                         </div>
                     </div>
                 @endforeach
-                
+
             @else
                 <h4 class="alert alert-info">No data</h4>
             @endif
@@ -146,3 +146,12 @@
         </div>
         <br />
 </div>
+
+@section('javascript')
+    <script src="{{ asset('js/jquery.datetimepicker.full.min.js') }}"></script>
+    <script>
+        $('#start_time').datetimepicker();
+        $('#end_time').datetimepicker();
+    </script>
+
+@endsection

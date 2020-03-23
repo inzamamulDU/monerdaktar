@@ -14,7 +14,8 @@
 }
 
 .appointment {
-    background-image: url("../images/quick_appointment.jpg");
+    background-image: url("../images/quick.jpg");
+    background-position: center ;
     position: relative;
     margin: 0 auto;
 }
@@ -23,7 +24,7 @@
     padding-top: 50px;
     padding-bottom: 50px;
     position: relative;
-    background: rgba(0, 0, 0, 0.3); 
+    background: rgba(0, 0, 0, 0.3);
     margin: 0;
     top: 0;
     right: 0;
