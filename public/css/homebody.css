@@ -15,7 +15,7 @@
 
 .appointment {
     background-image: url("../images/quick.jpg");
-    background-position: center ;
+    background-position: center center;
     position: relative;
     margin: 0 auto;
 }

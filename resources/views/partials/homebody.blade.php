@@ -1,34 +1,12 @@
-<div class="custom_container text-justify">
-    <h2 class="text-uppercase text-center py-2"><b>Our Services</b></h2>
-    <div class="row margin_0px padding-top-20">
-        <div class="col-md-4">
-            <h3>24/7 direct consultation to available Psychiatrists and Psychologists</h3>
-            <div class="padding-top-20">
-                <p>Online Psychiatric Consultation: We provide the psychiatric consultation from the most reputed psychiatrist in the country having MD or FCPS and other advanced degrees.</p>
-                <p>Online Psychotherapy and Counselling: Our expert Clinical Psychologists and Councilors provide evidence based services for our clients.</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <h3>Self Assessment</h3>
-            <div class="padding-top-20">
-                <p>Assess Depression</p>
-                <p>Assess Your Personality Trait</p>
-                <p>Assess overall your Stress, Anxiety, Depression, …</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <h3>Information related nearest mental health hospitals, mental health professionals and pharmacy</h3>
+<div class="custom_container text-dark">
+    <h2 class="text-uppercase text-center py-2"><b>Vision</b></h2>
+    <div class="col margin_0px padding-top-20">
+        <div class="row-md-4">
+            <h4 class="text-center text-secondary">One day every Person get the mental care what they seek</h4>
+
         </div>
     </div>
-    <br >
-    <div class="row margin_0px">
-        <div class="col-lg-10 col-sm-9"></div>
-            <div class="col-lg-2 col-sm-3 right_align">
-                <a class="custom_button btn btn-dark" href = "{{route('services.index')}}">Learn More<span>&#8594;</span></a>
-            </div>
-        </div>
     </div>
-</div>
 
 <div class="appointment text-white">
         <div class="row content">
@@ -98,6 +76,67 @@
             <div class="col-md-1"></div>
         </div>
 </div>
+
+<div class="custom_container text-dark">
+    <h2 class="text-uppercase text-center py-2"><b>Mission</b></h2>
+    <div class="col margin_0px padding-top-20">
+        <div class="row-md-4">
+            <h4 class="text-center text-secondary"> its journey with the dream to
+touch the life of one billion people within 2025 by designing, developing and implementing innovative
+technology based mental services</h4>
+
+        </div>
+    </div>
+    </div>
+
+
+    <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <!-- Slide One - Set the background image for this slide in the line below -->
+            <div class="carousel-item active" style="background-image: url({{ asset('images/consultant1.jpg')}})">
+                <div class="carousel-caption d-none d-md-block text-dark">
+                    <h3>Online Services</h3>
+                    <p>24/7 direct consultation to available Psychiatrists and Psychologists</p>
+                </div>
+            </div>
+            <!-- Slide Two - Set the background image for this slide in the line below -->
+            <div class="carousel-item" style="background-image: url({{ asset('images/self.jpg')}})">
+                <div class="carousel-caption d-none d-md-block text-dark">
+                    <h3>Self Assessment</h3>
+                    <p>Assess overall your Stress, Anxiety, Depression..</p>
+                </div>
+            </div>
+            <!-- Slide Three - Set the background image for this slide in the line below -->
+            <div class="carousel-item" style="background-image: url({{ asset('images/information1.jpg')}})">
+                <div class="carousel-caption d-none d-md-block text-dark">
+                    <h3>Information about Mental Heath and Articles </h3>
+                    <p>Information related nearest mental health hospitals, mental health professionals and pharmacy</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    <br >
+    <div class="row margin_0px">
+        <div class="col-lg-10 col-sm-9"></div>
+            <div class="col-lg-2 col-sm-3 right_align">
+                <a class="custom_button btn btn-dark" href = "{{route('services.index')}}">Learn More<span>&#8594;</span></a>
+            </div>
+        </div>
+    </div>
+
+
 
 <div class="custom_container">
         <h2 class="text-center text-uppercase py-2"><b>Meet Our Experts</b></h2>
